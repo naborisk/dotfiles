@@ -14,15 +14,6 @@ fi
 read -p 'Hostname: ' HOSTNAME
 read -p 'Username: ' USERNAME
 
-read -r -p "Are you sure? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-    echo "Beginning installation with Hostname $HOSTNAME and Username $USERNAME"
-else
-    echo "Exiting..."
-    exit
-fi
-
 pacstrap /mnt base linux linux-firmware vim sudo zsh grml-zsh-config neofetch networkmanager intel-ucode
 
 # Generate fstab
