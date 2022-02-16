@@ -60,7 +60,7 @@ arch-chroot /mnt useradd -m -s /usr/bin/zsh $USERNAME
 arch-chroot /mnt usermod -aG wheel $USERNAME
 
 # Edit sudoers file and add user to group wheel
-sed -i 's/# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/g' /mnt/etc/sudoers
+echo '%wheel ALL=(ALL:ALL) ALL' > /mnt/etc/sudoers.d/wheel
 
 # Set password for the admin user
 arch-chroot /mnt passwd $USERNAME
