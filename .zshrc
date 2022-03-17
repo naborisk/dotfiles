@@ -1,3 +1,5 @@
+# custom entries
+
 alias c=clear
 alias l=ls
 alias ll='ls -l'
