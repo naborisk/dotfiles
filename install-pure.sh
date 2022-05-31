@@ -15,5 +15,4 @@ echo '# load pure prompt' >> $HOME/.zshrc
 echo 'autoload -U promptinit; promptinit' >> $HOME/.zshrc
 echo 'prompt pure' >> $HOME/.zshrc
 
-source ~/.zshrc
 echo "installation done! please run 'source ~/.zshrc' or restart the shell to use pure prompt"
