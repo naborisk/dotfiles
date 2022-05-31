@@ -1,12 +1,16 @@
 #!/bin/bash
 
 # show commands
-set -x
+#set -x
 
 # OS Detection in case of wanting to do something OS-specific
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
+    echo 'Linux'
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+
+    echo 'macOS'
 
 fi
 
