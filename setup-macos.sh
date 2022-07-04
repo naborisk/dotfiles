@@ -1,6 +1,6 @@
 #!/bin/bash
 PACKAGES="n mas tmux wget tree"
-CASK_PACKAGES="font-fira-code zoom obs microsoft-teams visual-studio-code discord firefox iterm2"
+CASK_PACKAGES="font-fira-code-nerd-font zoom obs microsoft-teams visual-studio-code discord firefox iterm2"
 
 #App list: 1password Word Excel PowerPoint OneDrive Afphoto Goodnotes Slack
 MAS_APPS="1333542190 462054704 462058435 462062816 823766827 824183456 1444383602 803453959"
