@@ -1,24 +1,27 @@
 source $VIMRUNTIME/defaults.vim
 
+set encoding=UTF-8
+
 "dein Scripts-----------------------------
 if &compatible
   set nocompatible               " Be iMproved
 endif
 
 " Required:
-set runtimepath+=$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim
+set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin('$HOME/.vim/bundles')
+call dein#begin('$HOME/.cache/dein')
 
 " Let dein manage dein
 " Required:
-call dein#add('$HOME/.vim/bundles/repos/github.com/Shougo/dein.vim')
+call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
 
-" Add or remove your plugins here like this:
-"call dein#add('Shougo/neosnippet.vim')
-"call dein#add('Shougo/neosnippet-snippets')
+" Add or remove your plugins here:
 call dein#add('mattn/emmet-vim')
+call dein#add('preservim/nerdtree')
+call dein#add('ryanoasis/vim-devicons')
+call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 
 " Required:
 call dein#end()
@@ -34,19 +37,54 @@ syntax enable
 
 "End dein Scripts-------------------------
 
+" enable NERDTree on startup
+"autocmd VimEnter * NERDTree
+"autocmd VimEnter * wincmd p
+
+" close vim if NERDTree is the last buffer
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" ctrl-b to toggle NERDTree
+"map <C-b> :NERDTreeToggle<CR>
+
+" use netrw as sidebar
+map <C-b> :Lex<CR>
+
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 15
+
+" Color Scheme
+colorscheme darcula
+
+"" Color customizations (bg only work with some themes)
+" Hide ~
+hi EndOfBuffer ctermfg=bg
+
+" Hide the | from window separators
+set fillchars+=vert:\ 
+
+" ctrl-z to undo in insert mode
+imap <C-z> <esc> u i 
+
 " Change emmet-vim expand key to tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
 " Personal customizations
+" Show line number
 set nu
-set relativenumber
+"set relativenumber
 
+" Tab size and tab-to-space
 set tabstop=2
 set shiftwidth=2
 set expandtab
 
-" macOS's vi doesnt have syntax on by default
-syntax on
+" highlight while searching
+set incsearch
+
 
 " save as superuser
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
