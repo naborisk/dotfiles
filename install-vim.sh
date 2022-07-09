@@ -8,6 +8,6 @@ mkdir -p ~/.vim/colors
 curl https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.vim > ~/.vim/colors
 
 # install dein.vim
-curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s ~/.vim/bundles
+curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s ~/.vim/bundles/dein
 
 vim -c 'call dein#install() | q!'
