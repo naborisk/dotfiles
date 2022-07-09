@@ -22,6 +22,7 @@ call dein#add('mattn/emmet-vim')
 call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+call dein#add('vim-airline/vim-airline')
 
 " Required:
 call dein#end()
