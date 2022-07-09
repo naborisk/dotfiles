@@ -8,20 +8,21 @@ if &compatible
 endif
 
 " Required:
-set runtimepath+=$HOME/.cache/dein/repos/github.com/Shougo/dein.vim
+set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
 " Required:
-call dein#begin('$HOME/.cache/dein')
+call dein#begin('~/.cache/dein')
 
 " Let dein manage dein
 " Required:
-call dein#add('$HOME/.cache/dein/repos/github.com/Shougo/dein.vim')
+call dein#add('~/.cache/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here:
 call dein#add('mattn/emmet-vim')
 call dein#add('preservim/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
+call dein#add('vim-airline/vim-airline')
 
 " Required:
 call dein#end()
@@ -67,7 +68,10 @@ hi EndOfBuffer ctermfg=bg
 set fillchars+=vert:\ 
 
 " ctrl-z to undo in insert mode
-imap <C-z> <esc> u i 
+"imap <C-z> <esc> u i 
+
+" map esc to escape terminal
+tnoremap <esc> <C-\><C-n>
 
 " Change emmet-vim expand key to tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
@@ -84,7 +88,6 @@ set expandtab
 
 " highlight while searching
 set incsearch
-
 
 " save as superuser
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
