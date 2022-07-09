@@ -11,3 +11,6 @@ curl https://raw.githubusercontent.com/blueshirts/darcula/master/colors/darcula.
 curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh | bash -s ~/.vim/bundles/dein
 
 vim -c 'call dein#install() | q!'
+
+# fix garbled terminal
+stty sane
