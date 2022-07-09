@@ -73,6 +73,9 @@ imap <C-z> <esc> u i
 " Change emmet-vim expand key to tab
 imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
 
+" esc to escape terminal mode
+tnoremap <esc> <C-\><C-n>
+
 " Personal customizations
 " Show line number
 set nu
