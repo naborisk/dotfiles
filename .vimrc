@@ -70,11 +70,17 @@ set fillchars+=vert:\
 " ctrl-z to undo in insert mode
 imap <C-z> <esc> u i 
 
-" Change emmet-vim expand key to tab
-imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+" use <tab> for trigger completion and navigate to the next complete item
+inoremap <expr> <Tab> pumvisible() ? "\<down>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<up>" : "\<S-Tab>"
+
+" Change emmet-vim expand key to Alt-space
+imap <expr> <a-space> emmet#expandAbbrIntelligent("\<a-space>")
 
 " esc to escape terminal mode
 tnoremap <esc> <C-\><C-n>
+
+imap <a-a> :call CocActionAsync('format')
 
 " Personal customizations
 " Show line number
@@ -89,6 +95,11 @@ set expandtab
 " highlight while searching
 set incsearch
 
+" split to below
+"set splitbelow
+
+" map Ctrl t to open small terminal below
+noremap <c-t> :below term ++rows=15<CR>
 
 " save as superuser
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
