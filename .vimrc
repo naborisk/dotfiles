@@ -1,4 +1,6 @@
-source $VIMRUNTIME/defaults.vim
+if !has('nvim')
+  source $VIMRUNTIME/defaults.vim
+endif
 
 set encoding=UTF-8
 
@@ -19,7 +21,7 @@ call dein#add('$HOME/.vim/bundles/dein/repos/github.com/Shougo/dein.vim')
 
 " Add or remove your plugins here:
 call dein#add('mattn/emmet-vim')
-call dein#add('preservim/nerdtree')
+call dein#add('scrooloose/nerdtree')
 call dein#add('ryanoasis/vim-devicons')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 call dein#add('vim-airline/vim-airline')
