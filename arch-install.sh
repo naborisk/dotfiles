@@ -62,6 +62,9 @@ case $TYPE in
     ;;
   btrfs)
     btrfs filesystem label $DEVICE arch
+  ;;
+esac
+
 # Configure admin user
 arch-chroot /mnt useradd -m -s /usr/bin/zsh $USERNAME
 arch-chroot /mnt usermod -aG wheel $USERNAME
