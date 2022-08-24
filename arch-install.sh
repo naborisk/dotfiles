@@ -62,7 +62,7 @@ case $TYPE in
     ;;
   btrfs)
     btrfs filesystem label $DEVICE arch
-  ;;
+    ;;
 esac
 
 # Configure admin user
