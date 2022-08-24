@@ -11,6 +11,9 @@ else
     exit
 fi
 
+FS_TYPE=$(df -Th /mnt/ | awk 'END{print $2}')
+DEVICE=$(df /mnt/ | awk 'END{print $1}')
+
 read -p 'Hostname: ' HOSTNAME
 read -p 'Username: ' USERNAME
 
@@ -53,8 +56,12 @@ echo 'default	arch.conf
 console-mode	max' >> /mnt/efi/loader/loader.conf
 
 # Labeling the boot drive
-e2label $(df /mnt/ | awk 'END{print $1}') arch
-
+case $TYPE in
+  ext4)
+    e2label $DEVICE arch
+    ;;
+  btrfs)
+    btrfs filesystem label $DEVICE arch
 # Configure admin user
 arch-chroot /mnt useradd -m -s /usr/bin/zsh $USERNAME
 arch-chroot /mnt usermod -aG wheel $USERNAME
