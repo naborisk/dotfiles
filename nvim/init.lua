@@ -40,7 +40,7 @@ vim.o.mouse = 'a'
 
 ---- COSMETICS ----
 -- colorscheme
-vim.cmd('colorscheme nightfox')
+vim.cmd('silent! colorscheme nightfox')
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
 vim.cmd [[
