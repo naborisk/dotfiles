@@ -56,7 +56,7 @@ echo 'default	arch.conf
 console-mode	max' >> /mnt/efi/loader/loader.conf
 
 # Labeling the boot drive
-case $TYPE in
+case $FS_TYPE in
   ext4)
     e2label $DEVICE arch
     ;;
