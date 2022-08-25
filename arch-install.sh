@@ -61,7 +61,7 @@ case $FS_TYPE in
     e2label $DEVICE arch
     ;;
   btrfs)
-    btrfs filesystem label $DEVICE arch
+    btrfs filesystem label /mnt arch
     ;;
 esac
 
