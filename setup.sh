@@ -61,3 +61,6 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 # install plugins
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+
+# run COQdeps to install dependencies
+(cd $HOME/.local/share/nvim/site/pack/packer/start/coq_nvim/ && python3 -m coq deps)
