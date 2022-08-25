@@ -2,7 +2,7 @@
 
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  echo 'Linux detected, settting up...'
+  echo 'Linux detected'
   
   # distro specific commands
   . /etc/os-release
@@ -15,7 +15,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
       ;;
   esac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  echo 'macOS detected, setting up...'
+  echo 'macOS detected'
 
   if ! command -v brew &> /dev/null
   then
@@ -54,3 +54,6 @@ mkdir -p $HOME/.config/nvim/lua
 echo 'linking init.lua & plugins.lua'
 ln -sf $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
 ln -sf $PWD/nvim/lua/plugins.lua $HOME/.config/nvim/lua/plugins.lua
+
+# install plugins
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
