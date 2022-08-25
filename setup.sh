@@ -55,5 +55,9 @@ echo 'linking init.lua & plugins.lua'
 ln -sf $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
 ln -sf $PWD/nvim/lua/plugins.lua $HOME/.config/nvim/lua/plugins.lua
 
+# install packer
+git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
 # install plugins
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
