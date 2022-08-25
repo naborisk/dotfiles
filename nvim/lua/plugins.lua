@@ -26,7 +26,12 @@ return require('packer').startup(function(use)
     end
   }
   use {
-    'ms-jpq/coq_nvim'
+    'ms-jpq/coq_nvim',
+    config = function()
+      vim.g.coq_settings = {
+        auto_start = 'shut-up'
+      }
+    end
   }
   use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 

@@ -1,28 +1,54 @@
 #!/bin/bash
 
-FILES_TO_INSTALL=".vimrc .tmux.conf"
-
-# OS Detection in case of wanting to do something OS-specific
+# OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo 'Linux'
+  echo 'Linux detected, settting up...'
+  
+  # distro specific commands
+  . /etc/os-release
+  case $ID in
+    ubuntu)
+      echo 'Ubuntu detected'
+      ;;
+    arch)
+      echo 'Arch detected'
+      ;;
+  esac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo 'macOS'
+  echo 'macOS detected, setting up...'
+
+  if ! command -v brew &> /dev/null
+  then
+    echo 'brew not found, installing...'
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  else
+    echo 'brew already installed'
+  fi
+
+  if ! command -v nvim &> /dev/null
+  then
+    echo 'neovim not found, installing...'
+    brew install neovim
+  else
+    echo 'neovim already installed'
+  fi
 fi
 
 #install files in home directory
+FILES_TO_INSTALL=".vimrc .tmux.conf"
 for FILE in $FILES_TO_INSTALL
 do
-  echo $FILE
-  # backup the current file to install if found
-  if [ -f "$HOME/.vimrc" ]; then
+  # backup the current file to install if found and is not a link
+  if [[ -f "$HOME/$FILE" && ! -L "$HOME/$FILE" ]]; then
     echo "$FILE found, backing up to $FILE.bak"
     mv $HOME/$FILE $HOME/$FILE.bak
   fi
 
   echo "linking $FILE"
-  ln -s $(pwd)/$FILE $HOME/$FILE
+  ln -sf $(pwd)/$FILE $HOME/$FILE
 done
 
+#--NEOVIM CONFIGURATION--
 mkdir -p $HOME/.config/nvim/lua
 
 echo 'linking init.lua & plugins.lua'
