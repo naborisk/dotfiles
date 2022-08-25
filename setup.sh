@@ -1,7 +1,6 @@
 #!/bin/bash
 
-# show commands
-#set -x
+FILES_TO_INSTALL=".vimrc .tmux.conf"
 
 # OS Detection in case of wanting to do something OS-specific
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -10,18 +9,22 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'macOS'
 fi
 
-# backup the current .vimrc if found
-if [ -f "$HOME/.vimrc" ]; then
-   echo '.vimrc found, backing up to .vimrc.bak'
-   mv $HOME/.vimrc $HOME/.vimrc.bak
-fi
+#install files in home directory
+for FILE in $FILES_TO_INSTALL
+do
+  echo $FILE
+  # backup the current file to install if found
+  if [ -f "$HOME/.vimrc" ]; then
+    echo "$FILE found, backing up to $FILE.bak"
+    mv $HOME/$FILE $HOME/$FILE.bak
+  fi
 
-echo 'linking .vimrc'
-ln -s $(pwd)/.vimrc $HOME/.vimrc
+  echo "linking $FILE"
+  ln -s $(pwd)/$FILE $HOME/$FILE
+done
 
+mkdir -p $HOME/.config/nvim/lua
 
-
-# append .zshrc
-#cat .zshrc >> ~/.zshrc
-
-#set +x
+echo 'linking init.lua & plugins.lua'
+ln -sf $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
+ln -sf $PWD/nvim/lua/plugins.lua $HOME/.config/nvim/lua/plugins.lua
