@@ -17,7 +17,7 @@ DEVICE=$(df /mnt/ | awk 'END{print $1}')
 read -p 'Hostname: ' HOSTNAME
 read -p 'Username: ' USERNAME
 
-pacstrap /mnt base linux linux-firmware vim sudo zsh grml-zsh-config neofetch networkmanager intel-ucode
+pacstrap /mnt base linux linux-firmware neovim sudo zsh grml-zsh-config neofetch networkmanager intel-ucode
 
 # Generate fstab
 genfstab -U /mnt >> /mnt/etc/fstab

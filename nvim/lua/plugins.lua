@@ -23,6 +23,15 @@ return require('packer').startup(function(use)
     config = function()
       require'lspconfig'.pyright.setup{}
       require'lspconfig'.tsserver.setup{}
+      require'lspconfig'.volar.setup{
+        init_options = {
+          typescript = {
+            serverPath = os.getenv('HOME')..'/.nvm/versions/node/v16.14.0/lib/node_modules/typescript/lib/tsserverlibrary.js'
+            -- Alternative location if installed as root:
+            -- serverPath = '/usr/local/lib/node_modules/typescript/lib/tsserverlibrary.js'
+          }
+        }
+      }
     end
   }
   use {
