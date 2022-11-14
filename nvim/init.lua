@@ -1,18 +1,25 @@
+---- VARIABLES ----
 HOME = os.getenv("HOME")
+OS = jit.os -- "OSX" or "Linux"
 
+---- PREREQUISITES ----
+vim.o.tgc = true -- terminalguicolors is required by feline
+
+---- LUA REQUIRE ----
 require('plugins')
+
+if(vim.fn.filereadable('./lua/feline-conf.lua')) then
+  require('feline-conf')
+end
+
+if(vim.fn.filereadable('./lua/tabby-conf.lua')) then
+  require('tabby-conf')
+end
 
 -- init.lua utility functions
 function map(mode, shortcut, command)
   vim.api.nvim_set_keymap(mode, shortcut, command, {noremap = true, silent = true})
 end
-
----- ENABLED PLUGINS
--- feline
-vim.o.tgc = true -- terminalguicolors is required by feline
-
--- nvim-tree
---require('nvim-tree').setup()
 
 ---- KEY MAPPINGS ----
 -- toggle file explorer

@@ -53,11 +53,19 @@ return require('packer').startup(function(use)
   use {
     'feline-nvim/feline.nvim',
     config = function()
+      vim.o.tgc = true
+      vim.o.showmode = false
       require('feline').setup()
     end
   }
 
   -- Tabline
+  use {
+    'nanozuki/tabby.nvim',
+    config = function()
+      vim.o.showtabline = 2
+    end
+  }
 
   -- File explorer
   use {
