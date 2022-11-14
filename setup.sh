@@ -51,9 +51,8 @@ done
 #--NEOVIM CONFIGURATION--
 mkdir -p $HOME/.config/nvim/lua
 
-echo 'linking init.lua & plugins.lua'
-ln -sf $PWD/nvim/init.lua $HOME/.config/nvim/init.lua
-ln -sf $PWD/nvim/lua/plugins.lua $HOME/.config/nvim/lua/plugins.lua
+echo 'linking nvim directory'
+ln -sf $(readlink -f nvim) ~/.config/nvim
 
 # install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
@@ -71,7 +70,6 @@ then
 else
   echo 'skipping COQdeps...'
 fi
-
 
 #--PROMPT INSTALLATION (p10k)--
 if grep -q 'source ~/powerlevel10k/powerlevel10k.zsh-theme' $HOME/.zshrc; then
