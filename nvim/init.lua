@@ -10,7 +10,7 @@ require('plugins')
 
 -- init.lua utility functions
 function map(mode, shortcut, command)
-  vim.api.nvim_set_keymap(mode, shortcut, command, {noremap = true, silent = true})
+  vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
 end
 
 ---- KEY MAPPINGS ----
