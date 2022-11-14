@@ -55,6 +55,9 @@ return require('packer').startup(function(use)
     config = function()
       vim.o.tgc = true
       vim.o.showmode = false
+      if(vim.fn.filereadable('./feline-conf.lua')) then
+        require('feline-conf')
+      end
       require('feline').setup()
     end
   }
@@ -64,6 +67,9 @@ return require('packer').startup(function(use)
     'nanozuki/tabby.nvim',
     config = function()
       vim.o.showtabline = 2
+      if(vim.fn.filereadable('./tabby-conf.lua')) then
+        require('tabby-conf')
+      end
     end
   }
 
