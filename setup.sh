@@ -60,7 +60,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 # install plugins
 echo 'running PackerSync...'
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' 2> /dev/null
 
 # run COQdeps to install dependencies
 read -r -p "run COQdeps? [y/N] " response
