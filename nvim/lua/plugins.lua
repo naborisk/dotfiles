@@ -34,6 +34,8 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  -- Auto completion
   use {
     'ms-jpq/coq_nvim',
     config = function()
@@ -44,7 +46,13 @@ return require('packer').startup(function(use)
   }
   use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
-  -- Auto completion
+  -- Comment
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
 
   -- Devicons
   use 'kyazdani42/nvim-web-devicons'
