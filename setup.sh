@@ -52,7 +52,7 @@ done
 mkdir -p $HOME/.config/nvim/lua
 
 echo 'linking nvim directory'
-ln -sf $(readlink -f nvim) ~/.config/nvim/
+ln -sf $(readlink -f nvim) ~/.config/nvim
 
 # install packer
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
