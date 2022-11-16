@@ -58,7 +58,7 @@ return require('packer').startup(function(use)
           '<ESC>', true, false, true
       )
 
-      vim.keymap.set('v', '<C-_>', function() api.toggle.linewise(vim.fn.visualmode()) end)
+      vim.keymap.set('n', '<C-_>', api.toggle.linewise.current)
       vim.keymap.set('x', '<C-_>', function()
           vim.api.nvim_feedkeys(esc, 'nx', false)
           api.toggle.linewise(vim.fn.visualmode())
