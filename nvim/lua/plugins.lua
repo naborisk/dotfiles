@@ -14,56 +14,38 @@ vim.cmd([[
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+
+  -- LSP and Autocompletion from https://github.com/VonHeikemen/lsp-zero.nvim
+  use {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v1.x',
+    requires = {
+      -- LSP Support
+      {'neovim/nvim-lspconfig'},             -- Required
+      {'williamboman/mason.nvim'},           -- Optional
+      {'williamboman/mason-lspconfig.nvim'}, -- Optional
+
+      -- Autocompletion
+      {'hrsh7th/nvim-cmp'},         -- Required
+      {'hrsh7th/cmp-nvim-lsp'},     -- Required
+      {'hrsh7th/cmp-buffer'},       -- Optional
+      {'hrsh7th/cmp-path'},         -- Optional
+      {'saadparwaiz1/cmp_luasnip'}, -- Optional
+      {'hrsh7th/cmp-nvim-lua'},     -- Optional
+
+      -- Snippets
+      {'L3MON4D3/LuaSnip'},             -- Required
+      {'rafamadriz/friendly-snippets'}, -- Optional
+    }
+  }
+
   -- Theme
   use 'EdenEast/nightfox.nvim'
-
-  -- Language Server
-  use {
-    'neovim/nvim-lspconfig',
-    config = function()
-      require'lspconfig'.pyright.setup{}
-      require'lspconfig'.tsserver.setup{}
-      require'lspconfig'.volar.setup{
-        init_options = {
-          typescript = {
-            serverPath = os.getenv('HOME')..'/.nvm/versions/node/v16.14.0/lib/node_modules/typescript/lib/tsserverlibrary.js'
-            -- Alternative location if installed as root:
-            -- serverPath = '/usr/local/lib/node_modules/typescript/lib/tsserverlibrary.js'
-          }
-        }
-      }
-    end
-  }
-
-  -- Auto completion
-  use {
-    'ms-jpq/coq_nvim',
-    config = function()
-      vim.g.coq_settings = {
-        auto_start = 'shut-up'
-      }
-    end
-  }
-  use {'ms-jpq/coq.artifacts', branch = 'artifacts'}
 
   -- Comment
   use {
     'numToStr/Comment.nvim',
     config = function()
-      require('Comment').setup()
-
-      -- comment using Ctrl + /
-      local api = require('Comment.api')
-      local esc = vim.api.nvim_replace_termcodes(
-          '<ESC>', true, false, true
-      )
-
-      vim.keymap.set('n', '<C-_>', api.toggle.linewise.current)
-      vim.keymap.set('x', '<C-_>', function()
-          vim.api.nvim_feedkeys(esc, 'nx', false)
-          api.toggle.linewise(vim.fn.visualmode())
-      end)
-
     end
   }
 
@@ -71,28 +53,10 @@ return require('packer').startup(function(use)
   use 'kyazdani42/nvim-web-devicons'
 
   -- Status line
-  use {
-    'feline-nvim/feline.nvim',
-    config = function()
-      vim.o.tgc = true
-      vim.o.showmode = false
-      if(vim.fn.filereadable('./feline-conf.lua')) then
-        require('feline-conf')
-      end
-      require('feline').setup()
-    end
-  }
+  use {'feline-nvim/feline.nvim'}
 
   -- Tabline
-  use {
-    'nanozuki/tabby.nvim',
-    config = function()
-      vim.o.showtabline = 2
-      if(vim.fn.filereadable('./tabby-conf.lua')) then
-        require('tabby-conf')
-      end
-    end
-  }
+  use {'nanozuki/tabby.nvim',}
 
   -- File explorer
   use {
@@ -105,4 +69,12 @@ return require('packer').startup(function(use)
     end
   }
 
+  -- Fuzzy finder
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} },
+    config = function()
+    end
+  }
 end)

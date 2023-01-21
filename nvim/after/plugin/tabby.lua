@@ -21,6 +21,7 @@
 -- ```
 --
 -- This assumes that this file is located at `lua/user/ui/tabby.lua`
+vim.o.showtabline = 2
 
 local fmt = string.format
 

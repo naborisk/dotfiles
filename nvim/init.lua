@@ -14,11 +14,20 @@ function map(mode, shortcut, command)
 end
 
 ---- KEY MAPPINGS ----
+-- set leader
+vim.g.mapleader = ' '
+
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
 
 -- esc in terminal mode
 map('t', '<esc>', '<C-\\><C-n>')
+
+-- cursor in place for page-moving
+map('n', '<C-d>', '<C-d>zz')
+map('n', '<C-u>', '<C-u>zz')
+
+map('n', '<leader>m', ':Mason<cr>')
 
 ---- OPTIONS ----
 -- Show line number
@@ -33,13 +42,19 @@ vim.o.expandtab = true
 vim.o.incsearch = true -- Highlight while searching
 vim.o.ignorecase = true -- ignore letter case while searching
 vim.o.smartcase = true -- case insensitive unless capitals used in search
+vim.o.hlsearch = true -- highlight all search terms
 
 -- enable mouse support
 vim.o.mouse = 'a'
 
+-- scrolloff makes sure that the bottom or top has a set amount of lines
+vim.o.scrolloff = 6
+
 ---- COSMETICS ----
 -- colorscheme
-vim.cmd('silent! colorscheme nightfox')
+color = color or "nightfox" -- This makes sure to have colorscheme fallback
+vim.cmd.colorscheme(color)
+-- vim.cmd('silent! colorscheme nightfox')
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
 vim.cmd [[
@@ -49,10 +64,6 @@ hi VertSplit guibg=#141a23
 
 ---- SCRIPTS ----
 -- Save as superuser
-vim.cmd [[
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
-command WQ :execute ':silent w !sudo tee % > /dev/null' | :q!
-]]
 
 ---- FUNCTIONS ----
 

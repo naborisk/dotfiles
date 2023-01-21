@@ -22,6 +22,9 @@
 --
 -- This assumes that this file is located at `lua/user/ui/feline.lua`
 
+-- no need to show mode
+vim.o.showmode = false
+
 local fmt = string.format
 
 ----------------------------------------------------------------------------------------------------
@@ -239,19 +242,6 @@ local vi = {
 }
 
 local icons = {
-  locker = "", -- #f023
-  page = "☰", -- 2630
-  line_number = "", -- e0a1
-  connected = "", -- f817
-  dos = "", -- e70f
-  unix = "", -- f17c
-  mac = "", -- f179
-  mathematical_L = "𝑳",
-  vertical_bar = "┃",
-  vertical_bar_thin = "│",
-  left = "|",
-  right = "",
-  block = "█",
   left_filled = "",
   right_filled = "",
   slant_left = "",
@@ -262,11 +252,6 @@ local icons = {
   slant_left_2_thin = "",
   slant_right_2 = "",
   slant_right_2_thin = "",
-  left_rounded = "",
-  left_rounded_thin = "",
-  right_rounded = "",
-  right_rounded_thin = "",
-  circle = "●",
 }
 
 ---Get the number of diagnostic messages for the provided severity
