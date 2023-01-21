@@ -29,6 +29,14 @@ map('n', '<C-u>', '<C-u>zz')
 
 map('n', '<leader>m', ':Mason<cr>')
 
+-- change buffer using leader
+map('n', '<leader>h', '<C-w>h')
+map('n', '<leader>j', '<C-w>j')
+map('n', '<leader>k', '<C-w>k')
+map('n', '<leader>l', '<C-w>l')
+
+map('n', '<leader>w', ':WhichKey<cr>')
+
 ---- OPTIONS ----
 -- Show line number
 vim.o.nu = true

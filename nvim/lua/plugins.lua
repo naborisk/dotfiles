@@ -63,10 +63,11 @@ return require('packer').startup(function(use)
     'kyazdani42/nvim-tree.lua',
     requires = {
       'kyazdani42/nvim-web-devicons',
-    },
-    config = function()
-      require('nvim-tree').setup()
-    end
+    }
+  }
+
+  use {
+    'folke/which-key.nvim'
   }
 
   -- Fuzzy finder
@@ -74,7 +75,5 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
     -- or                            , branch = '0.1.x',
     requires = { {'nvim-lua/plenary.nvim'} },
-    config = function()
-    end
   }
 end)
