@@ -10,7 +10,3 @@ fi
 # tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak
 curl $BASEURL/.tmux.conf > ~/.tmux.conf
-
-# nvim
-mkdir -p $HOME/.config/nvim/lua/
-curl $BASEURL/nvim/init.lua > $HOME/.config/nvim/init.lua
