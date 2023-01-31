@@ -1,4 +1,4 @@
-require('Comment').setup()
+require'Comment'.setup()
 
 -- comment using Ctrl + /
 local api = require('Comment.api')

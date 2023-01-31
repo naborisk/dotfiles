@@ -10,7 +10,7 @@ vim.keymap.set('n', '<leader>fr', function()
 end
 )
 
-require('telescope').setup({
+require'telescope'.setup({
   defaults = {
     mappings = {
       i = {
