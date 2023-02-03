@@ -51,6 +51,7 @@ done
 #--NEOVIM CONFIGURATION--
 #mkdir -p $HOME/.config/nvim/lua
 
+mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
 
