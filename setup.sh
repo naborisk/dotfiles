@@ -61,21 +61,3 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 # install plugins
 echo 'running PackerSync...'
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' 2> /dev/null
-
-# run COQdeps to install dependencies
-read -r -p "run COQdeps? [y/N] " response
-if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]
-then
-  (cd $HOME/.local/share/nvim/site/pack/packer/start/coq_nvim/ && python3 -m coq deps)
-else
-  echo 'skipping COQdeps...'
-fi
-
-#--PROMPT INSTALLATION (p10k)--
-if grep -q 'source ~/powerlevel10k/powerlevel10k.zsh-theme' $HOME/.zshrc; then
-  echo 'powerlevel10k installed, skipping...'
-else
-  echo 'installing powerlevel10k'
-  git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/powerlevel10k
-  echo 'source ~/powerlevel10k/powerlevel10k.zsh-theme' >>~/.zshrc
-fi
