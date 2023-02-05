@@ -8,7 +8,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   . /etc/os-release
   case $ID in
     ubuntu)
-      echo 'Ubuntu detected'
+      echo 'Ubuntu detected, attemping to install latest neovim'
+      sudo apt-get install -y software-properties-common
+      sudo add-apt-repository -y ppa:neovim-ppa/stable
+      sudo apt-get -y update
+      sudo apt-get install -y neovim
       ;;
     arch)
       echo 'Arch detected'
