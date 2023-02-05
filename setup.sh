@@ -61,7 +61,7 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 
 # install plugins
 echo 'running PackerSync...'
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' 2> /dev/null
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 #--PROMPT INSTALLATION--
 curl -sS https://starship.rs/install.sh | sh
