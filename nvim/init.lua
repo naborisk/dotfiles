@@ -17,6 +17,9 @@ end
 -- set leader
 vim.g.mapleader = ' '
 
+-- format using prettier
+map('n', '<leader>pf', ':%!prettier %:p<cr>')
+
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
 

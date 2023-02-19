@@ -7,7 +7,7 @@ lsp.preset('recommended')
 
 lsp.ensure_installed({
   'tsserver',
-  'lua_ls'
+  'lua_ls',
 })
 
 lsp.configure('lua_ls', {
