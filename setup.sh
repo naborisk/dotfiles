@@ -47,6 +47,20 @@ else
   echo 'starship installed, skipping...'
 fi
 
+# ensure .config exists
+mkdir -p $HOME/.config/
+
+# add prompt init script if not exist in .zshrc
+
+if ! grep -q 'starship init zsh' $HOME/.zshrc
+then
+  echo 'adding starship init script'
+  echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
+fi
+
+# install starship.toml in ~/.config
+ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
+
 #install files in home directory
 FILES_TO_INSTALL=".tmux.conf"
 for FILE in $FILES_TO_INSTALL
@@ -60,9 +74,6 @@ do
   echo "linking $FILE"
   ln -sf $(pwd)/$FILE $HOME/$FILE
 done
-
-# install starship.toml in ~/.config
-ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
 #--NEOVIM CONFIGURATION--
 #mkdir -p $HOME/.config/nvim/lua
