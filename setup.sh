@@ -38,6 +38,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 fi
 
+#--PROMPT INSTALLATION--
+if ! command -v nvim &> /dev/null
+then
+  echo 'starhip not found, installing...'
+  curl -sS https://starship.rs/install.sh | sh
+else
+  echo 'starship installed, skipping...'
+fi
+
 #install files in home directory
 FILES_TO_INSTALL=".tmux.conf"
 for FILE in $FILES_TO_INSTALL
@@ -51,6 +60,9 @@ do
   echo "linking $FILE"
   ln -sf $(pwd)/$FILE $HOME/$FILE
 done
+
+# install starship.toml in ~/.config
+ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
 #--NEOVIM CONFIGURATION--
 #mkdir -p $HOME/.config/nvim/lua
@@ -66,6 +78,3 @@ git clone --depth 1 https://github.com/wbthomason/packer.nvim\
 # install plugins
 echo 'running PackerSync...'
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' 2> /dev/null
-
-#--PROMPT INSTALLATION--
-curl -sS https://starship.rs/install.sh | sh
