@@ -33,6 +33,9 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   mkdir $HOME/Library/LaunchAgents/
   cp ./macos-keymap/com.user.loginscript.plist $HOME/Library/LaunchAgents/
 
+  echo 'Enabling key repeat'
+  defaults write -g ApplePressAndHoldEnabled -bool false
+
   if ! command -v nvim &> /dev/null
   then
     echo 'neovim not found, installing...'
