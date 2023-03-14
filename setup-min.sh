@@ -10,3 +10,7 @@ fi
 # tmux
 mv ~/.tmux.conf ~/.tmux.conf.bak
 curl $BASEURL/.tmux.conf > ~/.tmux.conf
+
+# starship
+mkdir -p $HOME/.config
+curl $BASEURL/starship.toml > $HOME/.config/starship.toml
