@@ -29,6 +29,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'brew already installed'
   fi
 
+  echo 'Intalling keymap...'
+  mkdir $HOME/Library/LaunchAgents/
+  cp ./macos-keymap/com.user.loginscript.plist $HOME/Library/LaunchAgents/
+
   if ! command -v nvim &> /dev/null
   then
     echo 'neovim not found, installing...'
