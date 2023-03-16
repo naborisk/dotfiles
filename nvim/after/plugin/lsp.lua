@@ -8,6 +8,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'tsserver',
   'lua_ls',
+  'emmet_ls'
 })
 
 lsp.configure('lua_ls', {
@@ -32,7 +33,7 @@ vim.diagnostic.config({
 })
 
 lsp.configure('emmet_ls', {
-  filetypes = {'html', 'markdown', 'javascipt'}
+  filetypes = {'html', 'markdown', 'javascript', 'astro', 'typescriptreact'}
 })
 
 -- local pid = vim.fn.getpid()
