@@ -33,7 +33,7 @@ vim.diagnostic.config({
 })
 
 lsp.configure('emmet_ls', {
-  filetypes = {'html', 'markdown', 'javascript', 'astro', 'typescriptreact'}
+  filetypes = {'html', 'markdown', 'javascript', 'javascriptreact', 'astro', 'typescriptreact'}
 })
 
 -- local pid = vim.fn.getpid()
