@@ -22,6 +22,7 @@ map('n', '<leader>pf', ':%!prettier %:p<cr>')
 
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
+map('i', '<C-b>', '<esc>:NvimTreeToggle<cr>')
 
 -- esc in terminal mode
 map('t', '<esc>', '<C-\\><C-n>')
