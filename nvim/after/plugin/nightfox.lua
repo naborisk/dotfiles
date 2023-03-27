@@ -1,4 +1,4 @@
-require'nightfox'.setup{
+require'nightfox'.setup {
   options = {
     colorblind = {
       enable = true,
