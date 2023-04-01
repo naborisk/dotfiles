@@ -54,6 +54,15 @@ lsp.configure('emmet_ls', {
 -- require'lspconfig'.omnisharp.setup {
 --  cmd = {omnisharp_bin, "--languageserver", "--hostPID", pid}
 -- }
+--
+
+-- Show diagnostics text on cursor hold
+local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear=true })
+
+vim.api.nvim_create_autocmd('CursorHold', {
+  command = 'lua vim.diagnostic.open_float()',
+  group = lspGroup
+})
 
 lsp.set_preferences({
   sign_icons = {

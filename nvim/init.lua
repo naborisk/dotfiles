@@ -62,6 +62,9 @@ vim.o.mouse = 'a'
 -- scrolloff makes sure that the bottom or top has a set amount of lines
 vim.o.scrolloff = 6
 
+-- low update time for diagnostics text
+vim.o.ut = 400
+
 ---- COSMETICS ----
 -- colorscheme
 color = color or "nightfox" -- This makes sure to have colorscheme fallback
