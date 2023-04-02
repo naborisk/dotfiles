@@ -12,5 +12,11 @@ mv ~/.tmux.conf ~/.tmux.conf.bak
 curl $BASEURL/.tmux.conf > ~/.tmux.conf
 
 # starship
-mkdir -p $HOME/.config
-curl $BASEURL/starship.toml > $HOME/.config/starship.toml
+if ! command -v starship &> /dev/null
+then
+  echo 'starhip not found, skipping config'
+else
+  echo 'starship installed, applying config'
+  mkdir -p $HOME/.config
+  curl $BASEURL/starship.toml > $HOME/.config/starship.toml
+fi

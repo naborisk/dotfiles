@@ -48,7 +48,7 @@ fi
 #--PROMPT INSTALLATION--
 if ! command -v starship &> /dev/null
 then
-  echo 'starhip not found, installing...'
+  echo 'starship not found, installing...'
   curl -sS https://starship.rs/install.sh | sh
 else
   echo 'starship installed, skipping...'
