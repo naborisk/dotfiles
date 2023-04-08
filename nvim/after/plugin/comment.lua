@@ -1,4 +1,5 @@
 require'Comment'.setup()
+local ft = require'Comment.ft'
 
 -- comment using Ctrl + /
 local api = require('Comment.api')
@@ -12,3 +13,6 @@ vim.keymap.set('x', '<C-_>', function()
   vim.api.nvim_feedkeys(esc, 'nx', false)
   api.toggle.linewise(vim.fn.visualmode())
 end)
+
+-- Add unsupported filetypes
+ft.set('astro', '<!--%s-->')
