@@ -30,7 +30,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 
   echo 'Intalling keymap...'
-  mkdir $HOME/Library/LaunchAgents/
+  mkdir -p $HOME/Library/LaunchAgents/
   cp ./macos-keymap/com.user.loginscript.plist $HOME/Library/LaunchAgents/
 
   echo 'Enabling key repeat'
