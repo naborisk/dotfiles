@@ -5,6 +5,9 @@ OS = jit.os -- "OSX" or "Linux"
 ---- PREREQUISITES ----
 vim.o.tgc = true -- terminalguicolors is required by feline
 
+-- set leader key before plugins are loaded
+vim.g.mapleader = ' '
+
 ---- LUA REQUIRE ----
 require('plugins')
 
@@ -14,9 +17,6 @@ function map(mode, shortcut, command)
 end
 
 ---- KEY MAPPINGS ----
--- set leader
-vim.g.mapleader = ' '
-
 -- format using prettier
 map('n', '<leader>pf', ':%!prettier %:p<cr>')
 

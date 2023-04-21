@@ -1,25 +1,21 @@
--- This file can be loaded by calling `lua require('plugins')` from your init.vim
+-- bootstrapping lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
--- Only required if you have packer configured as `opt`
---vim.cmd [[packadd packer.nvim]]
-
--- Auto compile plugins
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
-  augroup end
-]])
-
-return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
-
-
-  -- LSP and Autocompletion from https://github.com/VonHeikemen/lsp-zero.nvim
-  use {
+require'lazy'.setup{
+  {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    requires = {
+    dependencies = {
       -- LSP Support
       {'neovim/nvim-lspconfig'},             -- Required
       {'williamboman/mason.nvim'},           -- Optional
@@ -37,49 +33,42 @@ return require('packer').startup(function(use)
       {'L3MON4D3/LuaSnip'},             -- Required
       {'rafamadriz/friendly-snippets'}, -- Optional
     }
-  }
+  },
 
   -- Theme
-  use 'EdenEast/nightfox.nvim'
+   'EdenEast/nightfox.nvim',
 
   -- Comment
-  use {
-    'numToStr/Comment.nvim',
-    config = function()
-    end
-  }
+   'numToStr/Comment.nvim',
 
   -- Devicons
-  use 'kyazdani42/nvim-web-devicons'
+   'kyazdani42/nvim-web-devicons',
 
   -- Status line
-  use {'feline-nvim/feline.nvim'}
+   'feline-nvim/feline.nvim',
 
   -- Tabline
-  use {'nanozuki/tabby.nvim',}
+   'nanozuki/tabby.nvim',
 
   -- File explorer
-  use {
+   {
     'kyazdani42/nvim-tree.lua',
-    requires = {
+    dependencies = {
       'kyazdani42/nvim-web-devicons',
     }
-  }
+  },
 
-  use {
-    'folke/which-key.nvim'
-  }
+  {'folke/which-key.nvim'},
 
   -- Fuzzy finder
-  use {
+  {
     'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    -- or                            , branch = '0.1.x',
-    requires = { {'nvim-lua/plenary.nvim'} },
-  }
+    dependencies = { 'nvim-lua/plenary.nvim' },
+  },
 
   -- nvim-treesitter
-  use {
-    'nvim-treesitter/nvim-treesitter'
-  }
-  
-end)
+   {
+    'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate'
+  },
+}
