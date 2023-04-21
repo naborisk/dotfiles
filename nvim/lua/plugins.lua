@@ -12,7 +12,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require'lazy'.setup{
+require 'lazy'.setup {
   {
     'VonHeikemen/lsp-zero.nvim',
     dependencies = {
@@ -36,22 +36,22 @@ require'lazy'.setup{
   },
 
   -- Theme
-   'EdenEast/nightfox.nvim',
+  'EdenEast/nightfox.nvim',
 
   -- Comment
-   'numToStr/Comment.nvim',
+  'numToStr/Comment.nvim',
 
   -- Devicons
-   'kyazdani42/nvim-web-devicons',
+  'kyazdani42/nvim-web-devicons',
 
   -- Status line
-   'feline-nvim/feline.nvim',
+  'feline-nvim/feline.nvim',
 
   -- Tabline
-   'nanozuki/tabby.nvim',
+  'nanozuki/tabby.nvim',
 
   -- File explorer
-   {
+  {
     'kyazdani42/nvim-tree.lua',
     dependencies = {
       'kyazdani42/nvim-web-devicons',
@@ -62,12 +62,13 @@ require'lazy'.setup{
 
   -- Fuzzy finder
   {
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 
   -- nvim-treesitter
-   {
+  {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate'
   },
