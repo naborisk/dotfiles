@@ -91,11 +91,3 @@ done
 mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
-
-# install packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# install plugins
-echo 'running PackerSync...'
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' 2> /dev/null
