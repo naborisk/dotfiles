@@ -1,6 +1,6 @@
 # modified from Tokyo Night preset
 format = """
-[ $hostname](bg:#a3aed2 fg:#090c0c)\
+[ $os $hostname](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $directory\
 [](fg:#769ff0 bg:#394260)\
@@ -13,10 +13,18 @@ $golang\
 $php\
 [](fg:#212736)"""
 
+[os]
+disabled = false
+format = "$symbol"
+
+[os.symbols]
+Arch = ""
+Macos = ""
+
 [hostname]
 ssh_symbol = "🌐"
 ssh_only = false
-format = "[$ssh_symbol]($style)"
+format = "$ssh_symbol"
 style = "bg:#a3aed2 fg:#090c0c"
 
 [directory]
