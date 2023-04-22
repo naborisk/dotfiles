@@ -36,6 +36,10 @@ require 'lazy'.setup {
     }
   },
 
+  -- More completion
+  -- Auto pairs
+  'windwp/nvim-autopairs',
+
   -- Theme
   'EdenEast/nightfox.nvim',
 
