@@ -11,6 +11,15 @@ lsp.ensure_installed({
   'emmet_ls'
 })
 
+lsp.configure('omnisharp', {
+  settings = {
+    omnisharp = {
+      useModernNet = false,
+      monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono',
+    }
+  }
+})
+
 lsp.configure('lua_ls', {
   settings = {
     Lua = {
