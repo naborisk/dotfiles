@@ -12,7 +12,7 @@ vim.g.mapleader = ' '
 require('plugins')
 
 -- init.lua utility functions
-function map(mode, shortcut, command)
+local function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
 end
 

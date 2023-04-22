@@ -16,6 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 require 'lazy'.setup {
   {
     'VonHeikemen/lsp-zero.nvim',
+    cmd = 'LspInfo',
+    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       -- LSP Support
       'neovim/nvim-lspconfig',             -- Required
@@ -71,10 +73,10 @@ require 'lazy'.setup {
     tag = '0.1.1',
     dependencies = { 'nvim-lua/plenary.nvim' },
     keys = {
-      {'<leader>ft', ':Telescope<cr>'},
-      {'<leader>ff', ':Telescope find_files<cr>'},
-      {'<leader>fg', ':Telescope git_files<cr>'},
-      {'<leader>fr', ':Telescope live_grep<cr>'},
+      { '<leader>ft', ':Telescope<cr>' },
+      { '<leader>ff', ':Telescope find_files<cr>' },
+      { '<leader>fg', ':Telescope git_files<cr>' },
+      { '<leader>fr', ':Telescope live_grep<cr>' },
     }
   },
 
