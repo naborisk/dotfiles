@@ -16,28 +16,154 @@ vim.opt.rtp:prepend(lazypath)
 require 'lazy'.setup {
   {
     'VonHeikemen/lsp-zero.nvim',
+    branch = 'v2.x',
+    lazy = true,
+    config = function()
+      -- This is where you modify the settings for lsp-zero
+      -- Note: autocompletion settings will not take effect
+
+      require('lsp-zero.settings').preset({})
+    end
+  },
+
+  -- Autocompletion
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      { 'L3MON4D3/LuaSnip' },
+    },
+    config = function()
+      -- Here is where you configure the autocompletion settings.
+      -- The arguments for .extend() have the same shape as `manage_nvim_cmp`:
+      -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v2.x/doc/md/api-reference.md#manage_nvim_cmp
+
+      require('lsp-zero.cmp').extend()
+
+      -- And you can configure cmp even more, if you want to.
+      local cmp = require('cmp')
+      local cmp_action = require('lsp-zero.cmp').action()
+
+      cmp.setup({
+        mapping = {
+          ['<C-Space>'] = cmp.mapping.complete(),
+          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
+          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
+          ['<cr>'] = cmp.mapping.confirm({ select = true }),
+          ['<tab>'] = cmp.mapping(function(fallback)
+            local col = vim.fn.col('.') - 1
+
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+              fallback()
+            else
+              cmp.complete()
+            end
+          end, { 'i', 's' })
+        }
+      })
+    end
+  },
+
+  -- LSP
+  {
+    'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
-      -- LSP Support
-      'neovim/nvim-lspconfig',             -- Required
-      'williamboman/mason.nvim',           -- Optional
-      'williamboman/mason-lspconfig.nvim', -- Optional
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      {
+        'williamboman/mason.nvim',
+        build = function()
+          pcall(vim.cmd, 'MasonUpdate')
+        end,
+      },
+    },
+    config = function()
+      -- This is where all the LSP shenanigans will live
 
-      -- Autocompletion
-      'hrsh7th/nvim-cmp',         -- Required
-      'hrsh7th/cmp-nvim-lsp',     -- Required
-      'hrsh7th/cmp-buffer',       -- Optional
-      'hrsh7th/cmp-path',         -- Optional
-      'saadparwaiz1/cmp_luasnip', -- Optional
-      'hrsh7th/cmp-nvim-lua',     -- Optional
+      local lsp = require('lsp-zero')
 
-      -- Snippets
-      'L3MON4D3/LuaSnip',             -- Required
-      'rafamadriz/friendly-snippets', -- Optional
-    }
+      lsp.on_attach(function(client, bufnr)
+        lsp.default_keymaps({ buffer = bufnr })
+      end)
+
+      -- always show icon column
+      vim.o.signcolumn = 'yes'
+
+      lsp.preset('recommended')
+
+      lsp.ensure_installed({
+        'tsserver',
+        'lua_ls',
+        'emmet_ls'
+      })
+
+      lsp.configure('omnisharp', {
+        settings = {
+          omnisharp = {
+            useModernNet = false,
+            monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono',
+          }
+        }
+      })
+
+      -- lsp.configure('lua_ls', {
+      --   settings = {
+      --     Lua = {
+      --       diagnostics = {
+      --         globals = {
+      --           'vim', 'jit'
+      --         }
+      --       }
+      --     }
+      --   }
+      -- })
+
+      vim.diagnostic.config({
+        -- virtual_text = true,
+        signs = true,
+        update_in_insert = false,
+        underline = true,
+        severity_sort = false,
+        float = true,
+      })
+
+      lsp.configure('emmet_ls', {
+        filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'astro', 'css', 'sass', 'scss', 'less' },
+        init_options = {
+          html = {
+            options = {
+
+            }
+          }
+        }
+      })
+
+      -- Show diagnostics text on cursor hold
+      local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear = true })
+
+      vim.api.nvim_create_autocmd('CursorHold', {
+        command = 'lua vim.diagnostic.open_float()',
+        group = lspGroup
+      })
+
+      lsp.set_preferences({
+        sign_icons = {
+          error = '',
+          warn = '',
+          hint = '',
+          info = ''
+        }
+      })
+      -- (Optional) Configure lua language server for neovim
+      require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+      lsp.setup()
+    end
   },
-
   -- More completion
   -- Auto pairs
   'windwp/nvim-autopairs',
