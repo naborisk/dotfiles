@@ -4,7 +4,7 @@ require'nightfox'.setup {
       enable = true,
       severity = {
         deutan = 1,
-        protan = 0.7,
+        protan = 0.5,
         tritan = 0.2
       }
     }
