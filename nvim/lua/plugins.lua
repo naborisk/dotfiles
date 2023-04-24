@@ -70,6 +70,7 @@ require 'lazy'.setup {
   {
     'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
+    lazy = false,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
@@ -132,7 +133,7 @@ require 'lazy'.setup {
       })
 
       lsp.configure('emmet_ls', {
-        filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'astro', 'css', 'sass', 'scss', 'less' },
+        filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'vue', 'astro', 'css', 'sass', 'scss', 'less' },
         init_options = {
           html = {
             options = {

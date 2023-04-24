@@ -67,7 +67,7 @@ vim.o.ut = 400
 
 ---- COSMETICS ----
 -- colorscheme
-color = color or "nightfox" -- This makes sure to have colorscheme fallback
+color = color or 'duskfox' -- This makes sure to have colorscheme fallback
 vim.cmd.colorscheme(color)
 -- vim.cmd('silent! colorscheme nightfox')
 
