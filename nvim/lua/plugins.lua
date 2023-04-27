@@ -28,7 +28,6 @@ require 'lazy'.setup {
   
 
   -- Autocompletion
-  'hrsh7th/cmp-nvim-lsp',
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
@@ -144,7 +143,7 @@ require 'lazy'.setup {
       -- })
 
       vim.diagnostic.config({
-        -- virtual_text = true,
+        virtual_text = false, -- show text after diagnostics
         signs = true,
         update_in_insert = false,
         underline = true,
