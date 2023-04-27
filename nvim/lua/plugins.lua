@@ -25,8 +25,13 @@ require 'lazy'.setup {
       require('lsp-zero.settings').preset({})
     end
   },
+  
 
   -- Autocompletion
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
@@ -45,6 +50,16 @@ require 'lazy'.setup {
       local cmp_action = require('lsp-zero.cmp').action()
 
       cmp.setup({
+        preselect = 'item',
+        completion = {
+          completeopt = 'menu,menuone,noinsert'
+        },
+        sources = {
+          {name = 'nvim_lsp'},
+          {name = 'path'},
+          {name = 'buffer', keyword_length = 3},
+          {name = 'luasnip', keyword_length = 2}
+        },
         mapping = {
           ['<C-Space>'] = cmp.mapping.complete(),
           ['<C-f>'] = cmp_action.luasnip_jump_forward(),
@@ -60,7 +75,12 @@ require 'lazy'.setup {
             else
               cmp.complete()
             end
-          end, { 'i', 's' })
+          end, { 'i', 's' }),
+          ['<s-tab>'] = cmp_action.select_prev_or_fallback()
+        },
+        window = {
+          completion = cmp.config.window.bordered(),
+          documentation = cmp.config.window.bordered(),
         }
       })
     end
@@ -106,7 +126,7 @@ require 'lazy'.setup {
         settings = {
           omnisharp = {
             useModernNet = false,
-            monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/Commands/mono',
+            monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
           }
         }
       })
