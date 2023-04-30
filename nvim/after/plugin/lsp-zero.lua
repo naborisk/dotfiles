@@ -1,4 +1,1 @@
--- local lsp = require('lsp-zero')
-
-
--- lsp.setup()
+require('lsp-zero.settings').preset({})
