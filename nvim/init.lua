@@ -41,6 +41,9 @@ map('n', '<leader>l', '<C-w>l')
 
 map('n', '<leader>w', ':WhichKey<cr>')
 
+-- add a CSS class
+map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
+
 ---- OPTIONS ----
 -- Show line number
 vim.o.nu = true
