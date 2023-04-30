@@ -36,7 +36,7 @@ require 'lazy'.setup {
   {
     'neovim/nvim-lspconfig',
     cmd = 'LspInfo',
-    -- lazy = false,
+    lazy = false,
     event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
