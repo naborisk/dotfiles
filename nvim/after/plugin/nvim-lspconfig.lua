@@ -37,7 +37,7 @@ lsp.configure('omnisharp', {
 -- })
 
 vim.diagnostic.config({
-  virtual_text = false,   -- show text after diagnostics
+  virtual_text = false, -- show text after diagnostics
   signs = true,
   update_in_insert = false,
   underline = true,
@@ -64,13 +64,11 @@ vim.api.nvim_create_autocmd('CursorHold', {
   group = lspGroup
 })
 
-lsp.set_preferences({
-  sign_icons = {
-    error = '',
-    warn = '',
-    hint = '',
-    info = ''
-  }
+lsp.set_sign_icons({
+  error = '',
+  warn = '',
+  hint = '',
+  info = ''
 })
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
