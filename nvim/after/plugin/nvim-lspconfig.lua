@@ -12,7 +12,7 @@ lsp.preset('recommended')
 lsp.ensure_installed({
   'tsserver',
   'lua_ls',
-  'emmet_ls'
+  'emmet_ls',
 })
 
 lsp.configure('omnisharp', {

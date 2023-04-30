@@ -19,7 +19,6 @@ require 'lazy'.setup {
     branch = 'v2.x',
     lazy = true,
   },
-  
 
   -- Autocompletion
   'hrsh7th/cmp-buffer',
