@@ -70,12 +70,11 @@ vim.o.ut = 400
 
 ---- COSMETICS ----
 -- colorscheme
-color = color or 'duskfox' -- This makes sure to have colorscheme fallback
-vim.cmd.colorscheme(color)
 -- vim.cmd('silent! colorscheme nightfox')
+local color = color or 'duskfox' -- This makes sure to have colorscheme fallback
+vim.cmd.colorscheme(color)
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
-
 vim.cmd [[
 set fillchars=fold:\ ,vert:\ ,eob:\ ,msgsep:‾
 hi VertSplit guibg=#141a23

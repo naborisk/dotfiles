@@ -53,6 +53,15 @@ require 'lazy'.setup {
   -- Auto pairs
   'windwp/nvim-autopairs',
 
+  -- Indentation lines
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    config = function ()
+      local color = color or 'duskfox'
+      vim.cmd.colorscheme(color)
+    end
+  },
+
   -- Theme
   'EdenEast/nightfox.nvim',
 

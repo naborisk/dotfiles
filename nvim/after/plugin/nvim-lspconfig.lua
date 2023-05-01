@@ -24,17 +24,17 @@ lsp.configure('omnisharp', {
   }
 })
 
--- lsp.configure('lua_ls', {
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = {
---           'vim', 'jit'
---         }
---       }
---     }
---   }
--- })
+lsp.configure('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {
+          'vim', 'jit', 'color'
+        }
+      }
+    }
+  }
+})
 
 vim.diagnostic.config({
   virtual_text = false, -- show text after diagnostics
@@ -45,8 +45,12 @@ vim.diagnostic.config({
   float = true,
 })
 
+lsp.configure('tsserver', {
+  -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'svelte' }
+})
+
 lsp.configure('emmet_ls', {
-  filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'vue', 'astro', 'css', 'sass', 'scss', 'less' },
+  filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'vue', 'astro', 'css', 'sass', 'scss', 'less', 'svelte' },
   init_options = {
     html = {
       options = {
@@ -67,7 +71,7 @@ vim.api.nvim_create_autocmd('CursorHold', {
 lsp.set_sign_icons({
   error = '',
   warn = '',
-  hint = '',
+  hint = '',
   info = ''
 })
 -- (Optional) Configure lua language server for neovim
