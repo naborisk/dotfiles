@@ -68,6 +68,9 @@ vim.o.scrolloff = 6
 -- low update time for diagnostics text
 vim.o.ut = 400
 
+-- use system clipboard
+vim.o.clipboard = 'unnamedplus'
+
 ---- COSMETICS ----
 -- colorscheme
 -- vim.cmd('silent! colorscheme nightfox')
