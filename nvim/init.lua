@@ -48,6 +48,9 @@ map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
 -- Show line number
 vim.o.nu = true
 
+-- Show cursorline (highlights each line)
+vim.o.cursorline = true
+
 -- Set tab size to 2 spaces and expandtab
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
