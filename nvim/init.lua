@@ -13,12 +13,15 @@ require('plugins')
 
 -- init.lua utility functions
 local function map(mode, shortcut, command)
-  vim.keymap.set(mode, shortcut, command, {noremap = true, silent = true})
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
 end
 
 ---- KEY MAPPINGS ----
 -- format using prettier
-map('n', '<leader>pf', ':%!prettier %:p<cr>')
+-- map('n', '<leader>pf', ':%!prettier %:p<cr>')
+
+-- format using nvim lsp
+map('n', '<leader>lf', ':lua vim.lsp.buf.format()<cr>') -- [l]ua [f]ormat
 
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
@@ -57,10 +60,10 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 
 -- Search
-vim.o.incsearch = true -- Highlight while searching
+vim.o.incsearch = true  -- Highlight while searching
 vim.o.ignorecase = true -- ignore letter case while searching
-vim.o.smartcase = true -- case insensitive unless capitals used in search
-vim.o.hlsearch = true -- highlight all search terms
+vim.o.smartcase = true  -- case insensitive unless capitals used in search
+vim.o.hlsearch = true   -- highlight all search terms
 
 -- enable mouse support
 vim.o.mouse = 'a'
