@@ -21,7 +21,7 @@ end
 -- map('n', '<leader>pf', ':%!prettier %:p<cr>')
 
 -- format using nvim lsp
-map('n', '<leader>lf', ':lua vim.lsp.buf.format()<cr>') -- [l]ua [f]ormat
+map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
 
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
