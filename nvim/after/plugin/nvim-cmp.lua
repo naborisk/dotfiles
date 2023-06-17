@@ -1,10 +1,10 @@
-require('lsp-zero.cmp').extend()
+require'lsp-zero.cmp'.extend()
 
 -- And you can configure cmp even more, if you want to.
 local cmp = require('cmp')
 local cmp_action = require('lsp-zero.cmp').action()
 
-cmp.setup({
+cmp.setup{
   preselect = 'item',
   completion = {
     completeopt = 'menu,menuone,noinsert'
@@ -37,4 +37,4 @@ cmp.setup({
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
   }
-})
+}

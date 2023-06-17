@@ -216,6 +216,6 @@ local line = {
   },
 }
 
-require("tabby").setup({
+require'tabby'.setup({
   tabline = line,
 })
