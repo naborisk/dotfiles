@@ -54,7 +54,7 @@ lsp.configure('emmet_ls', {
   init_options = {
     html = {
       options = {
-
+        ['jsx.enabled'] = true
       }
     }
   }
