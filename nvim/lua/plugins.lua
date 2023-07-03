@@ -105,4 +105,9 @@ require 'lazy'.setup {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate'
   },
+
+  -- GitHub copilot
+  {
+    'github/copilot.vim'
+  },
 }

@@ -8,9 +8,6 @@ vim.o.tgc = true -- terminalguicolors is required by feline
 -- set leader key before plugins are loaded
 vim.g.mapleader = ' '
 
----- LUA REQUIRE ----
-require('plugins')
-
 -- init.lua utility functions
 local function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
@@ -19,6 +16,10 @@ end
 ---- KEY MAPPINGS ----
 -- format using prettier
 -- map('n', '<leader>pf', ':%!prettier %:p<cr>')
+
+-- unbind <c-n> and <c-p>
+map('i', '<c-n>', '<nop>')
+map('i', '<c-p>', '<nop>')
 
 -- format using nvim lsp
 map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
@@ -46,6 +47,10 @@ map('n', '<leader>w', ':WhichKey<cr>')
 
 -- add a CSS class
 map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
+
+---- LUA REQUIRE ----
+-- load plugins after key mappings
+require('plugins')
 
 ---- OPTIONS ----
 -- Show line number

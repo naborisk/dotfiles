@@ -7,7 +7,7 @@ end)
 -- always show icon column
 vim.o.signcolumn = 'yes'
 
-lsp.preset('recommended')
+-- lsp.preset('recommended')
 
 lsp.ensure_installed({
   'tsserver',
