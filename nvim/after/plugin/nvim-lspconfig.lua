@@ -60,6 +60,8 @@ lsp.configure('emmet_ls', {
   }
 })
 
+lsp.configure('volar', {})
+
 -- Show diagnostics text on cursor hold
 local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear = true })
 
@@ -74,6 +76,7 @@ lsp.set_sign_icons({
   hint = '',
   info = ''
 })
+
 -- (Optional) Configure lua language server for neovim
 require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
