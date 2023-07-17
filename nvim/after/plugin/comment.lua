@@ -16,3 +16,4 @@ end)
 
 -- Add unsupported filetypes
 ft.set('astro', '<!--%s-->')
+ft.set('hcl', '# %s')
