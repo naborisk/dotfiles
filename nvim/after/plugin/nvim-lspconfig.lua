@@ -49,6 +49,10 @@ lsp.configure('tsserver', {
   -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'svelte' }
 })
 
+lsp.configure('tailwindcss', {
+  filetypes = { 'html', 'svelte', 'astro', 'vue' }
+})
+
 lsp.configure('emmet_ls', {
   filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'vue', 'astro', 'css', 'sass', 'scss', 'less', 'svelte' },
   init_options = {
