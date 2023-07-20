@@ -37,6 +37,8 @@ map('n', '<C-u>', '<C-u>zz')
 
 map('n', '<leader>m', ':Mason<cr>')
 
+map('n', '<leader>L', ':Lazy<cr>')
+
 -- change buffer using leader
 map('n', '<leader>h', '<C-w>h')
 map('n', '<leader>j', '<C-w>j')

@@ -1,15 +1,25 @@
 -- local lsp = require'lsp-zero'
 local lspconfig = require 'lspconfig'
+local mason_lspconfig = require 'mason-lspconfig'
 
--- Adding custom language server
 local configs = require 'lspconfig.configs'
 
 -- Get installed language servers from mason
-local get_servers = require('mason-lspconfig').get_installed_servers
+local get_servers = mason_lspconfig.get_installed_servers
+
+-- ensure certain servers are installed
+mason_lspconfig.setup {
+  ensure_installed = {
+    'tsserver',
+    'lua_ls',
+    'emmet_ls',
+  }
+}
 
 -- Get cmp_nvim_lsp capabilities
--- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- Adding custom language server
 if not configs.omnisharp_mono then
   configs.omnisharp_mono = {
     default_config = {
@@ -24,21 +34,16 @@ end
 -- always show icon column
 vim.o.signcolumn = 'yes'
 
--- lsp.ensure_installed({
---   'tsserver',
---   'lua_ls',
---   'emmet_ls',
--- })
---
-
 -- lsp configurations
 local lsp_options = {
   omnisharp_mono = {
     settings = {
       omnisharp = {
         useModernNet = false,
-        -- TODO: allow for multiplatform
-        monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
+        -- monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
+        --
+        -- supports multi platform
+        monoPath = vim.fn.system { 'which', 'mono' }
       }
     }
   },
@@ -77,8 +82,6 @@ local lsp_options = {
   }
 }
 
--- print(lsp_options['omnisharp_mono'].settings)
-
 -- note: omnisharp and omnisharp_mono shouldn't be insalled together
 
 -- run setup() for every installed servers by mason, apply config if defined in lsp_options table
@@ -86,11 +89,9 @@ for _, server_name in ipairs(get_servers()) do
   -- get settings from lsp_options table
   local settings = lsp_options[server_name] and lsp_options[server_name].settings or {}
 
-  -- print(lsp_options[server_name])
   lspconfig[server_name].setup {
-    -- settings = lsp_options[server_name].settings or {}
     settings = settings,
-    -- capabilities = lsp_capabilities
+    capabilities = lsp_capabilities
   }
 end
 
