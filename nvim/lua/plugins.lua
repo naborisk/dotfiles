@@ -14,11 +14,11 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup {
-  {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
-    lazy = true,
-  },
+  -- {
+  --   'VonHeikemen/lsp-zero.nvim',
+  --   branch = 'v2.x',
+  --   lazy = true,
+  -- },
 
   -- Autocompletion
   'hrsh7th/cmp-buffer',
