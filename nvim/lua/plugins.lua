@@ -14,12 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require 'lazy'.setup {
-  -- {
-  --   'VonHeikemen/lsp-zero.nvim',
-  --   branch = 'v2.x',
-  --   lazy = true,
-  -- },
-
   -- Autocompletion
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -49,6 +43,7 @@ require 'lazy'.setup {
       },
     },
   },
+
   -- More completion
   -- Auto pairs
   'windwp/nvim-autopairs',

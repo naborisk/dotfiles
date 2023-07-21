@@ -79,6 +79,10 @@ local lsp_options = {
         }
       }
     }
+  },
+
+  volar = {
+    filetypes = { 'javascript', 'typescript', 'vue' }
   }
 }
 
@@ -86,23 +90,25 @@ local lsp_options = {
 
 -- run setup() for every installed servers by mason, apply config if defined in lsp_options table
 for _, server_name in ipairs(get_servers()) do
-  -- get settings from lsp_options table
+  -- get configurations from lsp_options table
   local settings = lsp_options[server_name] and lsp_options[server_name].settings or {}
+  local filetypes = lsp_options[server_name] and lsp_options[server_name].filetypes or nil
 
   lspconfig[server_name].setup {
+    filetypes = filetypes,
     settings = settings,
-    capabilities = lsp_capabilities
+    capabilities = lsp_capabilities,
   }
 end
 
-vim.diagnostic.config({
+vim.diagnostic.config {
   virtual_text = false, -- show text after diagnostics
   signs = true,
   update_in_insert = false,
   underline = true,
   severity_sort = false,
   float = true,
-})
+}
 
 -- Show diagnostics text on cursor hold
 local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear = true })
