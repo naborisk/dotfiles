@@ -60,6 +60,19 @@ local lsp_options = {
     }
   },
 
+  ansiblels = {
+    filetypes = { 'yaml' },
+    settings = {
+      ansible = {
+        validation = {
+          lint = {
+            enabled = false
+          }
+        }
+      }
+    }
+  },
+
   tsserver = {
     -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'svelte' }
   },
