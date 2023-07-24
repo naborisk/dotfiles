@@ -21,6 +21,12 @@ end
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
+-- copilot (tmp)
+vim.cmd[[
+  imap <silent><script><expr> <c-g> copilot#Accept("\<cr>")
+  let g:copilot_no_tab_map = v:true
+]]
+
 -- format using nvim lsp
 map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
 
