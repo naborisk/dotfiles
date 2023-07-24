@@ -45,8 +45,9 @@ require 'lazy'.setup {
   },
 
   -- More completion
-  -- Auto pairs
+  -- Auto pairs, auto tags
   'windwp/nvim-autopairs',
+  'windwp/nvim-ts-autotag',
 
   -- Indentation lines
   {

@@ -5,5 +5,8 @@ require'nvim-treesitter.configs'.setup {
     disable = {
       'lua', 'vue'
     }
+  },
+  autotag = {
+    enable = true
   }
 }
