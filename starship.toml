@@ -21,6 +21,8 @@ format = "$symbol"
 [os.symbols]
 Arch = ""
 Macos = ""
+Ubuntu = ""
+Windows = ""
 
 [hostname]
 ssh_symbol = "🌐"
