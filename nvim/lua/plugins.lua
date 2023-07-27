@@ -13,7 +13,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'lazy'.setup {
+require 'lazy'.setup({
   -- Autocompletion
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -52,7 +52,7 @@ require 'lazy'.setup {
   -- Indentation lines
   {
     'lukas-reineke/indent-blankline.nvim',
-    config = function ()
+    config = function()
       local color = color or 'duskfox'
       vim.cmd.colorscheme(color)
     end
@@ -106,4 +106,9 @@ require 'lazy'.setup {
   {
     'github/copilot.vim'
   },
-}
+}, {
+  -- Lazy options
+  ui = {
+    border = 'rounded'
+  }
+})
