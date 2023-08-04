@@ -22,10 +22,10 @@ map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
 -- copilot (tmp)
-vim.cmd[[
-  imap <silent><script><expr> <c-g> copilot#Accept("\<cr>")
-  let g:copilot_no_tab_map = v:true
-]]
+-- vim.cmd[[
+--   imap <silent><script><expr> <c-g> copilot#Accept("\<cr>")
+--   let g:copilot_no_tab_map = v:true
+-- ]]
 
 -- format using nvim lsp
 map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
@@ -91,10 +91,13 @@ vim.o.ut = 400
 -- use system clipboard
 vim.o.clipboard = 'unnamedplus'
 
+-- hide showmode
+vim.o.showmode = false
+
 ---- COSMETICS ----
 -- colorscheme
 -- vim.cmd('silent! colorscheme nightfox')
-local color = color or 'duskfox' -- This makes sure to have colorscheme fallback
+local color = color or 'nightfox' -- This makes sure to have colorscheme fallback
 vim.cmd.colorscheme(color)
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
