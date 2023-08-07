@@ -4,7 +4,7 @@ local ft = require'Comment.ft'
 -- comment using Ctrl + /
 local api = require('Comment.api')
 local esc = vim.api.nvim_replace_termcodes(
-'<ESC>', true, false, true
+  '<ESC>', true, false, true
 )
 
 vim.keymap.set('n', '<C-_>', api.toggle.linewise.current)

@@ -9,7 +9,6 @@ local Space = {
   provider = " "
 }
 
--- We're getting minimalists here!
 local Ruler = {
     -- %l = current line number
     -- %L = number of lines in the buffer
@@ -110,25 +109,16 @@ local ViMode = {
 local LSPActive = {
     condition = conditions.lsp_attached,
     update = {'LspAttach', 'LspDetach'},
-
-    -- You can keep it simple,
-    -- provider = " [LSP]",
-
-    -- Or complicate things a bit and get the servers names
-    provider  = function()
-        local names = {}
-        for _, server in pairs(vim.lsp.get_active_clients({ bufnr = 0 })) do
-            table.insert(names, server.name)
-        end
-        return "[" .. table.concat(names, " ") .. "]"
+    provider  = function ()
+      return "[" .. #vim.lsp.get_active_clients({bufnr = 0}) .. "]"
     end,
-    hl = { fg = "green", bold = true }
+    hl = { bold = true }
 }
 
 local statusline = {
   ViMode,
-  Align,
   LSPActive,
+  Align,
   Space,
   Ruler,
   Space
