@@ -3,7 +3,11 @@ HOME = os.getenv("HOME")
 OS = jit.os -- "OSX" or "Linux"
 
 ---- PREREQUISITES ----
-vim.o.tgc = true -- terminalguicolors is required by feline
+vim.o.tgc = true
+
+-- disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
 -- set leader key before plugins are loaded
 vim.g.mapleader = ' '
@@ -67,6 +71,9 @@ vim.o.nu = true
 
 -- Show cursorline (highlights each line)
 vim.o.cursorline = true
+
+-- Hide command line
+vim.o.cmdheight = 0
 
 -- Set tab size to 2 spaces and expandtab
 vim.o.tabstop = 2
