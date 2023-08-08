@@ -1,14 +1,16 @@
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
   diagnostics = {
     enable = true,
-    show_on_dirs = true
+    show_on_dirs = true,
+    icons = {
+      error = '',
+      warning = '',
+      hint = '',
+      info = ''
+    }
   },
   view = {
     cursorline = true,
     signcolumn = 'yes'
   }
 }
-
-vim.cmd[[
-  hi link NvimTreeCursorLine Cursor
-]]
