@@ -27,6 +27,9 @@ map('i', '<c-p>', '<nop>')
 --   let g:copilot_no_tab_map = v:true
 -- ]]
 
+vim.g.copilot_no_tab_map = true
+vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', {expr=true, silent=true})
+
 -- format using nvim lsp
 map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
 
