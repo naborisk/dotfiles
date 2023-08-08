@@ -1,8 +1,9 @@
+-- add components folder to path to package.path
+HOME = os.getenv("HOME")
+package.path = HOME..'/.config/nvim/after/plugin/heirline/?.lua;' .. package.path
+
 local conditions = require 'heirline.conditions'
 local colors = require 'nightfox.palette'.load('nightfox')
-
--- components path
-local components = 'nvim/after/plugin/heirline/'
 
 local Align = {
   provider = "%="
@@ -12,11 +13,12 @@ local Space = {
   provider = " "
 }
 
-local Ruler = require(components .. 'ruler')
-local ViMode = require(components .. 'vimode')
-local LSPActive = require(components .. 'lspactive')
-local Bufname = require(components .. 'bufname')
-local FileType = require(components .. 'filetype')
+local Ruler = require('ruler')
+local ViMode = require('vimode')
+local LSPActive = require('lspactive')
+local Bufname = require('bufname')
+local FileType = require('filetype')
+local FileName = require('filename')
 
 local BufnameStatusLine = {
   condition = function()
@@ -24,6 +26,7 @@ local BufnameStatusLine = {
       filetype = { 'NvimTree' }
     })
   end,
+  Space,
   FileType,
   Align
 }
@@ -35,6 +38,7 @@ local SpecialStatusLine = {
       filetype = { '^git.*', 'fugitive' }
     })
   end,
+  Space,
   FileType,
   Space,
   Bufname,
@@ -43,12 +47,16 @@ local SpecialStatusLine = {
 
 local InactiveStatusLine = {
   condition = conditions.is_not_active,
-  Bufname,
+  Space,
+  Space,
+  Space,
+  FileName,
   Align
 }
 
 local DefaultStatusLine = {
   ViMode,
+  FileName,
   Align,
   FileType,
   Space,
