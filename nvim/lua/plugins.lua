@@ -67,12 +67,6 @@ require 'lazy'.setup({
   -- Devicons
   'kyazdani42/nvim-web-devicons',
 
-  -- Status line
-  -- 'feline-nvim/feline.nvim',
-
-  -- Tabline
-  -- 'nanozuki/tabby.nvim',
-
   -- Heirline (Status line + Buffer line)
   'rebelot/heirline.nvim',
 

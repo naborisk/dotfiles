@@ -56,8 +56,8 @@ local InactiveStatusLine = {
 
 local DefaultStatusLine = {
   ViMode,
-  FileName,
   Align,
+  Space,
   FileType,
   Space,
   LSPActive,
@@ -76,12 +76,17 @@ local statusline = {
   DefaultStatusLine,
 }
 
-local winbar = {}
+local winbar = {
+  Space,
+  FileName,
+  Align,
+}
+
 local tabline = {}
 
 require 'heirline'.setup {
   statusline = statusline,
-  -- winbar = winbar,
+  winbar = winbar,
   -- tabline = tabline,
   opt = {
     colors = colors
