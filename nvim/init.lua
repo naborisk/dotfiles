@@ -8,6 +8,9 @@ vim.o.tgc = true -- terminalguicolors is required by feline
 -- set leader key before plugins are loaded
 vim.g.mapleader = ' '
 
+-- disable copilot tab mapping
+vim.g.copilot_no_tab_map = true
+
 -- init.lua utility functions
 local function map(mode, shortcut, command)
   vim.keymap.set(mode, shortcut, command, { noremap = true, silent = true })
@@ -15,15 +18,14 @@ end
 
 ---- KEY MAPPINGS ----
 -- format using prettier
--- map('n', '<leader>pf', ':%!prettier %:p<cr>')
+map('n', '<leader>pf', ':%!prettier %:p<cr>')
 
 -- unbind <c-n> and <c-p>
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
--- <c-g> for copilot accept
-vim.g.copilot_no_tab_map = true
-vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', {expr=true, silent=true})
+-- <c-g> for copilot accept (will append some binary if vim.keymap.set is used)
+vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', { expr = true, silent = true })
 
 -- format using nvim lsp
 map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
