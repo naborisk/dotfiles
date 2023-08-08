@@ -21,12 +21,7 @@ end
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
--- copilot (tmp)
--- vim.cmd[[
---   imap <silent><script><expr> <c-g> copilot#Accept("\<cr>")
---   let g:copilot_no_tab_map = v:true
--- ]]
-
+-- <c-g> for copilot accept
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', {expr=true, silent=true})
 
