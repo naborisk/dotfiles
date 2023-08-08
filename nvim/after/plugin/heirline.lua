@@ -65,6 +65,24 @@ local DefaultStatusLine = {
   Space
 }
 
+local DefaultWinBar = {
+  Align,
+  FileName,
+  Align,
+}
+
+local SpecialWinBar = {
+  condition = function()
+    return conditions.buffer_matches({
+      buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
+      filetype = { '^git.*', 'fugitive' }
+    })
+  end,
+  {
+    provider = ''
+  }
+}
+
 -- arragement matters,
 -- the first one that matches will be used
 -- in this case, SpecialStatusLine will be used for inactive special buffers
@@ -77,9 +95,9 @@ local statusline = {
 }
 
 local winbar = {
-  Space,
-  FileName,
-  Align,
+  fallthrough = false,
+  SpecialWinBar,
+  DefaultWinBar,
 }
 
 local tabline = {}
