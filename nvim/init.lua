@@ -73,7 +73,7 @@ vim.o.nu = true
 vim.o.cursorline = true
 
 -- Hide command line
-vim.o.cmdheight = 0
+vim.o.cmdheight = 1
 
 -- Set tab size to 2 spaces and expandtab
 vim.o.tabstop = 2
