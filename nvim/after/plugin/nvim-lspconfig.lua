@@ -9,9 +9,9 @@ local get_servers = mason_lspconfig.get_installed_servers
 -- ensure certain servers are installed
 mason_lspconfig.setup {
   ensure_installed = {
-    'tsserver',
-    'lua_ls',
-    'emmet_ls',
+    -- 'tsserver',
+    -- 'lua_ls',
+    -- 'emmet_ls',
   }
 }
 
