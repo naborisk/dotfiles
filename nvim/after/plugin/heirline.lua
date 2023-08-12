@@ -100,7 +100,7 @@ local winbar = {
   DefaultWinBar,
 }
 
-local tabline = {}
+-- local tabline = {}
 
 require 'heirline'.setup {
   statusline = statusline,
