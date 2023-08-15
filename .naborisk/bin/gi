@@ -1,2 +1,4 @@
 #!/bin/bash
+
+# reference https://docs.gitignore.io/install/command-line
 curl -sLw "\n" https://www.toptal.com/developers/gitignore/api/$@
