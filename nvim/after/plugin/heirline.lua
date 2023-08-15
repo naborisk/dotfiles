@@ -19,6 +19,7 @@ local LSPActive = require('lspactive')
 local Bufname = require('bufname')
 local FileType = require('filetype')
 local FileName = require('filename')
+local FullPath = require('fullpath')
 
 local BufnameStatusLine = {
   condition = function()
@@ -50,7 +51,7 @@ local InactiveStatusLine = {
   Space,
   Space,
   Space,
-  FileName,
+  FullPath,
   Align
 }
 
