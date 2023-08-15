@@ -86,8 +86,19 @@ do
 done
 
 #--NEOVIM CONFIGURATION--
-#mkdir -p $HOME/.config/nvim/lua
-
 mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
+
+#--.naborisk--
+# symlink .naborisk
+echo 'linking .naborisk'
+ln -sfn $(pwd)/.naborisk $HOME/.naborisk
+
+# add .naborisk/bin to PATH
+echo 'adding .naborisk/bin to PATH'
+grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export PATH=$PATH:$HOME/.naborisk/bin' >> $HOME/.zshrc
+
+# add alias to .zshrc
+echo 'adding .naborisk/aliases to .zshrc'
+grep -qxF 'source .naborisk/aliases' $HOME/.zshrc || echo 'source .naborisk/aliases' >> $HOME/.zshrc
