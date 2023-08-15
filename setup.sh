@@ -101,4 +101,4 @@ grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export P
 
 # add alias to .zshrc
 echo 'adding .naborisk/aliases to .zshrc'
-grep -qxF 'source .naborisk/aliases' $HOME/.zshrc || echo 'source .naborisk/aliases' >> $HOME/.zshrc
+grep -qxF 'source ~/.naborisk/aliases' $HOME/.zshrc || echo 'source ~/.naborisk/aliases' >> $HOME/.zshrc
