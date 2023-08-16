@@ -23,5 +23,10 @@ bash -c "$(curl -fsSL https://raw.githubusercontent.com/naborisk/dotfiles/main/s
 ## Updating dotfiles
 If there are changes, to the files, just do a `git pull` and new files will work automatically
 
-## Credits
-`nvim/after/plugin/tabby.lua` and `nvim/after/plugin/feline.lua` are slightly edited from [nightfox.nvim](https://github.com/EdenEast/nightfox.nvim)'s tabby and feline configuration.
+## Files & Folders
+- `setup.sh`: script to bootstrap dotfiles
+- `.vimrc`: vimrc with some plugins installed (not in use)
+- `.tmux.conf`: tmux configuration with nightfox colorscheme
+- `starship.toml`: config for starship prompt
+- `.naborisk/aliases`: aliases
+- `.naborisk/bin/`: executable scripts
