@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  xdg-open $@ &> /dev/null
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  open $@
+elif [[ "$OSTYPE" == "msys" ]]; then
+  explorer.exe $@
+fi
