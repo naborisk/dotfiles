@@ -1,12 +1,13 @@
-require'nvim-treesitter.configs'.setup {
+require('nvim-treesitter.configs').setup {
   auto_install = true,
   highlight = {
     enable = true,
     disable = {
-      'lua', 'vue'
-    }
+      'lua',
+      'vue',
+    },
   },
   autotag = {
-    enable = true
-  }
+    enable = true,
+  },
 }

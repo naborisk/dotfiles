@@ -1,19 +1,19 @@
 -- TODO: add plugins keys in Lazy
 -- bootstrapping lazy.nvim
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
+  vim.fn.system {
     'git',
     'clone',
     '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
     lazypath,
-  })
+  }
 end
 vim.opt.rtp:prepend(lazypath)
 
-require 'lazy'.setup({
+require('lazy').setup({
   -- Autocompletion
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
@@ -49,13 +49,19 @@ require 'lazy'.setup({
   'windwp/nvim-autopairs',
   'windwp/nvim-ts-autotag',
 
+  -- auto formatter
+  {
+    'nvimdev/guard.nvim',
+    lazy = false,
+  },
+
   -- Indentation lines
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
       local color = color or 'duskfox'
       vim.cmd.colorscheme(color)
-    end
+    end,
   },
 
   -- Theme
@@ -75,7 +81,7 @@ require 'lazy'.setup({
     'kyazdani42/nvim-tree.lua',
     dependencies = {
       'kyazdani42/nvim-web-devicons',
-    }
+    },
   },
 
   'folke/which-key.nvim',
@@ -90,22 +96,22 @@ require 'lazy'.setup({
       { '<leader>ff', ':Telescope find_files<cr>' },
       { '<leader>fg', ':Telescope git_files<cr>' },
       { '<leader>fr', ':Telescope live_grep<cr>' },
-    }
+    },
   },
 
   -- nvim-treesitter
   {
     'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate'
+    build = ':TSUpdate',
   },
 
   -- GitHub copilot
   {
-    'github/copilot.vim'
+    'github/copilot.vim',
   },
 }, {
   -- Lazy options
   ui = {
-    border = 'rounded'
-  }
+    border = 'rounded',
+  },
 })

@@ -1,49 +1,49 @@
 -- add components folder to path to package.path
-HOME = os.getenv("HOME")
-package.path = HOME..'/.config/nvim/after/plugin/heirline/?.lua;' .. package.path
+HOME = os.getenv 'HOME'
+package.path = HOME .. '/.config/nvim/after/plugin/heirline/?.lua;' .. package.path
 
 local conditions = require 'heirline.conditions'
-local colors = require 'nightfox.palette'.load('nightfox')
+local colors = require('nightfox.palette').load 'nightfox'
 
 local Align = {
-  provider = "%="
+  provider = '%=',
 }
 
 local Space = {
-  provider = " "
+  provider = ' ',
 }
 
-local Ruler = require('ruler')
-local ViMode = require('vimode')
-local LSPActive = require('lspactive')
-local Bufname = require('bufname')
-local FileType = require('filetype')
-local FileName = require('filename')
-local FullPath = require('fullpath')
+local Ruler = require 'ruler'
+local ViMode = require 'vimode'
+local LSPActive = require 'lspactive'
+local Bufname = require 'bufname'
+local FileType = require 'filetype'
+local FileName = require 'filename'
+local FullPath = require 'fullpath'
 
 local BufnameStatusLine = {
   condition = function()
-    return conditions.buffer_matches({
-      filetype = { 'NvimTree' }
-    })
+    return conditions.buffer_matches {
+      filetype = { 'NvimTree' },
+    }
   end,
   Space,
   FileType,
-  Align
+  Align,
 }
 
 local SpecialStatusLine = {
   condition = function()
-    return conditions.buffer_matches({
+    return conditions.buffer_matches {
       buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-      filetype = { '^git.*', 'fugitive' }
-    })
+      filetype = { '^git.*', 'fugitive' },
+    }
   end,
   Space,
   FileType,
   Space,
   Bufname,
-  Align
+  Align,
 }
 
 local InactiveStatusLine = {
@@ -52,7 +52,7 @@ local InactiveStatusLine = {
   Space,
   Space,
   FullPath,
-  Align
+  Align,
 }
 
 local DefaultStatusLine = {
@@ -63,7 +63,7 @@ local DefaultStatusLine = {
   Space,
   LSPActive,
   Ruler,
-  Space
+  Space,
 }
 
 local DefaultWinBar = {
@@ -74,14 +74,14 @@ local DefaultWinBar = {
 
 local SpecialWinBar = {
   condition = function()
-    return conditions.buffer_matches({
+    return conditions.buffer_matches {
       buftype = { 'nofile', 'prompt', 'help', 'quickfix' },
-      filetype = { '^git.*', 'fugitive' }
-    })
+      filetype = { '^git.*', 'fugitive' },
+    }
   end,
   {
-    provider = ''
-  }
+    provider = '',
+  },
 }
 
 -- arragement matters,
@@ -103,11 +103,11 @@ local winbar = {
 
 -- local tabline = {}
 
-require 'heirline'.setup {
+require('heirline').setup {
   statusline = statusline,
   winbar = winbar,
   -- tabline = tabline,
   opt = {
-    colors = colors
-  }
+    colors = colors,
+  },
 }

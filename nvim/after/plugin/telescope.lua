@@ -1,5 +1,5 @@
-local builtin = require('telescope.builtin')
-local actions = require('telescope.actions')
+local builtin = require 'telescope.builtin'
+local actions = require 'telescope.actions'
 
 -- vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 -- vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
@@ -11,12 +11,12 @@ local actions = require('telescope.actions')
 -- end
 -- )
 
-require'telescope'.setup{
+require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<esc>'] = actions.close,
-      }
-    }
-  }
+      },
+    },
+  },
 }

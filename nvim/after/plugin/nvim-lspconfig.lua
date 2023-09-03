@@ -12,7 +12,7 @@ mason_lspconfig.setup {
     -- 'tsserver',
     -- 'lua_ls',
     -- 'emmet_ls',
-  }
+  },
 }
 
 -- Get cmp_nvim_lsp capabilities
@@ -25,8 +25,8 @@ if not configs.omnisharp_mono then
       cmd = { 'omnisharp-mono', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
       filetypes = { 'cs' },
       root_dir = lspconfig.util.root_pattern('*.csproj', '*.sln', '.git'),
-      settings = {}
-    }
+      settings = {},
+    },
   }
 end
 
@@ -42,9 +42,9 @@ local lsp_options = {
         -- monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
         --
         -- supports multi platform
-        monoPath = vim.fn.system { 'which', 'mono' }
-      }
-    }
+        monoPath = vim.fn.system { 'which', 'mono' },
+      },
+    },
   },
 
   lua_ls = {
@@ -52,11 +52,13 @@ local lsp_options = {
       Lua = {
         diagnostics = {
           globals = {
-            'vim', 'jit', 'color'
-          }
-        }
-      }
-    }
+            'vim',
+            'jit',
+            'color',
+          },
+        },
+      },
+    },
   },
 
   ansiblels = {
@@ -65,11 +67,11 @@ local lsp_options = {
       ansible = {
         validation = {
           lint = {
-            enabled = false
-          }
-        }
-      }
-    }
+            enabled = false,
+          },
+        },
+      },
+    },
   },
 
   tsserver = {
@@ -77,25 +79,35 @@ local lsp_options = {
   },
 
   tailwindcss = {
-    filetypes = { 'html', 'svelte', 'astro', 'vue' }
+    filetypes = { 'html', 'svelte', 'astro', 'vue' },
   },
 
   emmet_ls = {
-    filetypes = { 'html', 'markdown', 'javascriptreact', 'typescriptreact', 'vue', 'astro', 'css', 'sass', 'scss',
+    filetypes = {
+      'html',
+      'markdown',
+      'javascriptreact',
+      'typescriptreact',
+      'vue',
+      'astro',
+      'css',
+      'sass',
+      'scss',
       'less',
-      'svelte' },
+      'svelte',
+    },
     init_options = {
       html = {
         options = {
-          ['jsx.enabled'] = true
-        }
-      }
-    }
+          ['jsx.enabled'] = true,
+        },
+      },
+    },
   },
 
   volar = {
-    filetypes = { 'javascript', 'typescript', 'vue' }
-  }
+    filetypes = { 'javascript', 'typescript', 'vue' },
+  },
 }
 
 -- note: omnisharp and omnisharp_mono shouldn't be insalled together
@@ -127,7 +139,7 @@ local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear = true })
 
 vim.api.nvim_create_autocmd('CursorHold', {
   command = 'lua vim.diagnostic.open_float()',
-  group = lspGroup
+  group = lspGroup,
 })
 
 -- Change diagnostic signs
@@ -135,7 +147,7 @@ local signs = {
   Error = '',
   Warn = '',
   Hint = '',
-  Info = ''
+  Info = '',
 }
 
 for type, icon in pairs(signs) do

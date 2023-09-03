@@ -1,11 +1,9 @@
-require'Comment'.setup()
-local ft = require'Comment.ft'
+require('Comment').setup()
+local ft = require 'Comment.ft'
 
 -- comment using Ctrl + /
-local api = require('Comment.api')
-local esc = vim.api.nvim_replace_termcodes(
-  '<ESC>', true, false, true
-)
+local api = require 'Comment.api'
+local esc = vim.api.nvim_replace_termcodes('<ESC>', true, false, true)
 
 vim.keymap.set('n', '<C-_>', api.toggle.linewise.current)
 vim.keymap.set('i', '<C-_>', api.toggle.linewise.current)

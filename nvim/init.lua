@@ -1,5 +1,5 @@
 ---- VARIABLES ----
-HOME = os.getenv("HOME")
+HOME = os.getenv 'HOME'
 OS = jit.os -- "OSX" or "Linux"
 
 ---- PREREQUISITES ----
@@ -63,7 +63,7 @@ map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
 
 ---- LUA REQUIRE ----
 -- load plugins after key mappings
-require('plugins')
+require 'plugins'
 
 ---- OPTIONS ----
 -- Show line number
@@ -81,10 +81,10 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 
 -- Search
-vim.o.incsearch = true  -- Highlight while searching
+vim.o.incsearch = true -- Highlight while searching
 vim.o.ignorecase = true -- ignore letter case while searching
-vim.o.smartcase = true  -- case insensitive unless capitals used in search
-vim.o.hlsearch = true   -- highlight all search terms
+vim.o.smartcase = true -- case insensitive unless capitals used in search
+vim.o.hlsearch = true -- highlight all search terms
 
 -- enable mouse support
 vim.o.mouse = 'a'
