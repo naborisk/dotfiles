@@ -30,3 +30,5 @@ If there are changes, to the files, just do a `git pull` and new files will work
 - `starship.toml`: config for starship prompt
 - `.naborisk/aliases`: aliases
 - `.naborisk/bin/`: executable scripts
+- `.stylua.toml`: Stylua config file
+- `.prettierrc`: Prettier config file

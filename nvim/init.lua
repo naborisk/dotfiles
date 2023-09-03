@@ -65,6 +65,9 @@ map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
 -- load plugins after key mappings
 require 'plugins'
 
+-- load filetypes
+require 'filetypes'
+
 ---- OPTIONS ----
 -- Show line number
 vim.o.nu = true
