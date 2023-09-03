@@ -1,7 +1,7 @@
 local ft = require 'guard.filetype'
 
 ft('lua'):fmt 'stylua'
-ft('javascript,typescript,javascriptreact,typescriptreact'):fmt 'prettier'
+ft('javascript,typescript,javascriptreact,typescriptreact,vue'):fmt 'prettier'
 
 require('guard').setup {
   fmt_on_save = true,
