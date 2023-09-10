@@ -1,3 +1,4 @@
 alias vi=nvim
 alias mux=tmuxinator
 alias tm=tmux
+alias dr='docker run -it --rm'

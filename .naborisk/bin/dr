@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo 'command: docker run -it --rm'
-docker run -it --rm $@
