@@ -109,6 +109,11 @@ require('lazy').setup({
   {
     'github/copilot.vim',
   },
+
+  -- git-blame
+  {
+    'f-person/git-blame.nvim',
+  },
 }, {
   -- Lazy options
   ui = {
