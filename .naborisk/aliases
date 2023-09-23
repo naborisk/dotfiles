@@ -5,3 +5,11 @@ alias dr='docker run -it --rm'
 alias drb='docker run -it --rm --entrypoint /bin/bash' # Docker Run Bash
 alias drb.='docker run -it --rm --entrypoint /bin/bash ${PWD##*/}' # Docker Run Bash (current directory)
 alias db='docker buildx build -t ${PWD##*/}'
+
+ls() {
+  if command -v lsd > /dev/null; then
+    lsd $@
+  else
+    ls $@
+  fi
+}
