@@ -50,10 +50,7 @@ require('lazy').setup({
   'windwp/nvim-ts-autotag',
 
   -- auto formatter
-  {
-    'nvimdev/guard.nvim',
-    lazy = false,
-  },
+  'mhartington/formatter.nvim',
 
   -- Indentation lines
   {
