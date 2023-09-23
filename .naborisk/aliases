@@ -6,6 +6,9 @@ alias drb='docker run -it --rm --entrypoint /bin/bash' # Docker Run Bash
 alias drb.='docker run -it --rm --entrypoint /bin/bash ${PWD##*/}' # Docker Run Bash (current directory)
 alias db='docker buildx build -t ${PWD##*/}'
 
+# Docker start for Arch
+alias dockerstart='sudo systemctl start docker && sudo iptables -I FORWARD -i br0 -o br0 -j ACCEPT'
+
 ls() {
   if command -v lsd > /dev/null; then
     lsd $@
