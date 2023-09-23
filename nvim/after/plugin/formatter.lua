@@ -12,6 +12,10 @@ require('formatter').setup {
       require('formatter.filetypes.javascript').prettier,
     },
 
+    typescript = {
+      require('formatter.filetypes.typescript').prettier,
+    },
+
     svelte = {
       require('formatter.filetypes.svelte').prettier,
     },
