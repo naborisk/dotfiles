@@ -11,8 +11,8 @@ alias dockerstart='sudo systemctl start docker && sudo iptables -I FORWARD -i br
 
 ls() {
   if command -v lsd > /dev/null; then
-    lsd $@
+    command lsd $@
   else
-    ls $@
+    command ls $@
   fi
 }
