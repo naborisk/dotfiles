@@ -1,10 +1,18 @@
 alias vi=nvim
 alias mux=tmuxinator
 alias tm=tmux
+
 alias dr='docker run -it --rm'
+alias dr.='docker run -it --rm ${PWD##*/}' # Docker Run (current directory)
 alias drb='docker run -it --rm --entrypoint /bin/bash' # Docker Run Bash
 alias drb.='docker run -it --rm --entrypoint /bin/bash ${PWD##*/}' # Docker Run Bash (current directory)
 alias db='docker buildx build -t ${PWD##*/}'
+
+alias pr='podman run -it --rm'
+alias pr.='podman run -it --rm ${PWD##*/}' # Podman Run (current directory)
+alias prb='podman run -it --rm --entrypoint /bin/bash' # Podman Run Bash
+alias prb.='podman run -it --rm --entrypoint /bin/bash ${PWD##*/}' # Podman Run Bash (current directory)
+alias pb='podman buildx build -t ${PWD##*/}'
 
 # Docker start for Arch
 alias dockerstart='sudo systemctl start docker && sudo iptables -I FORWARD -i br0 -o br0 -j ACCEPT'

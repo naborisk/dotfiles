@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# git cat all
+# find stuffs in git objects
+{
+  for index in `find .git/objects/pack/ -name "*.idx"`
+  do
+    git show-index < "$index" \
+      | cut -d ' ' -f 2
+  done
+  find .git/objects/ \
+    | awk -F'/' '!/pack/{ print $(NF-1)$NF }'
+} | \
+  while read obj
+  do
+    git cat-file -p $obj
+  done
