@@ -53,6 +53,11 @@ local InactiveStatusLine = {
   Space,
   FullPath,
   Align,
+  FileType,
+  Space,
+  LSPActive,
+  Ruler,
+  Space,
 }
 
 local DefaultStatusLine = {
