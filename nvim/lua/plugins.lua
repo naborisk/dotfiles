@@ -44,10 +44,6 @@ require('lazy').setup({
     },
   },
 
-  -- Auto pairs, auto tags
-  'windwp/nvim-autopairs',
-  'windwp/nvim-ts-autotag',
-
   -- auto formatter
   'mhartington/formatter.nvim',
 
@@ -101,14 +97,29 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  -- Auto pairs, auto tags
+  -- 'windwp/nvim-autopairs',
+  {
+    'altermo/ultimate-autopair.nvim',
+    event = { 'InsertEnter', 'CmdlineEnter' },
+    branch = 'v0.6', --recomended as each new version will have breaking changes
+    opts = {
+      --Config goes here
+    },
+  },
+  'windwp/nvim-ts-autotag',
+
   -- GitHub copilot
   {
     'github/copilot.vim',
   },
 
-  -- git-blame
+  -- git related stuffs
   {
     'f-person/git-blame.nvim',
+  },
+  {
+    'lewis6991/gitsigns.nvim',
   },
 }, {
   -- Lazy options
