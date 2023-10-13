@@ -116,9 +116,6 @@ require('lazy').setup({
 
   -- git related stuffs
   {
-    'f-person/git-blame.nvim',
-  },
-  {
     'lewis6991/gitsigns.nvim',
   },
 }, {
