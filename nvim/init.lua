@@ -106,17 +106,14 @@ vim.o.showmode = false
 
 ---- COSMETICS ----
 -- colorscheme
--- vim.cmd('silent! colorscheme nightfox')
 local color = color or 'nightfox' -- This makes sure to have colorscheme fallback
 vim.cmd.colorscheme(color)
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
-vim.cmd [[
-set fillchars=fold:\ ,vert:\ ,eob:\ ,msgsep:‾
-hi VertSplit guibg=#141a23
-]]
+vim.o.fillchars = 'fold: ,vert: ,eob: ,msgsep:‾'
 
 -- Highlight group
+vim.api.nvim_set_hl(0, 'VertSplit', { link = 'NvimTreeNormal' })
 vim.api.nvim_set_hl(0, 'NonText', { fg = '#39687a' })
 
 ---- SCRIPTS ----
