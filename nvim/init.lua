@@ -116,6 +116,9 @@ set fillchars=fold:\ ,vert:\ ,eob:\ ,msgsep:‾
 hi VertSplit guibg=#141a23
 ]]
 
+-- Highlight group
+vim.api.nvim_set_hl(0, 'NonText', { fg = '#39687a' })
+
 ---- SCRIPTS ----
 -- Save as superuser
 
