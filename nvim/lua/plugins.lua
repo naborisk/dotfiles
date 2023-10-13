@@ -44,7 +44,6 @@ require('lazy').setup({
     },
   },
 
-  -- More completion
   -- Auto pairs, auto tags
   'windwp/nvim-autopairs',
   'windwp/nvim-ts-autotag',
@@ -56,7 +55,7 @@ require('lazy').setup({
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-      local color = color or 'duskfox'
+      local color = color or 'nightfox'
       vim.cmd.colorscheme(color)
     end,
   },
