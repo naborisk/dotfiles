@@ -7,9 +7,8 @@ local actions = require 'telescope.actions'
 
 -- ripgrep required, grep string in files
 -- vim.keymap.set('n', '<leader>fr', function()
---   builtin.live_grep({})
--- end
--- )
+--   builtin.live_grep {}
+-- end)
 
 require('telescope').setup {
   defaults = {
