@@ -4,5 +4,6 @@ vim.filetype.add {
     ['aliases'] = 'bash',
     ['user-data'] = 'yaml',
     ['meta-data'] = 'yaml',
+    ['config'] = 'json',
   },
 }
