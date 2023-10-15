@@ -116,6 +116,10 @@ vim.o.fillchars = 'fold: ,vert: ,eob: ,msgsep:‾'
 vim.api.nvim_set_hl(0, 'VertSplit', { link = 'NvimTreeNormal' })
 vim.api.nvim_set_hl(0, 'NonText', { fg = '#39687a' })
 
+-- Make background transparent
+vim.api.nvim_set_hl(0, 'Normal', { ctermbg = 'None', bg = 'None' })
+vim.api.nvim_set_hl(0, 'NormalNC', { ctermbg = 'None', bg = 'None' })
+
 ---- SCRIPTS ----
 -- Save as superuser
 
