@@ -5,6 +5,11 @@ OS = jit.os -- "OSX" or "Linux"
 ---- PREREQUISITES ----
 vim.o.tgc = true
 
+-- neovide configuration
+if vim.g.neovide then
+  require 'neovide'
+end
+
 -- disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
