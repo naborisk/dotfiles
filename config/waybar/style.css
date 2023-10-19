@@ -1,7 +1,6 @@
 * {
     border: none;
     border-radius: 0;
-    font-family: Fira Code Nerd Font;
     font-size: 16px;
     min-height: 0;
 }
@@ -10,6 +9,14 @@ window#waybar {
     background: rgba(1, 1, 1, 0);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: white;
+}
+
+.modules-left {
+  padding-left: 10px;
+}
+
+.modules-right {
+  padding-right: 10px;
 }
 
 tooltip {
@@ -40,8 +47,25 @@ tooltip label {
     padding: 0 20px;
 }
 
-#mode, #clock, #battery {
+#mode,
+#clock,
+#battery,
+#cpu,
+#memory,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#backlight,
+#temperature {
     padding: 0 10px;
+    background: rgba(100, 114, 125, 0.8);
+    border-radius: 50px;
+}
+
+#tray {
+  padding: 0 10px;
+  background: rgba(100, 114, 125, 0.8);
+  border-radius: 50px;
 }
 
 #mode {

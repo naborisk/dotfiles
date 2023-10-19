@@ -4,9 +4,9 @@
     "height": 30,
     "spacing": 4,
     "output": "HDMI-A-1",
-    "modules-left": ["hyprland/scratchpad", "custom/media"],
+    "modules-left": ["tray", "hyprland/scratchpad", "custom/media"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock", "tray"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "sway/language", "battery", "battery#bat2", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
@@ -71,7 +71,6 @@
         }
     },
     "tray": {
-
         "spacing": 10
     },
     "clock": {
