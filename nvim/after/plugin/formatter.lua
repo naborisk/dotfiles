@@ -28,6 +28,18 @@ require('formatter').setup {
       require('formatter.filetypes.css').prettier,
     },
 
+    yaml = {
+      require('formatter.filetypes.yaml').prettier,
+    },
+
+    json = {
+      require('formatter.filetypes.json').prettier,
+    },
+
+    terraform = {
+      require('formatter.filetypes.terraform').terraformfmt,
+    },
+
     ['*'] = {
       require('formatter.filetypes.any').remove_trailing_whitespace,
     },
