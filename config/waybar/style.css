@@ -1,18 +1,20 @@
 * {
-    border: none;
-    border-radius: 0;
-    font-size: 16px;
-    min-height: 0;
-    /* border: 1px solid red; */
+  border: none;
+  border-radius: 0;
+  font-size: 16px;
+  min-height: 0;
+  /* border: 1px solid red; */
 }
 
 #waybar {
-    background: rgba(1, 1, 1, 0);
-    /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
-    color: white;
+  background: rgba(1, 1, 1, 0);
+  /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+  color: white;
 }
 
-.modules-left, .modules-right, .modules-center {
+.modules-left,
+.modules-right,
+.modules-center {
   padding: 5px 0;
 }
 
@@ -33,23 +35,23 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 0 5px;
-    /* background: transparent; */
-    color: white;
-    /* border-bottom: 3px solid transparent; */
-    transition: padding 0.2s ease-out;
-    background: rgba(100, 114, 125, 0.8);
-    border-radius: 50px;
-    color: white;
-    margin: 0 5px;
-    padding: 0 10px;
+  padding: 0 5px;
+  /* background: transparent; */
+  color: white;
+  /* border-bottom: 3px solid transparent; */
+  transition: padding 0.2s ease-out;
+  background: rgba(100, 114, 125, 0.8);
+  border-radius: 50px;
+  color: white;
+  margin: 0 5px;
+  padding: 0 10px;
 }
 
 #workspaces button.active {
-    background: rgba(150, 164, 175, 0.8);
-    border-radius: 50px;
-    color: white;
-    padding: 0 20px;
+  background: rgba(150, 164, 175, 0.8);
+  border-radius: 50px;
+  color: white;
+  padding: 0 20px;
 }
 
 #mode,
@@ -62,9 +64,9 @@ tooltip label {
 #idle_inhibitor,
 #backlight,
 #temperature {
-    padding: 0 10px;
-    background: rgba(100, 114, 125, 0.8);
-    border-radius: 50px;
+  padding: 0 10px;
+  background: rgba(100, 114, 125, 0.8);
+  border-radius: 50px;
 }
 
 #tray {
@@ -74,37 +76,37 @@ tooltip label {
 }
 
 #mode {
-    background: #64727D;
-    border-bottom: 3px solid white;
+  background: #64727d;
+  border-bottom: 3px solid white;
 }
 
 #clock {
-    background-color: #64727D;
+  background-color: #64727d;
 }
 
 #battery {
-    background-color: #ffffff;
-    color: black;
+  background-color: #ffffff;
+  color: black;
 }
 
 #battery.charging {
-    color: white;
-    background-color: #26A65B;
+  color: white;
+  background-color: #26a65b;
 }
 
 @keyframes blink {
-    to {
-        background-color: #ffffff;
-        color: black;
-    }
+  to {
+    background-color: #ffffff;
+    color: black;
+  }
 }
 
 #battery.warning:not(.charging) {
-    background: #f53c3c;
-    color: white;
-    animation-name: blink;
-    animation-duration: 0.5s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  background: #f53c3c;
+  color: white;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
 }
