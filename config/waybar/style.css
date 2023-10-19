@@ -3,12 +3,17 @@
     border-radius: 0;
     font-size: 16px;
     min-height: 0;
+    /* border: 1px solid red; */
 }
 
-window#waybar {
+#waybar {
     background: rgba(1, 1, 1, 0);
     /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
     color: white;
+}
+
+.modules-left, .modules-right, .modules-center {
+  padding: 5px 0;
 }
 
 .modules-left {
@@ -33,7 +38,7 @@ tooltip label {
     color: white;
     /* border-bottom: 3px solid transparent; */
     transition: padding 0.2s ease-out;
-    background: #64727D;
+    background: rgba(100, 114, 125, 0.8);
     border-radius: 50px;
     color: white;
     margin: 0 5px;
@@ -41,7 +46,7 @@ tooltip label {
 }
 
 #workspaces button.active {
-    background: #333333;
+    background: rgba(150, 164, 175, 0.8);
     border-radius: 50px;
     color: white;
     padding: 0 20px;
