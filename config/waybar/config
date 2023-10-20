@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "bottom",
     "height": 30,
-    "spacing": 4,
+    "spacing": 0,
     "output": "HDMI-A-1",
     "modules-left": ["tray", "custom/media"],
     "modules-center": ["hyprland/workspaces"],

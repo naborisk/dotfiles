@@ -30,6 +30,7 @@ tooltip {
   background: rgba(43, 48, 59, 0.5);
   border: 1px solid rgba(100, 114, 125, 0.5);
 }
+
 tooltip label {
   color: white;
 }
@@ -54,34 +55,37 @@ tooltip label {
   padding: 0 20px;
 }
 
+#idle_inhibitor {
+  border-radius: 7px 0 0 7px;
+}
+
+#idle_inhibitor,
 #mode,
-#clock,
 #battery,
 #cpu,
 #memory,
 #network,
 #pulseaudio,
-#idle_inhibitor,
 #backlight,
-#temperature {
-  padding: 0 10px;
+#temperature,
+#clock {
   background: rgba(100, 114, 125, 0.8);
-  border-radius: 50px;
+  padding: 1px 5px;
+}
+
+#clock {
+  border-radius: 0 7px 7px 0;
 }
 
 #tray {
   padding: 0 10px;
   background: rgba(100, 114, 125, 0.8);
-  border-radius: 50px;
+  border-radius: 7px;
 }
 
 #mode {
   background: #64727d;
   border-bottom: 3px solid white;
-}
-
-#clock {
-  background-color: #64727d;
 }
 
 #battery {
