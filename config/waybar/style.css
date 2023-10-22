@@ -5,6 +5,7 @@
   border: none;
   border-radius: 0;
   font-size: 16px;
+  font-family: Fira Code Nerd Font;
   min-height: 0;
   /* border: 1px solid red; */
 }
@@ -81,36 +82,4 @@ tooltip label {
   padding: 0 10px;
   border-radius: 7px;
   background: @button-bg;
-}
-
-#mode {
-  background: #64727d;
-  border-bottom: 3px solid white;
-}
-
-#battery {
-  background-color: #ffffff;
-  color: black;
-}
-
-#battery.charging {
-  color: white;
-  background-color: #26a65b;
-}
-
-@keyframes blink {
-  to {
-    background-color: #ffffff;
-    color: black;
-  }
-}
-
-#battery.warning:not(.charging) {
-  background: #f53c3c;
-  color: white;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }

@@ -6,7 +6,7 @@
     "output": "HDMI-A-1",
     "modules-left": ["tray", "custom/media"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
@@ -72,7 +72,6 @@
     },
     "temperature": {
 
-
         "critical-threshold": 80,
 
         "format": "{temperatureC}°C {icon}",
@@ -82,20 +81,6 @@
 
         "format": "{percent}% {icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
-    },
-    "battery": {
-        "states": {
-
-            "warning": 30,
-            "critical": 15
-        },
-        "format": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
-        "format-alt": "{time} {icon}",
-
-
-        "format-icons": ["", "", "", "", ""]
     },
     "network": {
 
