@@ -1,3 +1,6 @@
+@define-color waybar-bg rgba(0,0,0,0);
+@define-color button-bg rgba(25, 38, 85, 0.8);
+
 * {
   border: none;
   border-radius: 0;
@@ -7,8 +10,7 @@
 }
 
 #waybar {
-  background: rgba(1, 1, 1, 0);
-  /* border-bottom: 3px solid rgba(100, 114, 125, 0.5); */
+  background: @waybar-bg;
   color: white;
 }
 
@@ -27,8 +29,8 @@
 }
 
 tooltip {
-  background: rgba(43, 48, 59, 0.5);
-  border: 1px solid rgba(100, 114, 125, 0.5);
+  background: @button-bg;
+  border: 1px solid @button-bg;
 }
 
 tooltip label {
@@ -37,22 +39,20 @@ tooltip label {
 
 #workspaces button {
   padding: 0 5px;
-  /* background: transparent; */
   color: white;
-  /* border-bottom: 3px solid transparent; */
   transition: padding 0.2s ease-out;
-  background: rgba(100, 114, 125, 0.8);
   border-radius: 50px;
   color: white;
   margin: 0 5px;
   padding: 0 10px;
+  background: @button-bg;
 }
 
 #workspaces button.active {
-  background: rgba(150, 164, 175, 0.8);
   border-radius: 50px;
   color: white;
   padding: 0 20px;
+  background: @button-bg;
 }
 
 #idle_inhibitor {
@@ -69,8 +69,8 @@ tooltip label {
 #backlight,
 #temperature,
 #clock {
-  background: rgba(100, 114, 125, 0.8);
   padding: 1px 5px;
+  background: @button-bg;
 }
 
 #clock {
@@ -79,8 +79,8 @@ tooltip label {
 
 #tray {
   padding: 0 10px;
-  background: rgba(100, 114, 125, 0.8);
   border-radius: 7px;
+  background: @button-bg;
 }
 
 #mode {

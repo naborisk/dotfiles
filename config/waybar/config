@@ -1,4 +1,4 @@
-{
+[{
     "layer": "top",
     "position": "bottom",
     "height": 30,
@@ -9,7 +9,7 @@
     "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
-        "all-outputs": true,
+        "all-outputs": false,
         "warp-on-scroll": false,
         "format": "{name}"
     },
@@ -136,4 +136,13 @@
         "escape": true,
         "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
     }
-}
+}, {
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "spacing": 0,
+    "output": "DP-2",
+    "modules-left": ["tray", "custom/media"],
+    "modules-center": ["hyprland/workspaces"],
+    "modules-right": ["mpd", "cpu", "memory", "temperature", "clock"]
+}]
