@@ -83,12 +83,6 @@ require('lazy').setup({
     'nvim-telescope/telescope.nvim',
     tag = '0.1.4',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    keys = {
-      { '<leader>ft', ':Telescope<cr>' },
-      { '<leader>ff', ':Telescope find_files<cr>' },
-      { '<leader>fg', ':Telescope git_files<cr>' },
-      { '<leader>fr', ':Telescope live_grep<cr>' },
-    },
   },
 
   -- nvim-treesitter

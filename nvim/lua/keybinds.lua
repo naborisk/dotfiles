@@ -16,7 +16,8 @@ map('i', '<c-p>', '<nop>')
 vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', { expr = true, silent = true })
 
 -- format using nvim lsp
-map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
+-- map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
+map('n', '<leader>bf', ':FormatWrite<cr>')
 
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
@@ -44,3 +45,14 @@ map('n', '<leader>w', ':WhichKey<cr>')
 
 -- add a CSS class
 map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
+
+-- telescope
+map('n', '<leader>ft', ':Telescope<cr>')
+map('n', '<leader>ff', ':Telescope find_files<cr>')
+map('n', '<leader>fg', ':Telescope git_files<cr>')
+map('n', '<leader>fr', ':Telescope live_grep<cr>')
+
+map('n', '<leader>tt', ':Telescope<cr>')
+map('n', '<c-p>', ':Telescope<cr>')
+map('n', '<leader>tb', ':Telescope buffers<cr>')
+map('n', '<leader>tr', ':Telescope lsp_references<cr>')

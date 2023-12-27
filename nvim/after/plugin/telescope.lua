@@ -15,6 +15,7 @@ require('telescope').setup {
     mappings = {
       i = {
         ['<esc>'] = actions.close,
+        ['<c-x>'] = actions.delete_buffer,
       },
     },
   },
