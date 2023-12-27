@@ -9,6 +9,8 @@ local utils = require 'heirline.utils'
 local colors = {
   fg = utils.get_highlight('StatusLine').fg,
   bg = utils.get_highlight('StatusLine').bg,
+  fg_inactive = utils.get_highlight('StatusLineNC').fg,
+  bg_inactive = utils.get_highlight('StatusLineNC').bg,
   bright_bg = utils.get_highlight('Folded').bg,
   bright_fg = utils.get_highlight('Folded').fg,
   red = utils.get_highlight('DiagnosticError').fg,
@@ -90,7 +92,8 @@ local InactiveStatusLine = {
   LSPActive,
   Space,
   hl = {
-    bg = 'bg',
+    bg = 'bg_inactive',
+    fg = 'fg_inactive',
   },
 }
 
