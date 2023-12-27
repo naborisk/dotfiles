@@ -6,7 +6,7 @@ local LSPActive = {
   provider = function()
     return ' ' .. #vim.lsp.get_active_clients { bufnr = 0 } .. ' '
   end,
-  hl = { bg = 'green', bold = true },
+  hl = { bg = 'blue', bold = true },
 }
 
 return LSPActive
