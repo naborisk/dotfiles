@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  wl-paste
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  pbpaste
+elif [[ "$OSTYPE" == "msys" ]]; then
+  paste.exe
+fi
