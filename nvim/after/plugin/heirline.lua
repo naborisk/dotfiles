@@ -46,6 +46,7 @@ local FileType = require 'filetype'
 local FileName = require 'filename'
 local FullPath = require 'fullpath'
 local Git = require 'git'
+local Navic = require 'navic'
 
 local BufnameStatusLine = {
   condition = function()
@@ -99,8 +100,9 @@ local InactiveStatusLine = {
 
 local DefaultStatusLine = {
   ViMode,
-  Align,
   Space,
+  FileName,
+  Align,
   Space,
   Git,
   Space,
@@ -117,7 +119,7 @@ local DefaultStatusLine = {
 
 local DefaultWinBar = {
   Align,
-  FileName,
+  Navic,
   Align,
 }
 

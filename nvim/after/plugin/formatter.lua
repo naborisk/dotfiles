@@ -46,9 +46,13 @@ require('formatter').setup {
   },
 }
 
-vim.cmd [[
-augroup FormatAutogroup
-  autocmd!
-  autocmd BufWritePost * FormatWrite
-augroup END
-]]
+-- prevent formatting at work
+-- TODO: make this a persistent toggle
+if USER == 'naborisk' then
+  vim.cmd [[
+  augroup FormatAutogroup
+    autocmd!
+    autocmd BufWritePost * FormatWrite
+  augroup END
+  ]]
+end

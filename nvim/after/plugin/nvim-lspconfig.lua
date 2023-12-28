@@ -6,6 +6,8 @@ local configs = require 'lspconfig.configs'
 -- Get installed language servers from mason
 local get_servers = mason_lspconfig.get_installed_servers
 
+local navic = require 'nvim-navic'
+
 -- ensure certain servers are installed
 mason_lspconfig.setup {
   ensure_installed = {
@@ -122,6 +124,9 @@ for _, server_name in ipairs(get_servers()) do
     filetypes = filetypes,
     settings = settings,
     capabilities = lsp_capabilities,
+    on_attach = function(client, bufnr)
+      navic.attach(client, bufnr)
+    end,
   }
 end
 

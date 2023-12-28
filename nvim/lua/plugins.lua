@@ -68,6 +68,13 @@ require('lazy').setup({
   -- Heirline (Status line + Buffer line)
   'rebelot/heirline.nvim',
 
+  {
+    'SmiteshP/nvim-navic',
+    dependencies = {
+      'neovim/nvim-lspconfig',
+    },
+  },
+
   -- File explorer
   {
     'kyazdani42/nvim-tree.lua',

@@ -12,6 +12,9 @@ map('n', '<leader>pf', ':%!prettier %:p<cr>')
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
+-- copilot
+-- disable tab mapping fot copilot
+vim.g.copilot_no_tab_map = true
 -- <c-g> for copilot accept (will append some binary if vim.keymap.set is used)
 vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', { expr = true, silent = true })
 
@@ -53,6 +56,6 @@ map('n', '<leader>fg', ':Telescope git_files<cr>')
 map('n', '<leader>fr', ':Telescope live_grep<cr>')
 
 map('n', '<leader>tt', ':Telescope<cr>')
-map('n', '<c-p>', ':Telescope<cr>')
+map('n', '<c-y>', ':Telescope<cr>')
 map('n', '<leader>tb', ':Telescope buffers<cr>')
 map('n', '<leader>tr', ':Telescope lsp_references<cr>')
