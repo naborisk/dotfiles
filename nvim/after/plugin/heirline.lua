@@ -100,10 +100,7 @@ local InactiveStatusLine = {
 
 local DefaultStatusLine = {
   ViMode,
-  Space,
-  FileName,
   Align,
-  Space,
   Git,
   Space,
   FileType,
@@ -118,7 +115,11 @@ local DefaultStatusLine = {
 }
 
 local DefaultWinBar = {
-  Align,
+  Space,
+  Space,
+  Space,
+  FileName,
+  Space,
   Navic,
   Align,
 }
