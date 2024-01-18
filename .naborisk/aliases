@@ -24,6 +24,9 @@ alias dockerstart='sudo systemctl start docker && sudo iptables -I FORWARD -i br
 # Kubernetes
 alias k=kubectl
 
+# Japanese Dictionary
+alias jp=myougiden
+
 # use lsd if available
 ls() {
   if command -v lsd > /dev/null; then
