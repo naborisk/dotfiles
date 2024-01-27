@@ -99,14 +99,10 @@ require('lazy').setup({
   },
 
   -- Auto pairs, auto tags
-  -- 'windwp/nvim-autopairs',
   {
-    'altermo/ultimate-autopair.nvim',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    branch = 'v0.6', --recomended as each new version will have breaking changes
-    opts = {
-      --Config goes here
-    },
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    opts = {},
   },
   'windwp/nvim-ts-autotag',
 
