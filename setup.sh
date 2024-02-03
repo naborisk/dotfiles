@@ -52,7 +52,7 @@ fi
 if ! command -v starship &> /dev/null
 then
   echo 'starship not found, installing...'
-  curl -sS https://starship.rs/install.sh | sh
+  curl -sS https://starship.rs/install.sh | sh -s -- --yes
 else
   echo 'starship installed, skipping...'
 fi
