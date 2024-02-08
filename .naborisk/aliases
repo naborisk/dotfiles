@@ -18,7 +18,7 @@ alias prb.='podman run -it --rm --entrypoint /bin/bash ${PWD##*/}' # Podman Run 
 alias pb='podman buildx build -t ${PWD##*/}'
 alias pb.='podman buildx build -t ${PWD##*/} .'
 
-# Docker start for Arch
+# Docker start for Arch (Prevents br0 from stopping to work)
 alias dockerstart='sudo systemctl start docker && sudo iptables -I FORWARD -i br0 -o br0 -j ACCEPT'
 
 # Kubernetes
