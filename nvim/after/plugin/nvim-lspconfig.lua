@@ -125,7 +125,9 @@ for _, server_name in ipairs(get_servers()) do
     settings = settings,
     capabilities = lsp_capabilities,
     on_attach = function(client, bufnr)
-      navic.attach(client, bufnr)
+      if lspconfig[server_name].server_capabilities.documentSymbolProvider then
+        navic.attach(client, bufnr)
+      end
     end,
   }
 end
