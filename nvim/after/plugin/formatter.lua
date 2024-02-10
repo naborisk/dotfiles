@@ -12,6 +12,14 @@ require('formatter').setup {
       require('formatter.filetypes.javascript').prettier,
     },
 
+    javascriptreact = {
+      require('formatter.filetypes.javascript').prettier,
+    },
+
+    typescriptreact = {
+      require('formatter.filetypes.typescript').prettier,
+    },
+
     typescript = {
       require('formatter.filetypes.typescript').prettier,
     },
