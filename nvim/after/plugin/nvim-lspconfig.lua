@@ -81,7 +81,7 @@ local lsp_options = {
   },
 
   tailwindcss = {
-    filetypes = { 'html', 'svelte', 'astro', 'vue' },
+    filetypes = { 'html', 'svelte', 'astro', 'vue', 'javascriptreact', 'typescriptreact' },
   },
 
   emmet_ls = {
