@@ -3,7 +3,7 @@
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
-  
+
   # distro specific commands
   . /etc/os-release
   case $ID in
@@ -57,11 +57,14 @@ else
   echo 'starship installed, skipping...'
 fi
 
+#--ZSH CONFIGURATION--
+# install zsh configuration
+ln -sf $(pwd)/.zshrc $HOME/.zshrc
+
 # ensure .config exists
 mkdir -p $HOME/.config/
 
 # add prompt init script if not exist in .zshrc
-
 if ! grep -q 'starship init zsh' $HOME/.zshrc
 then
   echo 'adding starship init script'
