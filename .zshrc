@@ -14,15 +14,20 @@ compinit
 
 setopt HIST_IGNORE_SPACE
 
-# Sourcing path files
-if [ -f ~/.path ]; then
-  . ~/.path
+autoload -U +X bashcompinit && bashcompinit
+
+if command -v starship > /dev/null; then
+  eval "$(starship init zsh)"
 fi
 
 if command -v zoxide > /dev/null; then
   eval "$(zoxide init --cmd cd zsh)"
 fi
 
-eval "$(starship init zsh)"
 export PATH=$PATH:$HOME/.naborisk/bin
 source ~/.naborisk/aliases
+
+# Sourcing local zshrc (for paths, etc.)
+if [ -f ~/.zshrc.local ]; then
+  . ~/.zshrc.local
+fi
