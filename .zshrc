@@ -16,6 +16,15 @@ setopt HIST_IGNORE_SPACE
 
 autoload -U +X bashcompinit && bashcompinit
 
+# Load zinit
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+source "${ZINIT_HOME}/zinit.zsh"
+
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
 if command -v starship > /dev/null; then
   eval "$(starship init zsh)"
 fi
@@ -28,6 +37,9 @@ export PATH=$PATH:$HOME/.naborisk/bin
 source ~/.naborisk/aliases
 
 # Sourcing local zshrc (for paths, etc.)
-if [ -f ~/.zshrc.local ]; then
-  . ~/.zshrc.local
-fi
+[ -e ~/.zshrc.local ] && . ~/.zshrc.local
+
+source <(argo completion zsh)
+
+[ -e /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+[ -e /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
