@@ -39,7 +39,11 @@ source ~/.naborisk/aliases
 # Sourcing local zshrc (for paths, etc.)
 [ -e ~/.zshrc.local ] && . ~/.zshrc.local
 
-source <(argo completion zsh)
+if command -v argo > /dev/null; then
+  source <(argo completion zsh)
+fi
 
 [ -e /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
 [ -e /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
