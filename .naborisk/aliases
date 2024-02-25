@@ -39,3 +39,8 @@ ls() {
     command ls $@
   fi
 }
+
+# check installed packages with pacman
+command -v pacman > /dev/null && alias pacinstalled="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}'"
+command -v pacman > /dev/null && alias pacuninstall="pacman -Qq | fzf --multi --preview 'pacman -Qi {1}' | xargs -ro sudo pacman -Rns"
+command -v pacman > /dev/null && alias pacsearch="pacman -Slq | fzf --multi --preview 'pacman -Si {1}' | xargs -ro sudo pacman -S"
