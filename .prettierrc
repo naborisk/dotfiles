@@ -4,3 +4,9 @@ singleQuote: true
 tabWidth: 2
 arrowParens: avoid
 singleAttributePerLine: true
+overrides:
+  - files:
+      - '*.yaml'
+      - '*.yml'
+    options:
+      bracketSpacing: false
