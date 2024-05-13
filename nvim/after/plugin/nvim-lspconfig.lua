@@ -64,7 +64,7 @@ local lsp_options = {
   },
 
   ansiblels = {
-    filetypes = { 'yaml' },
+    -- filetypes = { 'yaml' },
     settings = {
       ansible = {
         validation = {
