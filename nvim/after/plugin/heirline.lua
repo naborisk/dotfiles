@@ -47,6 +47,7 @@ local FileName = require 'filename'
 local FullPath = require 'fullpath'
 local Git = require 'git'
 local Navic = require 'navic'
+local GitUser = require 'gituser'
 
 local BufnameStatusLine = {
   condition = function()
@@ -122,6 +123,8 @@ local DefaultWinBar = {
   Space,
   Navic,
   Align,
+  GitUser,
+  Space,
 }
 
 local SpecialWinBar = {
