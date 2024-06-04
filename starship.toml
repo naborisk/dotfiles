@@ -1,6 +1,6 @@
 # modified from Tokyo Night preset
 format = """
-[ $os $hostname](bg:#a3aed2 fg:#090c0c)\
+[ $os $env_var $hostname](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $gcloud\
 $directory\
@@ -90,3 +90,8 @@ symbol = "󱇶"
 style = "fg:#e3e5e5 bg:#769ff0"
 format = '[ $symbol $domain (\($region\))]($style)'
 disabled = true
+
+[env_var.STARSHIP_STATUS]
+default = ''
+# style = "fg:#e3e5e5 bg:#769ff0"
+format = '$env_value'

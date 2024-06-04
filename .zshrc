@@ -53,3 +53,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 source <(starship completions zsh)
+
+st() {
+  export STARSHIP_STATUS="$@"
+}
