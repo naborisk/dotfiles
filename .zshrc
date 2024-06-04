@@ -55,5 +55,9 @@ fi
 source <(starship completions zsh)
 
 st() {
-  export STARSHIP_STATUS="$@ "
+  if [ "$#" -eq 0 ]; then
+    unset STARSHIP_STATUS
+  else
+    export STARSHIP_STATUS="$@ "
+  fi
 }
