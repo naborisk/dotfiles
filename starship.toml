@@ -1,6 +1,6 @@
 # modified from Tokyo Night preset
 format = """
-[ $os $env_var $hostname](bg:#a3aed2 fg:#090c0c)\
+[ $os $env_var$hostname](bg:#a3aed2 fg:#090c0c)\
 [](bg:#769ff0 fg:#a3aed2)\
 $gcloud\
 $directory\

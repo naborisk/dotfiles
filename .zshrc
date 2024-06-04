@@ -55,5 +55,5 @@ fi
 source <(starship completions zsh)
 
 st() {
-  export STARSHIP_STATUS="$@"
+  export STARSHIP_STATUS="$@ "
 }
