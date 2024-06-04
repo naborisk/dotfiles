@@ -39,6 +39,10 @@ source ~/.naborisk/aliases
 # Sourcing local zshrc (for paths, etc.)
 [ -e ~/.zshrc.local ] && . ~/.zshrc.local
 
+# Disable telemetry
+[ -e ~/.telemetry.zsh ] && . ~/.telemetry.zsh
+
+# Sourcing completions
 if command -v argo > /dev/null; then
   source <(argo completion zsh)
 fi
@@ -47,3 +51,5 @@ fi
 [ -e /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+source <(starship completions zsh)

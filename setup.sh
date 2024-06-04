@@ -25,6 +25,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   then
     echo 'brew not found, installing...'
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    # TODO: add brew zsh init script here
   else
     echo 'brew already installed'
   fi
