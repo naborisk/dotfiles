@@ -76,7 +76,7 @@ fi
 ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
 #install files in home directory
-FILES_TO_INSTALL=".tmux.conf .prettierrc"
+FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh"
 for FILE in $FILES_TO_INSTALL
 do
   # backup the current file to install if found and is not a link
