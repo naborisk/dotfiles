@@ -20,7 +20,7 @@ vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', { expr = true, s
 
 -- format using nvim lsp
 -- map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
-map('n', '<leader>bf', ':FormatWrite<cr>')
+-- map('n', '<leader>bf', ':FormatWrite<cr>')
 
 -- toggle file explorer
 map('n', '<C-b>', ':NvimTreeToggle<cr>')
@@ -54,6 +54,9 @@ map('n', '<leader>ft', ':Telescope<cr>')
 map('n', '<leader>ff', ':Telescope find_files<cr>')
 map('n', '<leader>fg', ':Telescope git_files<cr>')
 map('n', '<leader>fr', ':Telescope live_grep<cr>')
+
+-- open buffer list with Telescope
+map('n', '<leader>b', ':Telescope buffers<cr>')
 
 map('n', '<leader>tt', ':Telescope<cr>')
 map('n', '<c-y>', ':Telescope<cr>')
