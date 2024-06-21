@@ -33,3 +33,9 @@ vim.o.clipboard = 'unnamedplus'
 
 -- hide showmode
 vim.o.showmode = false
+
+-- load NVIM Specific PATH from env
+local NVIM_PATH = os.getenv('NVIM_PATH')
+if NVIM_PATH then
+  vim.cmd("let $PATH='"..NVIM_PATH..":'.$PATH")
+end
