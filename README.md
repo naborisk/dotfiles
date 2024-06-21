@@ -32,3 +32,9 @@ If there are changes, to the files, just do a `git pull` and new files will work
 - `.naborisk/bin/`: executable scripts
 - `.stylua.toml`: Stylua config file
 - `.prettierrc`: Prettier config file
+
+## `NVIM_PATH`
+When `NVIM_PATH` is set, it will be appended in front of `$PATH`, useful for specifying specific version of Node to use with LSP, etc.
+```sh
+export NVIM_PATH="/path/to/bin/"
+```
