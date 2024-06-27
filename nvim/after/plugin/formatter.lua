@@ -10,18 +10,22 @@ require('formatter').setup {
 
     javascript = {
       require('formatter.filetypes.javascript').prettier,
+      require('formatter.filetypes.javascript').eslint_d,
     },
 
     javascriptreact = {
       require('formatter.filetypes.javascript').prettier,
+      require('formatter.filetypes.javascript').eslint_d,
     },
 
     typescriptreact = {
       require('formatter.filetypes.typescript').prettier,
+      require('formatter.filetypes.javascript').eslint_d,
     },
 
     typescript = {
       require('formatter.filetypes.typescript').prettier,
+      require('formatter.filetypes.javascript').eslint_d,
     },
 
     svelte = {
