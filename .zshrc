@@ -61,3 +61,6 @@ st() {
     export STARSHIP_STATUS="$@ "
   fi
 }
+
+# Plugins
+zinit light Aloxaf/fzf-tab
