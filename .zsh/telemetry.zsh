@@ -11,6 +11,7 @@ export SCOUT_DISABLE=1
 
 # dotnet
 export DOTNET_CLI_TELEMETRY_OPTOUT="true"
+
 # brew
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -48,9 +49,9 @@ export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
 # terraform, packer, cdk, weave
 export CHECKPOINT_DISABLE=1
 
-# GCloud
+# GCloud (can make shell start slow, usually needed to run once)
 if command -v gcloud >/dev/null 2>&1 ; then
-    gcloud config set disable_usage_reporting true >/dev/null 2>&1
+    # gcloud config set disable_usage_reporting true >/dev/null 2>&1
 fi
 
 # Netlify
