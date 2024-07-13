@@ -1,4 +1,0 @@
-#!/bin/bash
-
-# Script to check if calling from .naborisk/bin works
-echo 'hello from .naborisk/bin !'
