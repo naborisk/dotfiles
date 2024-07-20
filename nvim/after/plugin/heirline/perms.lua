@@ -1,3 +1,4 @@
+-- WIP: not working yet maybe
 local Perms = {
   provider = function()
     local path = vim.fn.expand('%:t')
