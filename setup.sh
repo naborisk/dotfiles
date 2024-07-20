@@ -7,16 +7,16 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # distro specific commands
   . /etc/os-release
   case $ID in
-    ubuntu)
-      echo 'Ubuntu detected, attemping to install latest neovim'
-      sudo apt-get install -y software-properties-common
-      sudo add-apt-repository -y ppa:neovim-ppa/unstable
-      sudo apt-get -y update
-      sudo apt-get install -y neovim
-      ;;
-    arch)
-      echo 'Arch detected'
-      ;;
+  ubuntu)
+    echo 'Ubuntu detected, attemping to install latest neovim'
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository -y ppa:neovim-ppa/unstable
+    sudo apt-get -y update
+    sudo apt-get install -y neovim
+    ;;
+  arch)
+    echo 'Arch detected'
+    ;;
   esac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
@@ -26,8 +26,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     command echo "[macOS] $@"
   }
 
-  if ! command -v brew &> /dev/null
-  then
+  if ! command -v brew &>/dev/null; then
     echo 'brew not found, installing...'
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     # TODO: add brew zsh init script here
@@ -45,8 +44,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'Disabling mouse acceleration'
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
-  if ! command -v nvim &> /dev/null
-  then
+  if ! command -v nvim &>/dev/null; then
     echo 'neovim not found, installing...'
     brew install neovim
   else
@@ -60,8 +58,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 #--PROMPT INSTALLATION--
-if ! command -v starship &> /dev/null
-then
+if ! command -v starship &>/dev/null; then
   echo 'starship not found, installing...'
   curl -sS https://starship.rs/install.sh | sh -s -- --yes
 else
@@ -76,10 +73,9 @@ ln -sf $(pwd)/.zshrc $HOME/.zshrc
 mkdir -p $HOME/.config/
 
 # add prompt init script if not exist in .zshrc
-if ! grep -q 'starship init zsh' $HOME/.zshrc
-then
+if ! grep -q 'starship init zsh' $HOME/.zshrc; then
   echo 'adding starship init script'
-  echo 'eval "$(starship init zsh)"' >> $HOME/.zshrc
+  echo 'eval "$(starship init zsh)"' >>$HOME/.zshrc
 fi
 
 # install starship.toml in ~/.config
@@ -87,8 +83,7 @@ ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
 #install files in home directory
 FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh .naborisk .zsh"
-for FILE in $FILES_TO_INSTALL
-do
+for FILE in $FILES_TO_INSTALL; do
   # backup the current file to install if found and is not a link
   if [[ -f "$HOME/$FILE" && ! -L "$HOME/$FILE" ]]; then
     echo "$FILE found, backing up to $FILE.bak"
@@ -109,8 +104,8 @@ ln -sfn $(readlink -f nvim) ~/.config/nvim
 
 # add .naborisk/bin to PATH if not exist
 echo 'adding .naborisk/bin to PATH'
-grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export PATH=$PATH:$HOME/.naborisk/bin' >> $HOME/.zshrc
+grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export PATH=$PATH:$HOME/.naborisk/bin' >>$HOME/.zshrc
 
 # add alias to .zshrc if not exist
 echo 'adding .naborisk/aliases to .zshrc'
-grep -qxF 'source ~/.naborisk/aliases' $HOME/.zshrc || echo 'source ~/.naborisk/aliases' >> $HOME/.zshrc
+grep -qxF 'source ~/.naborisk/aliases' $HOME/.zshrc || echo 'source ~/.naborisk/aliases' >>$HOME/.zshrc
