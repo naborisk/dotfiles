@@ -21,6 +21,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
 
+  # prefix echo command with [macOS]
+  echo() {
+    command echo "[macOS] $@"
+  }
+
   if ! command -v brew &> /dev/null
   then
     echo 'brew not found, installing...'
@@ -30,7 +35,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'brew already installed'
   fi
 
-  echo 'Intalling keymap...'
+  echo 'Intalling macOS keymap...'
   mkdir -p $HOME/Library/LaunchAgents/
   cp ./macos-keymap/com.user.loginscript.plist $HOME/Library/LaunchAgents/
 
@@ -47,6 +52,11 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   else
     echo 'neovim already installed'
   fi
+
+  # return echo to normal
+  echo() {
+    command echo "$@"
+  }
 fi
 
 #--PROMPT INSTALLATION--
@@ -76,7 +86,7 @@ fi
 ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
 #install files in home directory
-FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh"
+FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh .naborisk .zsh"
 for FILE in $FILES_TO_INSTALL
 do
   # backup the current file to install if found and is not a link
@@ -85,8 +95,11 @@ do
     mv $HOME/$FILE $HOME/$FILE.bak
   fi
 
-  echo "linking $FILE"
-  ln -sf $(pwd)/$FILE $HOME/$FILE
+  # check if given path is directory
+  TYPE=$(test -d $FILE && echo 'directory' || echo 'file')
+
+  echo "linking $TYPE $FILE"
+  ln -sfn $(pwd)/$FILE $HOME/$FILE
 done
 
 #--NEOVIM CONFIGURATION--
@@ -94,15 +107,10 @@ mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
 
-#--.naborisk--
-# symlink .naborisk
-echo 'linking .naborisk'
-ln -sfn $(pwd)/.naborisk $HOME/.naborisk
-
-# add .naborisk/bin to PATH
+# add .naborisk/bin to PATH if not exist
 echo 'adding .naborisk/bin to PATH'
 grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export PATH=$PATH:$HOME/.naborisk/bin' >> $HOME/.zshrc
 
-# add alias to .zshrc
+# add alias to .zshrc if not exist
 echo 'adding .naborisk/aliases to .zshrc'
 grep -qxF 'source ~/.naborisk/aliases' $HOME/.zshrc || echo 'source ~/.naborisk/aliases' >> $HOME/.zshrc
