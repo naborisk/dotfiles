@@ -1,14 +1,8 @@
-if command -v starship > /dev/null; then
-  eval "$(starship init zsh)"
-fi
-
-if command -v zoxide > /dev/null; then
-  eval "$(zoxide init --cmd cd zsh)"
-fi
-
 typeset -a sources
 
 sources=(
+  $HOME/.zsh/init.zsh
+
   $HOME/.zsh/options.zsh
   $HOME/.zsh/completions.zsh
   $HOME/.zsh/telemetry.zsh
@@ -21,11 +15,11 @@ sources=(
 
   /usr/share/fzf/key-bindings.zsh
   /usr/share/fzf/completion.zsh
+
+  $HOME/.zshrc.local
 )
 
 for source in $sources; do
   [ -e $source ] && source $source
 done
-
-# Sourcing local zshrc (for paths, etc.)
-[ -e ~/.zshrc.local ] && . ~/.zshrc.local
+eval "$(starship init zsh)"

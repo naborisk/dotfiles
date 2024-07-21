@@ -101,11 +101,3 @@ done
 mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
-
-# add .naborisk/bin to PATH if not exist
-echo 'adding .naborisk/bin to PATH'
-grep -qxF 'export PATH=$PATH:$HOME/.naborisk/bin' $HOME/.zshrc || echo 'export PATH=$PATH:$HOME/.naborisk/bin' >>$HOME/.zshrc
-
-# add alias to .zshrc if not exist
-echo 'adding .naborisk/aliases to .zshrc'
-grep -qxF 'source ~/.naborisk/aliases' $HOME/.zshrc || echo 'source ~/.naborisk/aliases' >>$HOME/.zshrc

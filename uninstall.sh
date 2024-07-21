@@ -8,8 +8,14 @@ do
   fi
 done
 
-echo 'removing starship'
-sh -c 'rm "$(command -v 'starship')"'
+
+# check if --remove-starship flag is passed then execute as root
+if [ "$EUID" -ne 0  ] && [ "$1" == "--remove-starship" ]; then
+  echo '[starship] --remove-starship flag passed, removing starship'
+  sudo bash -c 'rm "$(command -v 'starship')"'
+else
+  echo '[starship] --remove-starship flag not passed, skipping'
+fi
 
 # restart the shell
 exec $SHELL -l
