@@ -1,5 +1,6 @@
-FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh .zsh/ .zshrc .config/starship.toml .naborisk .config/nvim/"
-for FILE in $FILES_TO_INSTALL
+FILES_TO_REMOVE=".tmux.conf .prettierrc .telemetry.zsh .zsh/ .zshrc .config/starship.toml .naborisk .config/nvim/"
+
+for FILE in $FILES_TO_REMOVE
 do
   # check if the file is a link to this repo then unlink it
   if [[ -L "$HOME/$FILE" ]]; then
