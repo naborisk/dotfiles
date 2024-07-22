@@ -1,12 +1,13 @@
-[{
+[
+  {
     "layer": "top",
     "position": "bottom",
     "height": 30,
     "spacing": 0,
-    "output": "HDMI-A-1",
+    "output": "eDP-1",
     "modules-left": ["tray", "custom/media"],
     "modules-center": ["hyprland/workspaces"],
-    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "clock"],
+    "modules-right": ["mpd", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "keyboard-state", "battery", "clock"],
     "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": false,
