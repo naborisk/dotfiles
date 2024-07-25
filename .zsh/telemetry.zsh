@@ -42,6 +42,9 @@ export POWERSHELL_TELEMETRY_OPTOUT=1
 # nextjs
 export NEXT_TELEMETRY_DISABLED=1
 
+# astro
+export ASTRO_TELEMETRY_DISABLED=1
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
