@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Check which kind of lockfile is in the directory and run the corresponding package manager
+if [ -f yarn.lock ]; then
+  yarn $@
+elif [ -f package-lock.json ]; then
+  npm $@
+elif [ -f pnpm-lock.yaml ]; then
+  pnpm $@
+elif [ -f bun.lockb ]; then
+  bun $@
+else
+  echo "[INFO] No lockfile found, defaulting to npm"
+  npm $@
+fi
