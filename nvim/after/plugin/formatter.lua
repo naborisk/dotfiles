@@ -61,11 +61,11 @@ require('formatter').setup {
     },
 
     sh = {
-      require('formatter.filetypes.sh').shfmt
+      require('formatter.filetypes.sh').shfmt,
     },
 
     zsh = {
-      require('formatter.filetypes.zsh').beautysh
+      require('formatter.filetypes.zsh').beautysh,
     },
 
     ['*'] = {
@@ -74,9 +74,10 @@ require('formatter').setup {
   },
 }
 
--- prevent formatting at work
--- TODO: make this a persistent toggle
-if USER == 'naborisk' then
+-- Toggleable formatter
+local NVIM_FORMATTER_DISABLED = os.getenv 'NVIM_FORMATTER_DISABLED'
+
+if not NVIM_FORMATTER_DISABLED then
   vim.cmd [[
   augroup FormatAutogroup
     autocmd!
