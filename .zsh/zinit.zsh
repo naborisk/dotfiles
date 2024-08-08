@@ -10,5 +10,6 @@ autoload -Uz _zinit
 # Plugins
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
+zinit light asdf-vm/asdf
 
 bindkey '^G' autosuggest-accept
