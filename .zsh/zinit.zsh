@@ -9,3 +9,6 @@ autoload -Uz _zinit
 
 # Plugins
 zinit light Aloxaf/fzf-tab
+zinit light zsh-users/zsh-autosuggestions
+
+bindkey '^G' autosuggest-accept
