@@ -12,4 +12,5 @@ zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light asdf-vm/asdf
 
+# Plugins key bindings
 bindkey '^G' autosuggest-accept
