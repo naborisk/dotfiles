@@ -60,6 +60,10 @@ require('formatter').setup {
       require('formatter.filetypes.rust').rustfmt,
     },
 
+    html = {
+      require('formatter.filetypes.html').prettier,
+    },
+
     sh = {
       require('formatter.filetypes.sh').shfmt,
     },
