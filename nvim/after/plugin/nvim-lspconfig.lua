@@ -120,6 +120,9 @@ for _, server_name in ipairs(get_servers()) do
   local settings = lsp_options[server_name] and lsp_options[server_name].settings or {}
   local filetypes = lsp_options[server_name] and lsp_options[server_name].filetypes or nil
 
+  -- hotfix for tsserver until it's fixed in mason
+  server_name = server_name == 'tsserver' and 'ts_ls' or server_name
+
   lspconfig[server_name].setup {
     filetypes = filetypes,
     settings = settings,
