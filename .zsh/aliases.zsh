@@ -1,6 +1,8 @@
 alias vi=nvim
 alias mux=tmuxinator alias tm=tmux
 
+alias recent="ls -lt --color=always | head -n 10"
+
 # Docker
 if command -v docker > /dev/null; then
   alias dr='docker run -it --rm'
