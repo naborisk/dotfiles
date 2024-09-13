@@ -16,7 +16,7 @@ Files from this repo will be symlinked to config files location, so it is requir
 ## Minimal Installation
 Minimal installation will not symlink the files and is intended to be installed on remote devices. Minimal installation can be installed without cloning the repository.
 
-```sh 
+```sh
 bash -c "$(curl -fsSL https://raw.githubusercontent.com/naborisk/dotfiles/main/setup-min.sh)"
 ```
 
@@ -28,8 +28,8 @@ If there are changes, to the files, just do a `git pull` and new files will work
 - `.vimrc`: vimrc with some plugins installed (not in use)
 - `.tmux.conf`: tmux configuration with nightfox colorscheme
 - `starship.toml`: config for starship prompt
-- `.naborisk/aliases`: aliases
-- `.naborisk/bin/`: executable scripts
+- `.zsh/aliases.zsh`: aliases
+- `.zsh/bin/`: executable scripts
 - `.stylua.toml`: Stylua config file
 - `.prettierrc`: Prettier config file
 
