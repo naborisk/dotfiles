@@ -1,1 +1,1 @@
-export PATH=$PATH:$HOME/.naborisk/bin
+export PATH=$PATH:$HOME/.zsh/bin
