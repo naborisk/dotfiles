@@ -81,8 +81,9 @@ fi
 # install starship.toml in ~/.config
 ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
 
-#install files in home directory
-FILES_TO_INSTALL=".tmux.conf .prettierrc .telemetry.zsh .zsh"
+# install files in home directory
+# files in home/ will be symlinked to $HOME
+FILES_TO_INSTALL=$(ls -A home/)
 for FILE in $FILES_TO_INSTALL; do
   # backup the current file to install if found and is not a link
   if [[ -f "$HOME/$FILE" && ! -L "$HOME/$FILE" ]]; then
@@ -91,10 +92,10 @@ for FILE in $FILES_TO_INSTALL; do
   fi
 
   # check if given path is directory
-  TYPE=$(test -d $FILE && echo 'directory' || echo 'file')
+  TYPE=$(test -d home/$FILE && echo 'directory' || echo 'file')
 
   echo "linking $TYPE $FILE"
-  ln -sfn $(pwd)/$FILE $HOME/$FILE
+  ln -sfn $(pwd)/home/$FILE $HOME/$FILE
 done
 
 #--NEOVIM CONFIGURATION--
