@@ -65,10 +65,6 @@ else
   echo 'starship installed, skipping...'
 fi
 
-#--ZSH CONFIGURATION--
-# install zsh configuration
-ln -sf $(pwd)/.zshrc $HOME/.zshrc
-
 # ensure .config exists
 mkdir -p $HOME/.config/
 
