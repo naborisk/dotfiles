@@ -68,12 +68,6 @@ fi
 # ensure .config exists
 mkdir -p $HOME/.config/
 
-# add prompt init script if not exist in .zshrc
-if ! grep -q 'starship init zsh' $HOME/.zshrc; then
-  echo 'adding starship init script'
-  echo 'eval "$(starship init zsh)"' >>$HOME/.zshrc
-fi
-
 # install files in home directory
 # files in home/ will be symlinked to $HOME
 cd home
@@ -93,6 +87,12 @@ for FILE in $FILES_TO_INSTALL; do
   ln -sfn $(pwd)/$FILE $HOME/$FILE
 done
 cd ..
+
+# add prompt init script if not exist in .zshrc
+if ! grep -q 'starship init zsh' $HOME/.zshrc; then
+  echo 'adding starship init script'
+  echo 'eval "$(starship init zsh)"' >>$HOME/.zshrc
+fi
 
 #--NEOVIM CONFIGURATION--
 mkdir -p $HOME/.config
