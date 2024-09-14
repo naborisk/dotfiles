@@ -74,9 +74,6 @@ if ! grep -q 'starship init zsh' $HOME/.zshrc; then
   echo 'eval "$(starship init zsh)"' >>$HOME/.zshrc
 fi
 
-# install starship.toml in ~/.config
-ln -sf $(pwd)/starship.toml $HOME/.config/starship.toml
-
 # install files in home directory
 # files in home/ will be symlinked to $HOME
 cd home
