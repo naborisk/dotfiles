@@ -95,6 +95,5 @@ if ! grep -q 'starship init zsh' $HOME/.zshrc; then
 fi
 
 #--NEOVIM CONFIGURATION--
-mkdir -p $HOME/.config
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
