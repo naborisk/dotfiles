@@ -71,7 +71,7 @@ mkdir -p $HOME/.config/
 # install files in home directory
 # files in home/ will be symlinked to $HOME
 cd home
-FILES_TO_INSTALL=$(find . -type f -printf '%P\n')
+FILES_TO_INSTALL=$(find . -type f | sed 's!./!!')
 
 for FILE in $FILES_TO_INSTALL; do
   # backup the current file to install if found and is not a link
