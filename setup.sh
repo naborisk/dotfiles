@@ -97,3 +97,6 @@ fi
 #--NEOVIM CONFIGURATION--
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
+
+echo 'linking .zsh directory'
+ln -sfn $(readlink -f .zsh) ~/.zsh
