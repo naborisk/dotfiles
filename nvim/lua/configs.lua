@@ -34,7 +34,7 @@ vim.o.clipboard = 'unnamedplus'
 -- hide showmode
 vim.o.showmode = false
 
--- persistent undo (by default undofile should be in ~/.local/share/nvim/undo)
+-- persistent undo (by default undofile should be in ~/.local/state/nvim/undo)
 vim.o.undofile = true
 
 -- load NVIM Specific PATH from env
