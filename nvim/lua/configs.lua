@@ -34,8 +34,11 @@ vim.o.clipboard = 'unnamedplus'
 -- hide showmode
 vim.o.showmode = false
 
+-- persistent undo (by default undofile should be in ~/.local/share/nvim/undo)
+vim.o.undofile = true
+
 -- load NVIM Specific PATH from env
-local NVIM_PATH = os.getenv('NVIM_PATH')
+local NVIM_PATH = os.getenv 'NVIM_PATH'
 if NVIM_PATH then
-  vim.cmd("let $PATH='"..NVIM_PATH..":'.$PATH")
+  vim.cmd("let $PATH='" .. NVIM_PATH .. ":'.$PATH")
 end
