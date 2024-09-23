@@ -37,6 +37,9 @@ vim.o.showmode = false
 -- persistent undo (by default undofile should be in ~/.local/state/nvim/undo)
 vim.o.undofile = true
 
+-- set conceallevel to 2 for obsidian.nvim
+vim.o.conceallevel = 2
+
 -- load NVIM Specific PATH from env
 local NVIM_PATH = os.getenv 'NVIM_PATH'
 if NVIM_PATH then
