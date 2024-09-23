@@ -14,4 +14,7 @@ require('obsidian').setup {
   templates = {
     folder = '02-templates',
   },
+  follow_url_func = function(url)
+    vim.fn.jobstart { 'open', url }
+  end,
 }
