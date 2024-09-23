@@ -11,4 +11,7 @@ require('obsidian').setup {
     template = '02-templates/daily',
   },
   disable_frontmatter = true,
+  templates = {
+    folder = '02-templates',
+  },
 }

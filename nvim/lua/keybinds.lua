@@ -63,3 +63,8 @@ map('n', '<c-y>', ':Telescope<cr>')
 map('n', '<leader>tb', ':Telescope buffers<cr>')
 map('n', '<leader>tr', ':Telescope lsp_references<cr>')
 map('n', '<leader>td', ':Telescope lsp_definitions<cr>')
+
+-- Obsidian.nvim
+map('n', '<leader>ot', ':ObsidianToday<cr>')
+map('n', '<leader>oc', ':ObsidianTOC<cr>')
+map('n', '<leader>of', ':ObsidianFollowLink<cr>')
