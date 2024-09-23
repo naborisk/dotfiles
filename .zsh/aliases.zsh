@@ -45,6 +45,8 @@ command -v yay > /dev/null && alias yayinstalled="yay -Qq | fzf --multi --previe
 command -v yay > /dev/null && alias yayuninstall="yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 command -v yay > /dev/null && alias yaysearch="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 
+alias today="nvim +ObsidianToday +'cd ~/obsidian'"
+
 # use lsd if available
 ls() {
   if command -v lsd > /dev/null; then
