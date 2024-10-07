@@ -83,6 +83,20 @@ require('lazy').setup({
     },
   },
 
+  -- LSP file operations (for updating imports, etc.)
+  {
+    {
+      'antosha417/nvim-lsp-file-operations',
+      dependencies = {
+        'nvim-lua/plenary.nvim',
+        'nvim-tree/nvim-tree.lua',
+      },
+      config = function()
+        require('lsp-file-operations').setup()
+      end,
+    },
+  },
+
   'folke/which-key.nvim',
 
   -- Fuzzy finder
@@ -136,6 +150,19 @@ require('lazy').setup({
 
       -- see below for full list of optional dependencies 👇
     },
+  },
+
+  -- tailwind
+  {
+    'luckasRanarison/tailwind-tools.nvim',
+    name = 'tailwind-tools',
+    build = ':UpdateRemotePlugins',
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'nvim-telescope/telescope.nvim', -- optional
+      'neovim/nvim-lspconfig', -- optional
+    },
+    opts = {}, -- your configuration
   },
 
   -- AI

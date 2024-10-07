@@ -8,6 +8,12 @@ local get_servers = mason_lspconfig.get_installed_servers
 
 local navic = require 'nvim-navic'
 
+-- Get cmp_nvim_lsp capabilities
+local cmp_nvim_lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+-- Get lsp-file-operations capabilities
+local lsp_file_op_capabilities = require('lsp-file-operations').default_capabilities()
+
 -- ensure certain servers are installed
 mason_lspconfig.setup {
   ensure_installed = {
@@ -16,9 +22,6 @@ mason_lspconfig.setup {
     -- 'emmet_ls',
   },
 }
-
--- Get cmp_nvim_lsp capabilities
-local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- Adding custom language server
 if not configs.omnisharp_mono then
@@ -113,6 +116,14 @@ local lsp_options = {
 }
 
 -- note: omnisharp and omnisharp_mono shouldn't be insalled together
+lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config, {
+  capabilities = vim.tbl_deep_extend(
+    'force',
+    vim.lsp.protocol.make_client_capabilities(),
+    cmp_nvim_lsp_capabilities,
+    lsp_file_op_capabilities
+  ),
+})
 
 -- run setup() for every installed servers by mason, apply config if defined in lsp_options table
 for _, server_name in ipairs(get_servers()) do
@@ -126,7 +137,7 @@ for _, server_name in ipairs(get_servers()) do
   lspconfig[server_name].setup {
     filetypes = filetypes,
     settings = settings,
-    capabilities = lsp_capabilities,
+    -- capabilities = ,
     on_attach = function(client, bufnr)
       if client.server_capabilities.documentSymbolProvider then
         navic.attach(client, bufnr)
