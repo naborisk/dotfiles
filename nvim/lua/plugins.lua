@@ -18,11 +18,12 @@ require('lazy').setup({
   'hrsh7th/cmp-buffer',
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
+  'petertriho/cmp-git',
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      { 'L3MON4D3/LuaSnip' },
+      { 'L3MON4D3/LuaSnip', 'onsails/lspkind.nvim' },
     },
   },
 
@@ -240,6 +241,6 @@ require('lazy').setup({
 }, {
   -- Lazy options
   ui = {
-    border = 'rounded',
+    -- border = 'single',
   },
 })
