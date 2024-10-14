@@ -19,6 +19,7 @@ require('lazy').setup({
   'hrsh7th/cmp-path',
   'hrsh7th/cmp-cmdline',
   'petertriho/cmp-git',
+  'SergioRibera/cmp-dotenv',
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',

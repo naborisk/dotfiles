@@ -51,6 +51,7 @@ cmp.setup {
     { name = 'path' },
     { name = 'buffer', keyword_length = 3 },
     { name = 'luasnip', keyword_length = 2 },
+    { name = 'dotenv' },
   },
   window = {
     -- completion = cmp.config.window.bordered(),
