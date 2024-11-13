@@ -84,7 +84,14 @@ local lsp_options = {
   },
 
   tailwindcss = {
-    filetypes = { 'html', 'svelte', 'astro', 'vue', 'javascriptreact', 'typescriptreact' },
+    filetypes = {
+      'html',
+      'svelte',
+      'astro',
+      'vue',
+      'javascriptreact',
+      'typescriptreact',
+    },
   },
 
   emmet_ls = {
@@ -101,6 +108,7 @@ local lsp_options = {
       'less',
       'svelte',
     },
+
     init_options = {
       html = {
         options = {
