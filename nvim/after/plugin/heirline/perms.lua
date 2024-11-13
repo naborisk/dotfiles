@@ -1,8 +1,7 @@
 -- WIP: not working yet maybe
 local Perms = {
   provider = function()
-    local path = vim.fn.expand('%:t')
-    return vim.fn.system('/bin/ls -l ./' .. path .. ' | awk \'{print $1}\'')
+    return vim.fn.system('ls -l ' .. vim.api.nvim_buf_get_name(0) .. " | awk '{print $1}'"):match '^%s*(.-)%s*$'
   end,
 }
 

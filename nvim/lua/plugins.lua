@@ -114,6 +114,10 @@ require('lazy').setup({
     build = ':TSUpdate',
   },
 
+  {
+    'JoosepAlviste/nvim-ts-context-commentstring',
+  },
+
   -- Auto pairs, auto tags
   {
     'windwp/nvim-autopairs',

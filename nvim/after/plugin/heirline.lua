@@ -5,6 +5,17 @@ package.path = HOME .. '/.config/nvim/after/plugin/heirline/?.lua;' .. package.p
 local conditions = require 'heirline.conditions'
 local utils = require 'heirline.utils'
 -- local colors = require('nightfox.palette').load 'nightfox'
+local Ruler = require 'ruler'
+local ViMode = require 'vimode'
+local LSPActive = require 'lspactive'
+local Bufname = require 'bufname'
+local FileType = require 'filetype'
+local FileName = require 'filename'
+local FullPath = require 'fullpath'
+local Git = require 'git'
+local Navic = require 'navic'
+local RelPath = require 'relpath'
+local GitUser = require 'gituser'
 
 local colors = {
   fg = utils.get_highlight('StatusLine').fg,
@@ -37,17 +48,6 @@ local Align = {
 local Space = {
   provider = ' ',
 }
-
-local Ruler = require 'ruler'
-local ViMode = require 'vimode'
-local LSPActive = require 'lspactive'
-local Bufname = require 'bufname'
-local FileType = require 'filetype'
-local FileName = require 'filename'
-local FullPath = require 'fullpath'
-local Git = require 'git'
-local Navic = require 'navic'
-local GitUser = require 'gituser'
 
 local BufnameStatusLine = {
   condition = function()
@@ -101,6 +101,8 @@ local InactiveStatusLine = {
 
 local DefaultStatusLine = {
   ViMode,
+  Space,
+  RelPath,
   Align,
   Git,
   Space,
@@ -115,16 +117,33 @@ local DefaultStatusLine = {
   },
 }
 
+local NvimTreeWinbar = {
+  condition = function()
+    return conditions.buffer_matches {
+      filetype = { 'NvimTree' },
+    }
+  end,
+  Align,
+  {
+    provider = '',
+  },
+  Align,
+  hl = {
+    bg = 'bg',
+  },
+}
+
 local DefaultWinBar = {
   Space,
   Space,
-  Space,
-  FileName,
   Space,
   Navic,
   Align,
   GitUser,
   Space,
+  hl = {
+    bg = 'none',
+  },
 }
 
 local SpecialWinBar = {
@@ -152,6 +171,7 @@ local statusline = {
 
 local winbar = {
   fallthrough = false,
+  NvimTreeWinbar,
   SpecialWinBar,
   DefaultWinBar,
 }

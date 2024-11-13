@@ -11,7 +11,7 @@ local GitUser = {
 
   {
     provider = function(self)
-      return self.git_name:match("^%s*(.-)%s*$") -- trim whitespace
+      return self.git_name:match '^%s*(.-)%s*$' -- trim whitespace
     end,
   },
 }
