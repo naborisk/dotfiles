@@ -68,3 +68,6 @@ map('n', '<leader>td', ':Telescope lsp_definitions<cr>')
 map('n', '<leader>ot', ':ObsidianToday<cr>')
 map('n', '<leader>oc', ':ObsidianTOC<cr>')
 map('n', '<leader>of', ':ObsidianFollowLink<cr>')
+
+-- GitHub
+map('n', '<leader>gb', ':!gh browse --branch $(git branch --show-current) %:.<cr>')
