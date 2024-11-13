@@ -4,12 +4,11 @@ sources=(
   $HOME/.zsh/init.zsh
 
   $HOME/.zsh/options.zsh
-  $HOME/.zsh/completions.zsh
   $HOME/.zsh/telemetry.zsh
   $HOME/.zsh/aliases.zsh
   $HOME/.zsh/zinit.zsh
-  $HOME/.zsh/aliases.zsh
   $HOME/.zsh/path.zsh
+  $HOME/.zsh/completions.zsh
 
   $HOME/.fzf.zsh
 
@@ -22,4 +21,3 @@ sources=(
 for source in $sources; do
   [ -e $source ] && source $source
 done
-eval "$(starship init zsh)"

@@ -11,4 +11,6 @@ if command -v argo > /dev/null; then
   source <(argo completion zsh)
 fi
 
-source <(starship completions zsh)
+if command -v starship > /dev/null; then
+  source <(starship completions zsh)
+fi
