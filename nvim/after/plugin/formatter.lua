@@ -14,18 +14,18 @@ require('formatter').setup {
     },
 
     javascriptreact = {
-      require('formatter.filetypes.javascript').prettier,
-      require('formatter.filetypes.javascript').eslint_d,
+      require('formatter.filetypes.javascriptreact').prettier,
+      require('formatter.filetypes.javascriptreact').eslint_d,
     },
 
     typescriptreact = {
-      require('formatter.filetypes.typescript').prettier,
-      require('formatter.filetypes.javascript').eslint_d,
+      require('formatter.filetypes.typescriptreact').prettier,
+      require('formatter.filetypes.typescriptreact').eslint_d,
     },
 
     typescript = {
       require('formatter.filetypes.typescript').prettier,
-      require('formatter.filetypes.javascript').eslint_d,
+      require('formatter.filetypes.typescript').eslint_d,
     },
 
     svelte = {
@@ -34,6 +34,7 @@ require('formatter').setup {
 
     vue = {
       require('formatter.filetypes.vue').prettier,
+      require('formatter.filetypes.typescript').eslint_d,
     },
 
     css = {
