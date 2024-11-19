@@ -45,7 +45,11 @@ command -v yay > /dev/null && alias yayinstalled="yay -Qq | fzf --multi --previe
 command -v yay > /dev/null && alias yayuninstall="yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 command -v yay > /dev/null && alias yaysearch="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 
+# Obsidian
 alias today="nvim +ObsidianToday +'cd ~/obsidian'"
+
+# Git
+gtree="git log --oneline --decorate --graph"
 
 # use lsd if available
 ls() {
