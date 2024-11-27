@@ -88,12 +88,6 @@ for FILE in $FILES_TO_INSTALL; do
 done
 cd ..
 
-# add prompt init script if not exist in .zshrc
-if ! grep -q 'starship init zsh' $HOME/.zshrc; then
-  echo 'adding starship init script'
-  echo 'eval "$(starship init zsh)"' >>$HOME/.zshrc
-fi
-
 #--NEOVIM CONFIGURATION--
 echo 'linking nvim directory'
 ln -sfn $(readlink -f nvim) ~/.config/nvim
