@@ -30,7 +30,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   mkdir -p ~/.local/share/fonts
   cd ~/.local/share/fonts
-  curl -O "https://github.com/ryanoasis/nerd-fonts/releases/download/latest/$FONT_NAME.zip"
+  curl -O "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/$FONT_NAME.zip"
   unzip $FONT_NAME.zip
   rm $FONT_NAME.zip
   fc-cache -fv
