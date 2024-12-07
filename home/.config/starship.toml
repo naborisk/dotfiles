@@ -23,6 +23,7 @@ format = "$symbol"
 Arch = ""
 Macos = ""
 Ubuntu = ""
+Kali = ""
 Windows = ""
 
 [hostname]
