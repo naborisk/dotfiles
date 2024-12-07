@@ -21,7 +21,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ;;
   kali)
     echo 'Kali detected'
-    sudo apt-get install -y zsh neovim fzf ripgrep zoxide tmuxinator lsd
+    sudo apt-get install -y zsh neovim fzf ripgrep zoxide tmuxinator lsd wl-clipboard
     ;;
   esac
 
