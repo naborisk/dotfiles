@@ -21,7 +21,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ;;
   kali)
     echo 'Kali detected'
-    sudo apt-get install -y neovim fzf ripgrep zoxide tmuxinator
+    sudo apt-get install -y zsh neovim fzf ripgrep zoxide tmuxinator lsd
     ;;
   esac
 
@@ -35,6 +35,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   rm $FONT_NAME.zip
   fc-cache -fv
   cd $CWD
+
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
 
