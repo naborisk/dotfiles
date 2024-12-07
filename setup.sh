@@ -1,5 +1,7 @@
 #!/bin/bash
 
+CWD=$(pwd)
+
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
@@ -22,6 +24,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo apt-get install -y neovim fzf ripgrep zoxide tmuxinator
     ;;
   esac
+
+  # install nerd fonts
+  FONT_NAME=FiraCode
+
+  mkdir -p ~/.local/share/fonts
+  cd ~/.local/share/fonts
+  curl -O https://github.com/ryanoasis/nerd-fonts/releases/download/latest/$FONT_NAME.zip
+  unzip $FONT_NAME.zip
+  rm $FONT_NAME.zip
+  fc-cache -fv
+  cd $CWD
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
 
