@@ -31,8 +31,9 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   mkdir -p ~/.local/share/fonts
   cd ~/.local/share/fonts
   curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/$FONT_NAME.zip"
-  unzip $FONT_NAME.zip
+  unzip -o $FONT_NAME.zip
   rm $FONT_NAME.zip
+  rm -f LICENSE README.md
   fc-cache -fv
   cd $CWD
 
