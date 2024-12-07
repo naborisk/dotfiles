@@ -17,6 +17,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   arch)
     echo 'Arch detected'
     ;;
+  kali)
+    echo 'Kali detected'
+    sudo apt-get install -y neovim fzf ripgrep zoxide tmuxinator
+    ;;
   esac
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
