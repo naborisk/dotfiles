@@ -73,9 +73,9 @@ require('formatter').setup {
       require('formatter.filetypes.zsh').beautysh,
     },
 
-    ['*'] = {
-      require('formatter.filetypes.any').remove_trailing_whitespace,
-    },
+    -- ['*'] = {
+    --   require('formatter.filetypes.any').remove_trailing_whitespace,
+    -- },
   },
 }
 
