@@ -8,6 +8,12 @@ vim.o.cursorline = true
 -- Hide command line
 vim.o.cmdheight = 1
 
+-- Show tabline
+vim.o.showtabline = 2
+
+-- Disable diagnostic focus
+vim.diagnostic.config { float = { focusable = false } }
+
 -- Set tab size to 2 spaces and expandtab
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
