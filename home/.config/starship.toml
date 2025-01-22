@@ -39,7 +39,7 @@ truncation_length = 3
 truncation_symbol = "…/"
 
 [directory.substitutions]
-"Documents" = " "
+"Documents" = "󰈙 "
 "Downloads" = " "
 "Music" = " "
 "Pictures" = " "
@@ -81,16 +81,22 @@ pyenv_version_name = true
 format = '[[ $symbol $virtualenv ($version) ](fg:#769ff0 bg:#212736)]($style)'
 
 [time]
-disabled = true
-time_format = "%R" # Hour:Minute Format
-style = "bg:#1d2230"
-format = '[[  $time ](fg:#a0a9cb bg:#1d2230)]($style)'
+disabled = false
+time_format = "%T" # Hour:Minute Format
+# style = "fg:#e3e5e5"
+style = "fg:#e3e5e5 bg:#769ff0"
+format = '[  $time ]($style)'
 
 [gcloud]
 symbol = "󱇶"
 style = "fg:#e3e5e5 bg:#769ff0"
 format = '[ $symbol $domain (\($region\))]($style)'
 disabled = true
+
+[kubernetes]
+style = "fg:#e3e5e5 bg:#769ff0"
+format = '[ $symbol$context( \($namespace\))]($style)'
+disabled = false
 
 [env_var.STARSHIP_STATUS]
 default = ''

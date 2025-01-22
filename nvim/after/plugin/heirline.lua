@@ -16,6 +16,7 @@ local Git = require 'git'
 local Navic = require 'navic'
 local RelPath = require 'relpath'
 local GitUser = require 'gituser'
+local BufferLine = require 'bufferline'
 
 local colors = {
   fg = utils.get_highlight('StatusLine').fg,
@@ -176,11 +177,15 @@ local winbar = {
   DefaultWinBar,
 }
 
+local tabline = {
+  BufferLine,
+}
+
 -- local tabline = {}
 require('heirline').setup {
   statusline = statusline,
   winbar = winbar,
-  -- tabline = tabline,
+  tabline = tabline,
   opts = {
     colors = colors,
   },
