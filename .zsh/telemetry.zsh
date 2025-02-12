@@ -52,6 +52,8 @@ export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
 # terraform, packer, cdk, weave
 export CHECKPOINT_DISABLE=1
 
+export MEILI_NO_ANALYTICS=true
+
 # GCloud (can make shell start slow, usually needed to run once)
 # if command -v gcloud >/dev/null 2>&1 ; then
 #     gcloud config set disable_usage_reporting true >/dev/null 2>&1
