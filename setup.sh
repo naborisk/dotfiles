@@ -59,6 +59,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'Enabling key repeat'
   defaults write -g ApplePressAndHoldEnabled -bool false
 
+  echo 'Enabling dock autohide'
+  defaults write com.apple.dock autohide -bool TRUE
+
+  echo 'Disabling dock autohide animation'
+  defaults write com.apple.dock autohide-time-modifier -float 0.0 && killall Dock
+
   echo 'Disabling mouse acceleration'
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
