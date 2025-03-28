@@ -53,9 +53,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'brew already installed'
   fi
 
-  echo 'Intalling macOS keymap...'
-  mkdir -p $HOME/Library/LaunchAgents/
-  cp ./macos-keymap/com.user.loginscript.plist $HOME/Library/LaunchAgents/
+  echo 'ensuring /usr/local/bin exists for starship installation...'
+  [ ! -d /usr/local/bin ] && sudo mkdir -p /usr/local/bin/
 
   echo 'Enabling key repeat'
   defaults write -g ApplePressAndHoldEnabled -bool false
