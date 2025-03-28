@@ -68,32 +68,28 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'Enabling dock autohide'
   defaults write com.apple.dock autohide -bool TRUE
 
-  echo 'Disabling dock autohide animation'
-  defaults write com.apple.dock autohide-time-modifier -float 0.0 && killall Dock
+  if [ $(defaults read com.apple.dock autohide-time-modifier) -ne 0 ]; then
+    echo 'Disabling dock autohide animation'
+    defaults write com.apple.dock autohide-time-modifier -float 0.0 && killall Dock
+  fi
 
   echo 'Disabling mouse acceleration'
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
 
-  if ! command -v nvim &>/dev/null; then
-    echo 'neovim not found, installing...'
-    brew install neovim
-  else
-    echo 'neovim already installed'
-  fi
+  brew_install() {
+      echo "Installing $1"
+      if brew list $1 &>/dev/null; then
+          echo "${1} is already installed"
+      else
+          brew install $1 && echo "$1 is installed"
+      fi
+  }
 
-  if ! command -v rg &>/dev/null; then
-    echo 'ripgrep not found, installing...'
-    brew install ripgrep
-  else
-    echo 'ripgrep already installed'
-  fi
+  DEPENDENCIES="neovim ripgrep asdf zoxide fzf lsd"
 
-  if ! command -v asdf &>/dev/null; then
-    echo 'asdf not found, installing...'
-    brew install asdf
-  else
-    echo 'asdf already installed'
-  fi
+  for DEP in $DEPENDENCIES; do
+    brew_install $DEP
+  done
 
   # return echo to normal
   echo() {
