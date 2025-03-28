@@ -15,6 +15,9 @@ sources=(
   /usr/share/fzf/key-bindings.zsh
   /usr/share/fzf/completion.zsh
 
+  $(brew --prefix)/Cellar/fzf/$(fzf --version | cut -d ' ' -f 1)/shell/key-bindings.zsh
+  $(brew --prefix)/Cellar/fzf/$(fzf --version | cut -d ' ' -f 1)/shell/completion.zsh
+
   $HOME/.zshrc.local
 )
 
