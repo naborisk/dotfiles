@@ -11,7 +11,7 @@ autoload -Uz _zinit
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light asdf-vm/asdf
+# zinit light asdf-vm/asdf
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
 # Plugins key bindings

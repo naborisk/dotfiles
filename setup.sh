@@ -81,6 +81,20 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'neovim already installed'
   fi
 
+  if ! command -v rg &>/dev/null; then
+    echo 'ripgrep not found, installing...'
+    brew install ripgrep
+  else
+    echo 'ripgrep already installed'
+  fi
+
+  if ! command -v asdf &>/dev/null; then
+    echo 'asdf not found, installing...'
+    brew install asdf
+  else
+    echo 'asdf already installed'
+  fi
+
   # return echo to normal
   echo() {
     command echo "$@"
