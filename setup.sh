@@ -53,6 +53,12 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo 'brew already installed'
   fi
 
+  # check if fira code exists, if not then install
+  if [[ ! $(atsutil fonts -list | grep -i firacode) ]]; then
+    echo 'Fira Code Nerd Font not found, installing...'
+    brew install --cask font-fira-code-nerd-font
+  fi
+
   echo 'ensuring /usr/local/bin exists for starship installation...'
   [ ! -d /usr/local/bin ] && sudo mkdir -p /usr/local/bin/
 

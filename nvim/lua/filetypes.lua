@@ -4,7 +4,7 @@ vim.filetype.add {
     ['aliases'] = 'bash',
     ['user-data'] = 'yaml',
     ['meta-data'] = 'yaml',
-    ['config'] = 'json',
+    ['config'] = 'config',
   },
   pattern = {
     ['.*compose.*.y[a]?ml'] = 'yaml.docker-compose',
