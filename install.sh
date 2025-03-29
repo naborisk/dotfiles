@@ -6,6 +6,8 @@ if [[ $EUID -ne 0 ]]; then
     exec sudo "$0" "$@"
 fi
 
+HOME=${SUDO_HOME:-$HOME}
+
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
