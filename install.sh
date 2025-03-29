@@ -6,7 +6,7 @@ CWD=$(pwd)
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
 
-  ARCH=$(uname -m)
+  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
 
   # neovim installation
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
