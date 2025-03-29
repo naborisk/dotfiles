@@ -1,5 +1,7 @@
 zstyle :compinstall filename "$HOME/.zsh/compinit.zsh"
 
+fpath=(${ASDF_DATA_DIR:-$HOME/.asdf}/completions $fpath)
+
 autoload -Uz compinit
 compinit
 
