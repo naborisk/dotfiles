@@ -6,6 +6,15 @@ CWD=$(pwd)
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
 
+  ARCH=$(uname -m)
+
+  # neovim installation
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
+  chmod u+x nvim-linux-$ARCH.appimage
+
+  sudo mkdir -p /opt/nvim
+  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
+
   # distro specific commands
   . /etc/os-release
   case $ID in
@@ -21,7 +30,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ;;
   kali)
     echo 'Kali detected'
-    sudo apt-get install -y zsh neovim fzf ripgrep zoxide tmuxinator lsd wl-clipboard
+    sudo apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard
     ;;
   esac
 
