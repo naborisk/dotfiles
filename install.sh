@@ -13,17 +13,17 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   chmod u+x nvim-linux-$ARCH.appimage
 
   sudo mkdir -p /opt/nvim
-  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
+  sudo mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
 
   # distro specific commands
   . /etc/os-release
   case $ID in
   ubuntu)
-    echo 'Ubuntu detected, attemping to install latest neovim'
-    sudo apt-get install -y software-properties-common
-    sudo add-apt-repository -y ppa:neovim-ppa/unstable
-    sudo apt-get -y update
-    sudo apt-get install -y neovim
+    # echo 'Ubuntu detected, attemping to install latest neovim'
+    # sudo apt-get install -y software-properties-common
+    # sudo add-apt-repository -y ppa:neovim-ppa/unstable
+    # sudo apt-get -y update
+    # sudo apt-get install -y neovim
     ;;
   arch)
     echo 'Arch detected'
