@@ -15,6 +15,9 @@ sources=(
   /usr/share/fzf/key-bindings.zsh
   /usr/share/fzf/completion.zsh
 
+  /usr/share/doc/fzf/examples/key-bindings.zsh
+  /usr/share/doc/fzf/examples/completion.zsh
+
   $HOME/.zshrc.local
 )
 
