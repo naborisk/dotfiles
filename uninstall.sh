@@ -16,10 +16,8 @@ FILES_TO_DELETE="Library/LaunchAgents/com.user.loginscript.plist .local/share/nv
 for FILE in $FILES_TO_DELETE
 do
   # check if the file is a link to this repo then unlink it
-  if [[ -f "$HOME/$FILE" || -d "$HOME/$FILE" ]]; then
-    echo "deleting $FILE"
-    rm -rf $HOME/$FILE
-  fi
+  echo "deleting $FILE"
+  rm -rf $HOME/$FILE
 done
 
 # check if --remove-starship flag is passed then execute as root
