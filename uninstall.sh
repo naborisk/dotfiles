@@ -11,7 +11,7 @@ do
   fi
 done
 
-FILES_TO_DELETE="Library/LaunchAgents/com.user.loginscript.plist .local/share/nvim .local/share/zinit"
+FILES_TO_DELETE="Library/LaunchAgents/com.user.loginscript.plist .local/share/nvim .local/share/zinit .local/share/fonts/FiraCode*"
 
 for FILE in $FILES_TO_DELETE
 do
