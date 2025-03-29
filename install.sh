@@ -2,6 +2,10 @@
 
 CWD=$(pwd)
 
+if [[ $EUID -ne 0 ]]; then
+    exec sudo "$0" "$@"
+fi
+
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
@@ -12,25 +16,23 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
   chmod u+x nvim-linux-$ARCH.appimage
 
-  sudo mkdir -p /opt/nvim
-  sudo mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
+  mkdir -p /opt/nvim
+  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
 
   # distro specific commands
   . /etc/os-release
   case $ID in
   ubuntu)
-    # echo 'Ubuntu detected, attemping to install latest neovim'
-    # sudo apt-get install -y software-properties-common
-    # sudo add-apt-repository -y ppa:neovim-ppa/unstable
-    # sudo apt-get -y update
-    # sudo apt-get install -y neovim
+    echo 'Ubuntu detected, attemping to install dependencies'
+    apt-get update
+    apt-get install curl git unzip
     ;;
   arch)
     echo 'Arch detected'
     ;;
   kali)
     echo 'Kali detected'
-    sudo apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard
+    apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard
     ;;
   esac
 
@@ -71,7 +73,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   fi
 
   echo 'ensuring /usr/local/bin exists for starship installation...'
-  [ ! -d /usr/local/bin ] && sudo mkdir -p /usr/local/bin/
+  [ ! -d /usr/local/bin ] && mkdir -p /usr/local/bin/
 
   echo 'Enabling key repeat'
   defaults write -g ApplePressAndHoldEnabled -bool false
