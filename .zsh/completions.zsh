@@ -22,7 +22,6 @@ fi
 # if command -v asdf > /dev/null; then
 #   source <(asdf completion zsh)
 # fi
-export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 if command -v docker > /dev/null; then
   source <(docker completion zsh)

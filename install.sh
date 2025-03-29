@@ -50,11 +50,16 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   mkdir -p /opt/nvim
   mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
 
+  # asdf installation
   curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-$ARCH.tar.gz
   tar -xvzf asdf-v0.16.7-linux-$ARCH.tar.gz
   rm asdf-v0.16.7-linux-$ARCH.tar.gz
   mkdir -p /opt/asdf
   mv asdf /opt/asdf/asdf
+
+  # enable asdf completion
+  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
+  /opt/asdf/asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
