@@ -45,7 +45,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   # neovim installation
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
-  chmod u+x nvim-linux-$ARCH.appimage
+  chmod +x nvim-linux-$ARCH.appimage
 
   mkdir -p /opt/nvim
   mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
