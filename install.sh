@@ -26,16 +26,18 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   esac
 
   # install nerd fonts
-  FONT_NAME=FiraCode
-
-  mkdir -p ~/.local/share/fonts
-  cd ~/.local/share/fonts
-  curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/$FONT_NAME.zip"
-  unzip -o $FONT_NAME.zip
-  rm $FONT_NAME.zip
-  rm -f LICENSE README.md
-  fc-cache -fv
-  cd $CWD
+  if [ ! -f ~/.local/share/fonts/FiraCodeNerdFont-Regular.ttf ]; then
+    mkdir -p ~/.local/share/fonts
+    cd ~/.local/share/fonts
+    curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip"
+    unzip -o FiraCode.zip
+    rm FiraCode.zip
+    rm -f LICENSE README.md
+    fc-cache -fv
+    cd $CWD
+  else
+    echo 'FiraCodeNerdFont already installed, skipping'
+  fi
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
