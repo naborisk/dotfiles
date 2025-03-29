@@ -12,20 +12,13 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
 
-  # neovim installation
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
-  chmod u+x nvim-linux-$ARCH.appimage
-
-  mkdir -p /opt/nvim
-  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
-
   # distro specific commands
   . /etc/os-release
   case $ID in
   ubuntu)
     echo 'Ubuntu detected, attemping to install dependencies'
     apt-get update
-    apt-get install curl git unzip
+    apt-get install curl git unzip zsh lsd fzf
     ;;
   arch)
     echo 'Arch detected'
@@ -49,6 +42,19 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   else
     echo 'FiraCodeNerdFont already installed, skipping'
   fi
+
+  # neovim installation
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
+  chmod u+x nvim-linux-$ARCH.appimage
+
+  mkdir -p /opt/nvim
+  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
+
+  curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-$ARCH.tar.gz
+  tar -xvzf asdf-v0.16.7-linux-$ARCH.tar.gz
+  rm asdf-v0.16.7-linux-$ARCH.tar.gz
+  mkdir -p /opt/asdf
+  mv asdf /opt/asdf/asdf
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
