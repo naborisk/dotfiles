@@ -11,13 +11,13 @@ HOME=${SUDO_HOME:-$HOME}
 
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  echo 'Linux detected'
+
+  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
+  echo "Linux $ARCH detected"
 
   echo() {
     command echo "[Linux $(whoami)] $@"
   }
-
-  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
 
   # distro specific commands
   . /etc/os-release
