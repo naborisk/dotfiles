@@ -8,9 +8,14 @@ fi
 
 HOME=${SUDO_HOME:-$HOME}
 
+
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   echo 'Linux detected'
+
+  echo() {
+    command echo "[Linux $(whoami)] $@"
+  }
 
   ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
 
@@ -63,12 +68,15 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
   /opt/asdf/asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
 
+  echo() {
+    command echo "$@"
+  }
 elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'macOS detected'
 
   # prefix echo command with [macOS]
   echo() {
-    command echo "[macOS] $@"
+    command echo "[macOS $(whoami)] $@"
   }
 
   if ! command -v brew &>/dev/null; then
@@ -87,6 +95,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
   echo 'ensuring /usr/local/bin exists for starship installation...'
   [ ! -d /usr/local/bin ] && mkdir -p /usr/local/bin/
+
+
+
+su $SUDO_USER <<"EOF"
+  echo() {
+    command echo "[macOS $(whoami)] $@"
+  }
+
+  echo "Running as $(whoami)"
 
   echo 'Enabling key repeat'
   defaults write -g ApplePressAndHoldEnabled -bool false
@@ -111,11 +128,14 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
       fi
   }
 
-  DEPENDENCIES="neovim ripgrep asdf zoxide fzf lsd"
-
+  DEPENDENCIES=(neovim ripgrep asdf zoxide fzf lsd)
   for DEP in $DEPENDENCIES; do
     brew_install $DEP
   done
+EOF
+
+  mkdir -p $HOME/Library/Application\ Support/com.mitchellh.ghostty
+  ln -sfn $(pwd)/ghostty/config $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
 
   # return echo to normal
   echo() {
