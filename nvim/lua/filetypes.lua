@@ -5,6 +5,7 @@ vim.filetype.add {
     ['user-data'] = 'yaml',
     ['meta-data'] = 'yaml',
     ['config'] = 'config',
+    ['.zshenv'] = 'sh'
   },
   pattern = {
     ['.*compose.*.y[a]?ml'] = 'yaml.docker-compose',
