@@ -12,7 +12,7 @@ HOME=${SUDO_HOME:-$HOME}
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
-  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
+  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'amd64')
   echo "Linux $ARCH detected"
 
   echo() {
