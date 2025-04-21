@@ -12,8 +12,9 @@ HOME=${SUDO_HOME:-$HOME}
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
-  ARCH=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'amd64')
-  echo "Linux $ARCH detected"
+  ARCH_NVIM=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
+  ARCH_ASDF=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'amd64')
+  echo "Linux $ARCH_NVIM detected"
 
   echo() {
     command echo "[Linux $(whoami)] $@"
@@ -51,16 +52,16 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   fi
 
   # neovim installation
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH.appimage
-  chmod +x nvim-linux-$ARCH.appimage
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH_NVIM.appimage
+  chmod +x nvim-linux-$ARCH_NVIM.appimage
 
   mkdir -p /opt/nvim
-  mv nvim-linux-$ARCH.appimage /opt/nvim/nvim
+  mv nvim-linux-$ARCH_NVIM.appimage /opt/nvim/nvim
 
   # asdf installation
-  curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-$ARCH.tar.gz
-  tar -xvzf asdf-v0.16.7-linux-$ARCH.tar.gz
-  rm asdf-v0.16.7-linux-$ARCH.tar.gz
+  curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
+  tar -xvzf asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
+  rm asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
   mkdir -p /opt/asdf
   mv asdf /opt/asdf/asdf
 
