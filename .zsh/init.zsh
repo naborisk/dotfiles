@@ -1,7 +1,2 @@
-if command -v starship > /dev/null; then
-  eval "$(starship init zsh)"
-fi
-
-if command -v zoxide > /dev/null; then
-  eval "$(zoxide init --cmd cd zsh)"
-fi
+command -v starship > /dev/null && eval "$(starship init zsh)"
+command -v zoxide > /dev/null && eval "$(zoxide init --cmd cd zsh)"

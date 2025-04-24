@@ -45,9 +45,6 @@ command -v yay > /dev/null && alias yayinstalled="yay -Qq | fzf --multi --previe
 command -v yay > /dev/null && alias yayuninstall="yay -Qq | fzf --multi --preview 'yay -Qi {1}' | xargs -ro yay -Rns"
 command -v yay > /dev/null && alias yaysearch="yay -Slq | fzf --multi --preview 'yay -Si {1}' | xargs -ro yay -S"
 
-# Obsidian
-alias today="nvim +ObsidianToday +'cd ~/obsidian'"
-
 # Git
 alias gtree="git log --oneline --decorate --graph"
 
@@ -60,6 +57,7 @@ ls() {
   fi
 }
 
+# status command
 st() {
   if [ "$#" -eq 0 ]; then
     unset STARSHIP_STATUS

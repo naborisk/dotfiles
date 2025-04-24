@@ -9,18 +9,7 @@ autoload -U +X bashcompinit
 bashcompinit
 
 # Sourcing completions
-if command -v argo > /dev/null; then
-  source <(argo completion zsh)
-fi
-
-if command -v starship > /dev/null; then
-  source <(starship completions zsh)
-fi
-
-if command -v gh > /dev/null; then
-  source <(gh completion -s zsh)
-fi
-
-if command -v docker > /dev/null; then
-  source <(docker completion zsh)
-fi
+command -v argo > /dev/null && source <(argo completion zsh)
+command -v starship > /dev/null && source <(starship completions zsh)
+command -v gh > /dev/null && source <(gh completion -s zsh)
+command -v docker > /dev/null && source <(docker completion zsh)
