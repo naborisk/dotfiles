@@ -49,7 +49,7 @@ command -v yay > /dev/null && alias yaysearch="yay -Slq | fzf --multi --preview 
 alias today="nvim +ObsidianToday +'cd ~/obsidian'"
 
 # Git
-gtree="git log --oneline --decorate --graph"
+alias gtree="git log --oneline --decorate --graph"
 
 # use lsd if available
 ls() {

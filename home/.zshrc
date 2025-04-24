@@ -9,6 +9,7 @@ sources=(
   $HOME/.zsh/zinit.zsh
   $HOME/.zsh/path.zsh
   $HOME/.zsh/completions.zsh
+  $HOME/.zsh/plugin-options.zsh
 
   $HOME/.fzf.zsh
 

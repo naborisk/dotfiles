@@ -14,5 +14,4 @@ zinit light zsh-users/zsh-completions
 # zinit light asdf-vm/asdf
 zinit wait lucid for MichaelAquilina/zsh-autoswitch-virtualenv
 
-# Plugins key bindings
-bindkey '^G' autosuggest-accept
+zinit light zsh-users/zsh-syntax-highlighting
