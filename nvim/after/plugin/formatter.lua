@@ -73,6 +73,10 @@ require('formatter').setup {
       require('formatter.filetypes.zsh').beautysh,
     },
 
+    xml = {
+      require('formatter.filetypes.xml').xmlformat,
+    },
+
     -- ['*'] = {
     --   require('formatter.filetypes.any').remove_trailing_whitespace,
     -- },
