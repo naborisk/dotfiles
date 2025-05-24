@@ -71,4 +71,9 @@ map('n', '<leader>of', ':ObsidianFollowLink<cr>')
 
 -- GitHub
 map('n', '<leader>gb', ':!gh browse --branch $(git branch --show-current) %:.<cr>')
-map('n', '<leader>gl', ':exec "!gh browse --branch $(git branch --show-current) \\\"%\\\":".line(".")<cr>')
+map('n', '<leader>gl', ':exec "!gh browse --branch $(git branch --show-current) \\"%\\":".line(".")<cr>')
+
+-- buffer management
+map('n', '<c-l>', ':bnext<cr>')
+map('n', '<c-h>', ':bprevious<cr>')
+map('n', '<c-q>', ':bdelete<cr>')
