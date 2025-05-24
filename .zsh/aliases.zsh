@@ -2,6 +2,7 @@ alias vi=nvim
 alias mux=tmuxinator alias tm=tmux
 
 alias recent="ls -lt --color=always | head -n 10"
+alias ip="ip -c"
 
 # Docker
 if command -v docker > /dev/null; then
