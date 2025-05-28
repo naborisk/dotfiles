@@ -47,7 +47,10 @@ map('n', '<leader>l', '<C-w>l')
 map('n', '<leader>w', ':WhichKey<cr>')
 
 -- add a CSS class
-map('n', '<leader>ca', '0/class<cr>:noh<cr>2f"i')
+map('n', '<leader>ac', '0/class<cr>:noh<cr>2f"i')
+
+-- Code action
+map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
 
 -- telescope
 map('n', '<leader>ft', ':Telescope<cr>')

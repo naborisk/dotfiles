@@ -11,21 +11,25 @@ require('formatter').setup {
     javascript = {
       require('formatter.filetypes.javascript').prettier,
       require('formatter.filetypes.javascript').eslint_d,
+      require('formatter.filetypes.typescriptreact').biome,
     },
 
     javascriptreact = {
       require('formatter.filetypes.javascriptreact').prettier,
       require('formatter.filetypes.javascriptreact').eslint_d,
+      require('formatter.filetypes.typescriptreact').biome,
     },
 
     typescriptreact = {
       require('formatter.filetypes.typescriptreact').prettier,
       require('formatter.filetypes.typescriptreact').eslint_d,
+      require('formatter.filetypes.typescriptreact').biome,
     },
 
     typescript = {
       require('formatter.filetypes.typescript').prettier,
       require('formatter.filetypes.typescript').eslint_d,
+      require('formatter.filetypes.typescriptreact').biome,
     },
 
     svelte = {
@@ -46,7 +50,7 @@ require('formatter').setup {
     },
 
     json = {
-      require('formatter.filetypes.json').prettier,
+      require('formatter.filetypes.typescriptreact').biome,
     },
 
     terraform = {
