@@ -43,8 +43,8 @@ vim.o.showmode = false
 -- persistent undo (by default undofile should be in ~/.local/state/nvim/undo)
 vim.o.undofile = true
 
--- set conceallevel to 2 for obsidian.nvim
-vim.o.conceallevel = 2
+-- conceallevel will hide the quote characters in json, etc.
+vim.o.conceallevel = 0
 
 -- load NVIM Specific PATH from env
 local NVIM_PATH = os.getenv 'NVIM_PATH'
