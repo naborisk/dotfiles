@@ -45,6 +45,9 @@ export NEXT_TELEMETRY_DISABLED=1
 # astro
 export ASTRO_TELEMETRY_DISABLED=1
 
+# nuxt
+export NUXT_TELEMETRY_DISABLED=1
+
 # AutomatedLab
 # https://github.com/AutomatedLab/AutomatedLab
 export AUTOMATEDLAB_TELEMETRY_OPTOUT='1'
