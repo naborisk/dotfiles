@@ -1,0 +1,4 @@
+#!/bin/bash
+
+CMD=$@
+open "https://explainshell.com/explain?cmd=$CMD"
