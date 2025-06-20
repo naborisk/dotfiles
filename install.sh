@@ -6,9 +6,8 @@ if [[ $EUID -ne 0 ]]; then
     exec sudo "$0" "$@"
 fi
 
-ASDF_DATA_DIR=${ASDF_DATA_DIR:-$HOME/.asdf}
 HOME=${SUDO_HOME:-$HOME}
-
+ASDF_DATA_DIR=${ASDF_DATA_DIR:-$HOME/.asdf}
 
 # OS Detection for OS-specific commands
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
