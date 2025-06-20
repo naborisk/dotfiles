@@ -33,7 +33,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     ;;
   kali)
     echo 'Kali detected'
-    apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard
+    apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard libbz2-dev libreadline-dev
     ;;
   esac
 
