@@ -6,6 +6,7 @@ if [[ $EUID -ne 0 ]]; then
     exec sudo "$0" "$@"
 fi
 
+ASDF_DATA_DIR=${ASDF_DATA_DIR:-$HOME/.asdf}
 HOME=${SUDO_HOME:-$HOME}
 
 
