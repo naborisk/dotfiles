@@ -13,7 +13,6 @@ ASDF_DATA_DIR=${ASDF_DATA_DIR:-$HOME/.asdf}
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 
   ARCH_NVIM=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'x86_64')
-  ARCH_ASDF=$(uname -m | grep -Eq 'aarch64|arm64' && echo 'arm64' || echo 'amd64')
   echo "Linux $ARCH_NVIM detected"
 
   echo() {
@@ -58,16 +57,13 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   mkdir -p /opt/nvim
   mv nvim-linux-$ARCH_NVIM.appimage /opt/nvim/nvim
 
-  # asdf installation
-  curl -LO https://github.com/asdf-vm/asdf/releases/download/v0.16.7/asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
-  tar -xvzf asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
-  rm asdf-v0.16.7-linux-$ARCH_ASDF.tar.gz
-  mkdir -p /opt/asdf
-  mv asdf /opt/asdf/asdf
-
-  # enable asdf completion
-  mkdir -p "${ASDF_DATA_DIR:-$HOME/.asdf}/completions"
-  /opt/asdf/asdf completion zsh > "${ASDF_DATA_DIR:-$HOME/.asdf}/completions/_asdf"
+  # mise installation
+  if ! command -v mise &>/dev/null; then
+    echo 'mise not found, installing...'
+    curl https://mise.run | sh
+  else
+    echo 'mise already installed, skipping...'
+  fi
 
   echo() {
     command echo "$@"
@@ -127,7 +123,7 @@ su $SUDO_USER <<"EOF"
       fi
   }
 
-  DEPENDENCIES=(neovim ripgrep asdf zoxide fzf lsd)
+  DEPENDENCIES=(neovim ripgrep mise zoxide fzf lsd)
   for DEP in $DEPENDENCIES; do
     brew_install $DEP
   done
