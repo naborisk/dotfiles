@@ -67,3 +67,6 @@ if command -v 'netlify' >/dev/null 2>&1
 then
   'netlify' --telemetry-disable >/dev/null 2>&1
 fi
+
+# storybook
+export STORYBOOK_DISABLE_TELEMETRY=1
