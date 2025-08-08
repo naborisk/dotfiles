@@ -4,7 +4,11 @@
 if [ -f yarn.lock ]; then
   yarn $@
 elif [ -f package-lock.json ]; then
-  npm $@
+  if [ $1 = "dev" ]; then
+    npm run dev
+  else
+    npm $@
+  fi
 elif [ -f pnpm-lock.yaml ]; then
   pnpm $@
 elif [ -f bun.lockb ]; then
