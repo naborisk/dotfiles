@@ -7,6 +7,6 @@ setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_DUPS
 setopt HIST_FIND_NO_DUPS
 
-export HISTORY_IGNORE="(ls|cat|cdi|vi|nvim|k9s|*AWS*|*SECRET*|*secret*|export *)"
+export HISTORY_IGNORE="(ls|exit|cd|cat|cdi|vi|nvim|k9s|*AWS*|*SECRET*|*secret*|export *)"
 
 bindkey -e
