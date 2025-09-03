@@ -36,18 +36,23 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   esac
 
   # install nerd fonts
-  if [ ! -f ~/.local/share/fonts/FiraCodeNerdFont-Regular.ttf ]; then
-    mkdir -p ~/.local/share/fonts
-    cd ~/.local/share/fonts
-    curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip"
-    unzip -o FiraCode.zip
-    rm FiraCode.zip
-    rm -f LICENSE README.md
-    fc-cache -fv
-    cd $CWD
-  else
-    echo 'FiraCodeNerdFont already installed, skipping'
-  fi
+  
+if [$SUDO_USER]; then
+  su $SUDO_USER <<"EOF"
+    if [ ! -f ~/.local/share/fonts/FiraCodeNerdFont-Regular.ttf ]; then
+      mkdir -p ~/.local/share/fonts
+      cd ~/.local/share/fonts
+      curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip"
+      unzip -o FiraCode.zip
+      rm FiraCode.zip
+      rm -f LICENSE README.md
+      fc-cache -fv
+      cd $CWD
+    else
+      echo 'FiraCodeNerdFont already installed, skipping'
+    fi
+  EOF
+fi
 
   # neovim installation
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH_NVIM.appimage
@@ -126,10 +131,10 @@ su $SUDO_USER <<"EOF"
   for DEP in $DEPENDENCIES; do
     brew_install $DEP
   done
-EOF
 
   mkdir -p $HOME/Library/Application\ Support/com.mitchellh.ghostty
   ln -sfn $(pwd)/ghostty/config $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
+EOF
 
   # return echo to normal
   echo() {
@@ -145,8 +150,12 @@ else
   echo 'starship installed, skipping...'
 fi
 
-# ensure .config exists
-mkdir -p $HOME/.config/
+# ensure .config exists as SUDO_USER
+if [ $SUDO_USER ]; then
+  su $SUDO_USER <<"EOF"
+    mkdir -p $HOME/.config/
+  EOF
+fi
 
 # install files in home directory
 # files in home/ will be symlinked to $HOME
