@@ -110,10 +110,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'Enabling dock autohide'
   defaults write com.apple.dock autohide -bool TRUE
 
-  if [ $(defaults read com.apple.dock autohide-time-modifier) -ne 0 ]; then
-    echo 'Disabling dock autohide animation'
-    defaults write com.apple.dock autohide-time-modifier -float 0.0 && killall Dock
-  fi
+  echo 'Disabling dock autohide animation'
+  defaults write com.apple.dock autohide-time-modifier -float 0.0 && killall Dock
 
   echo 'Disabling mouse acceleration'
   defaults write .GlobalPreferences com.apple.mouse.scaling -1
