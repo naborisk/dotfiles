@@ -77,6 +77,10 @@ require('formatter').setup {
       require('formatter.filetypes.zsh').beautysh,
     },
 
+    bash = {
+      require('formatter.filetypes.zsh').beautysh,
+    },
+
     xml = {
       require('formatter.filetypes.xml').xmlformat,
     },

@@ -11,5 +11,6 @@ vim.filetype.add {
     ['.*compose.*.y[a]?ml'] = 'yaml.docker-compose',
     ['playbook.y[a]?ml'] = 'yaml.ansible',
     ['.env.*'] = 'sh',
+    ['.sh'] = 'bash'
   },
 }

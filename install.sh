@@ -3,7 +3,7 @@
 CWD=$(pwd)
 
 if [[ $EUID -ne 0 ]]; then
-    exec sudo "$0" "$@"
+  exec sudo "$0" "$@"
 fi
 
 HOME=${SUDO_HOME:-$HOME}
@@ -21,24 +21,24 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
   # distro specific commands
   . /etc/os-release
   case $ID in
-  ubuntu)
-    echo 'Ubuntu detected, attemping to install dependencies'
-    apt-get update
-    apt-get install curl git unzip zsh lsd fzf
-    ;;
-  arch)
-    echo 'Arch detected'
-    ;;
-  kali)
-    echo 'Kali detected'
-    apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard libbz2-dev libreadline-dev libssl-dev
-    ;;
+    ubuntu)
+      echo 'Ubuntu detected, attemping to install dependencies'
+      apt-get update
+      apt-get install curl git unzip zsh lsd fzf
+      ;;
+    arch)
+      echo 'Arch detected'
+      ;;
+    kali)
+      echo 'Kali detected'
+      apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard libbz2-dev libreadline-dev libssl-dev
+      ;;
   esac
 
   # install nerd fonts
-  
-if [$SUDO_USER]; then
-  su $SUDO_USER <<"EOF"
+
+  if [ -n $SUDO_USER ]; then
+    su $SUDO_USER <<"EOF"
     if [ ! -f ~/.local/share/fonts/FiraCodeNerdFont-Regular.ttf ]; then
       mkdir -p ~/.local/share/fonts
       cd ~/.local/share/fonts
@@ -51,8 +51,8 @@ if [$SUDO_USER]; then
     else
       echo 'FiraCodeNerdFont already installed, skipping'
     fi
-  EOF
-fi
+EOF
+  fi
 
   # neovim installation
   curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-$ARCH_NVIM.appimage
@@ -91,7 +91,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
   echo 'ensuring /usr/local/bin exists for starship installation...'
   [ ! -d /usr/local/bin ] && mkdir -p /usr/local/bin/
 
-su $SUDO_USER <<"EOF"
+  su $SUDO_USER <<"EOF"
   echo() {
     command echo "[macOS $(whoami)] $@"
   }
@@ -151,10 +151,10 @@ else
 fi
 
 # ensure .config exists as SUDO_USER
-if [ $SUDO_USER ]; then
+if [ -n $SUDO_USER ]; then
   su $SUDO_USER <<"EOF"
     mkdir -p $HOME/.config/
-  EOF
+EOF
 fi
 
 # install files in home directory
