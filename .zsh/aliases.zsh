@@ -66,3 +66,31 @@ st() {
     export STARSHIP_STATUS="$@ "
   fi
 }
+
+timecalc() {
+  if [ "$#" -ne 2 ]; then
+    echo "Usage: timecalc <start_time> <end_time> (format: HHMM)"
+    return 1
+  fi
+
+  start_time=$1
+  end_time=$2
+
+  start_hour=${start_time:0:2}
+  start_minute=${start_time:2:2}
+  end_hour=${end_time:0:2}
+  end_minute=${end_time:2:2}
+
+  start_total_minutes=$((10#$start_hour * 60 + 10#$start_minute))
+  end_total_minutes=$((10#$end_hour * 60 + 10#$end_minute))
+
+  if [ $end_total_minutes -lt $start_total_minutes ]; then
+    end_total_minutes=$((end_total_minutes + 24 * 60))
+  fi
+
+  diff_minutes=$((end_total_minutes - start_total_minutes))
+  diff_hours=$((diff_minutes / 60))
+  diff_remaining_minutes=$((diff_minutes % 60))
+
+  printf "Time Difference: %02d:%02d\n" $diff_hours $diff_remaining_minutes
+}
