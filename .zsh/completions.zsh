@@ -1,5 +1,7 @@
 zstyle :compinstall filename "$HOME/.zsh/compinit.zsh"
 
+command -v brew > /dev/null && [ -d $(brew --prefix)/share/zsh/site-functions ] && fpath+=($(brew --prefix)/share/zsh/site-functions)
+
 autoload -Uz compinit
 compinit
 
