@@ -1,8 +1,8 @@
 #!/bin/bash
 
-INF="tun0 br0 eth0 wlan0"
+INF="tun0 br0 en0 eth0 wlan0"
 
 for i in $INF; do
-    IP=$((ip show $i || ifconfig $i) 2>/dev/null | grep -m 1 inet | awk '{print $2}' | cut -d / -f 1)
+    IP=$((ip show $i || ifconfig $i) 2>/dev/null | grep -m 1 "inet " | awk '{print $2}' | cut -d / -f 1)
     [ -n "$IP" ] && { echo $i \[$IP\]; exit 0; }
 done
