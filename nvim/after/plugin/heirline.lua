@@ -16,6 +16,7 @@ local Navic = require 'navic'
 local RelPath = require 'relpath'
 local GitUser = require 'gituser'
 local BufferLine = require 'bufferline'
+local Perms = require 'perms'
 
 local function get_colors()
   return {
@@ -103,6 +104,8 @@ local InactiveStatusLine = {
 
 local DefaultStatusLine = {
   ViMode,
+  Space,
+  Perms,
   Space,
   RelPath,
   Align,
