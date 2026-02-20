@@ -1,10 +1,10 @@
 ---- VARIABLES ----
-HOME = os.getenv 'HOME'
-USER = os.getenv 'USER'
-OS = jit.os -- "OSX" or "Linux"
+local HOME = os.getenv 'HOME'
+local USER = os.getenv 'USER'
+local OS = jit.os -- "OSX" or "Linux"
 
 ---- PREREQUISITES ----
-vim.o.tgc = true
+vim.o.termguicolors = true
 
 -- neovide configuration
 if vim.g.neovide then

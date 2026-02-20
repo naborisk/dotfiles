@@ -95,10 +95,8 @@ require('formatter').setup {
 local NVIM_FORMATTER_DISABLED = os.getenv 'NVIM_FORMATTER_DISABLED'
 
 if not NVIM_FORMATTER_DISABLED then
-  vim.cmd [[
-  augroup FormatAutogroup
-    autocmd!
-    autocmd BufWritePost * FormatWrite
-  augroup END
-  ]]
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    group = vim.api.nvim_create_augroup('FormatAutogroup', { clear = true }),
+    command = 'FormatWrite',
+  })
 end

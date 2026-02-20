@@ -1,7 +1,7 @@
 -- TODO: add plugins keys in Lazy
 -- bootstrapping lazy.nvim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
+if not vim.uv.fs_stat(lazypath) then
   vim.fn.system {
     'git',
     'clone',
@@ -15,25 +15,23 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
   -- Autocompletion
-  'hrsh7th/cmp-buffer',
-  'hrsh7th/cmp-path',
-  'hrsh7th/cmp-cmdline',
-  'petertriho/cmp-git',
-  'SergioRibera/cmp-dotenv',
   {
     'hrsh7th/nvim-cmp',
     event = 'InsertEnter',
     dependencies = {
-      { 'L3MON4D3/LuaSnip', 'onsails/lspkind.nvim' },
+      'L3MON4D3/LuaSnip',
+      'onsails/lspkind.nvim',
+      'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-path',
+      'hrsh7th/cmp-cmdline',
+      'petertriho/cmp-git',
+      'SergioRibera/cmp-dotenv',
     },
   },
 
   -- LSP
   {
     'neovim/nvim-lspconfig',
-    cmd = 'LspInfo',
-    lazy = false,
-    event = { 'BufReadPre', 'BufNewFile' },
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp' },
       { 'williamboman/mason-lspconfig.nvim' },
@@ -52,51 +50,61 @@ require('lazy').setup({
   -- Indentation lines
   {
     'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      local color = color or 'nightfox'
-      vim.cmd.colorscheme(color)
-    end,
+    -- config = function()
+    --   vim.cmd.colorscheme 'nightfox'
+    -- end,
   },
 
   -- Theme
-  'EdenEast/nightfox.nvim',
+  {
+    'EdenEast/nightfox.nvim',
+    priority = 1000,
+    config = function()
+      require('nightfox').setup {
+        options = {
+          colorblind = {
+            enable = true,
+            severity = {
+              deutan = 1,
+              protan = 0.5,
+              tritan = 0.2,
+            },
+          },
+        },
+      }
+      vim.cmd.colorscheme 'nightfox'
+    end,
+  },
 
   -- Comment
   'numToStr/Comment.nvim',
 
   -- Devicons
-  'kyazdani42/nvim-web-devicons',
+  'nvim-tree/nvim-web-devicons',
 
   -- Heirline (Status line + Buffer line)
   'rebelot/heirline.nvim',
 
-  {
-    'SmiteshP/nvim-navic',
-    dependencies = {
-      'neovim/nvim-lspconfig',
-    },
-  },
+  'SmiteshP/nvim-navic',
 
   -- File explorer
   {
-    'kyazdani42/nvim-tree.lua',
+    'nvim-tree/nvim-tree.lua',
     dependencies = {
-      'kyazdani42/nvim-web-devicons',
+      'nvim-tree/nvim-web-devicons',
     },
   },
 
   -- LSP file operations (for updating imports, etc.)
   {
-    {
-      'antosha417/nvim-lsp-file-operations',
-      dependencies = {
-        'nvim-lua/plenary.nvim',
-        'nvim-tree/nvim-tree.lua',
-      },
-      config = function()
-        require('lsp-file-operations').setup()
-      end,
+    'antosha417/nvim-lsp-file-operations',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-tree/nvim-tree.lua',
     },
+    config = function()
+      require('lsp-file-operations').setup()
+    end,
   },
 
   'folke/which-key.nvim',
@@ -104,7 +112,6 @@ require('lazy').setup({
   -- Fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
-    tag = 'v0.1.9',
     dependencies = { 'nvim-lua/plenary.nvim' },
   },
 

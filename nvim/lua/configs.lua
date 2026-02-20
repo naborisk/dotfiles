@@ -1,6 +1,6 @@
 ---- OPTIONS ----
 -- Show line number
-vim.o.nu = true
+vim.o.number = true
 
 -- Show cursorline (highlights each line)
 vim.o.cursorline = true
@@ -32,7 +32,7 @@ vim.o.mouse = 'a'
 vim.o.scrolloff = 6
 
 -- low update time for diagnostics text
-vim.o.ut = 400
+vim.o.updatetime = 400
 
 -- use system clipboard
 vim.o.clipboard = 'unnamedplus'

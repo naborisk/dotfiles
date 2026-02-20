@@ -1,7 +1,5 @@
 ---- COSMETICS ----
--- colorscheme
-local color = color or 'nightfox' -- This makes sure to have colorscheme fallback
-vim.cmd.colorscheme(color)
+-- colorscheme is set in plugins.lua (nightfox config)
 
 -- Hide separators and end of buffer ~ and set VertSplit bg to be visible
 vim.o.fillchars = 'fold: ,vert: ,eob: ,msgsep:‾'

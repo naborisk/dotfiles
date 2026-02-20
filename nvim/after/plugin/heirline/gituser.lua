@@ -3,6 +3,8 @@ local conditions = require 'heirline.conditions'
 local GitUser = {
   condition = conditions.is_git_repo,
 
+  update = 'BufEnter',
+
   init = function(self)
     self.git_name = vim.fn.system { 'git', 'config', 'user.name' }
   end,

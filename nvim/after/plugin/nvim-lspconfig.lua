@@ -42,7 +42,6 @@ vim.lsp.config('lua_ls', {
         globals = {
           'vim',
           'jit',
-          'color',
         },
       },
     },
@@ -123,7 +122,14 @@ vim.lsp.enable(servers)
 
 vim.diagnostic.config {
   virtual_text = false, -- show text after diagnostics
-  signs = true,
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = '',
+      [vim.diagnostic.severity.WARN] = '',
+      [vim.diagnostic.severity.HINT] = '',
+      [vim.diagnostic.severity.INFO] = '',
+    },
+  },
   update_in_insert = false,
   underline = true,
   severity_sort = false,
@@ -134,19 +140,8 @@ vim.diagnostic.config {
 local lspGroup = vim.api.nvim_create_augroup('Lsp', { clear = true })
 
 vim.api.nvim_create_autocmd('CursorHold', {
-  command = 'lua vim.diagnostic.open_float()',
+  callback = function()
+    vim.diagnostic.open_float()
+  end,
   group = lspGroup,
 })
-
--- Change diagnostic signs
-local signs = {
-  Error = '',
-  Warn = '',
-  Hint = '',
-  Info = '',
-}
-
-for type, icon in pairs(signs) do
-  local hl = 'DiagnosticSign' .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
