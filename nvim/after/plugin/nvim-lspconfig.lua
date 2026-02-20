@@ -1,12 +1,4 @@
-local lspconfig = require 'lspconfig'
 local mason_lspconfig = require 'mason-lspconfig'
-
-local configs = require 'lspconfig.configs'
-
--- Get installed language servers from mason
-local get_servers = mason_lspconfig.get_installed_servers
-
-local navic = require 'nvim-navic'
 
 -- Get cmp_nvim_lsp capabilities
 local cmp_nvim_lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
@@ -23,108 +15,96 @@ mason_lspconfig.setup {
   },
 }
 
--- Adding custom language server
-if not configs.omnisharp_mono then
-  configs.omnisharp_mono = {
-    default_config = {
-      cmd = { 'omnisharp-mono', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
-      filetypes = { 'cs' },
-      root_dir = lspconfig.util.root_pattern('*.csproj', '*.sln', '.git'),
-      settings = {},
-    },
-  }
-end
-
 -- always show icon column
 vim.o.signcolumn = 'yes'
 
--- lsp configurations
-local lsp_options = {
-  omnisharp_mono = {
-    settings = {
-      omnisharp = {
-        useModernNet = false,
-        -- monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
-        --
-        -- supports multi platform
-        monoPath = vim.fn.system { 'which', 'mono' },
-      },
+-- Adding custom language server
+vim.lsp.config('omnisharp_mono', {
+  cmd = { 'omnisharp-mono', '--languageserver', '--hostPID', tostring(vim.fn.getpid()) },
+  filetypes = { 'cs' },
+  root_markers = { '*.csproj', '*.sln', '.git' },
+  settings = {
+    omnisharp = {
+      useModernNet = false,
+      -- monoPath = '/Library/Frameworks/Mono.framework/Versions/Current/',
+      --
+      -- supports multi platform
+      monoPath = vim.fn.system { 'which', 'mono' },
     },
   },
+})
 
-  lua_ls = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = {
-            'vim',
-            'jit',
-            'color',
-          },
+-- Per-server configurations
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {
+          'vim',
+          'jit',
+          'color',
         },
       },
     },
   },
+})
 
-  ansiblels = {
-    -- filetypes = { 'yaml' },
-    settings = {
-      ansible = {
-        validation = {
-          lint = {
-            enabled = false,
-          },
+vim.lsp.config('ansiblels', {
+  -- filetypes = { 'yaml' },
+  settings = {
+    ansible = {
+      validation = {
+        lint = {
+          enabled = false,
         },
       },
     },
   },
+})
 
-  tsserver = {
-    -- filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'svelte' }
+-- tsserver: filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact', 'html', 'svelte' }
+
+vim.lsp.config('tailwindcss', {
+  filetypes = {
+    'html',
+    'svelte',
+    'astro',
+    'vue',
+    'javascriptreact',
+    'typescriptreact',
+  },
+})
+
+vim.lsp.config('emmet_ls', {
+  filetypes = {
+    'html',
+    'markdown',
+    'javascriptreact',
+    'typescriptreact',
+    'vue',
+    'astro',
+    'css',
+    'sass',
+    'scss',
+    'less',
+    'svelte',
   },
 
-  tailwindcss = {
-    filetypes = {
-      'html',
-      'svelte',
-      'astro',
-      'vue',
-      'javascriptreact',
-      'typescriptreact',
-    },
-  },
-
-  emmet_ls = {
-    filetypes = {
-      'html',
-      'markdown',
-      'javascriptreact',
-      'typescriptreact',
-      'vue',
-      'astro',
-      'css',
-      'sass',
-      'scss',
-      'less',
-      'svelte',
-    },
-
-    init_options = {
-      html = {
-        options = {
-          ['jsx.enabled'] = true,
-        },
+  init_options = {
+    html = {
+      options = {
+        ['jsx.enabled'] = true,
       },
     },
   },
+})
 
-  volar = {
-    filetypes = { 'javascript', 'typescript', 'vue' },
-  },
-}
+vim.lsp.config('volar', {
+  filetypes = { 'javascript', 'typescript', 'vue' },
+})
 
--- note: omnisharp and omnisharp_mono shouldn't be insalled together
-lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_config, {
+-- Global defaults: capabilities for all servers
+vim.lsp.config('*', {
   capabilities = vim.tbl_deep_extend(
     'force',
     vim.lsp.protocol.make_client_capabilities(),
@@ -133,26 +113,13 @@ lspconfig.util.default_config = vim.tbl_extend('force', lspconfig.util.default_c
   ),
 })
 
--- run setup() for every installed servers by mason, apply config if defined in lsp_options table
-for _, server_name in ipairs(get_servers()) do
-  -- get configurations from lsp_options table
-  local settings = lsp_options[server_name] and lsp_options[server_name].settings or {}
-  local filetypes = lsp_options[server_name] and lsp_options[server_name].filetypes or nil
-
+-- note: omnisharp and omnisharp_mono shouldn't be installed together
+local servers = mason_lspconfig.get_installed_servers()
+servers = vim.tbl_map(function(s)
   -- hotfix for tsserver until it's fixed in mason
-  server_name = server_name == 'tsserver' and 'ts_ls' or server_name
-
-  lspconfig[server_name].setup {
-    filetypes = filetypes,
-    settings = settings,
-    -- capabilities = ,
-    on_attach = function(client, bufnr)
-      if client.server_capabilities.documentSymbolProvider then
-        navic.attach(client, bufnr)
-      end
-    end,
-  }
-end
+  return s == 'tsserver' and 'ts_ls' or s
+end, servers)
+vim.lsp.enable(servers)
 
 vim.diagnostic.config {
   virtual_text = false, -- show text after diagnostics
