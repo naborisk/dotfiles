@@ -1,8 +1,5 @@
 local mason_lspconfig = require 'mason-lspconfig'
 
--- Get cmp_nvim_lsp capabilities
-local cmp_nvim_lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-
 -- Get lsp-file-operations capabilities
 local lsp_file_op_capabilities = require('lsp-file-operations').default_capabilities()
 
@@ -42,6 +39,7 @@ vim.lsp.config('lua_ls', {
         globals = {
           'vim',
           'jit',
+          'Snacks'
         },
       },
     },
@@ -107,7 +105,6 @@ vim.lsp.config('*', {
   capabilities = vim.tbl_deep_extend(
     'force',
     vim.lsp.protocol.make_client_capabilities(),
-    cmp_nvim_lsp_capabilities,
     lsp_file_op_capabilities
   ),
 })

@@ -16,24 +16,52 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- Autocompletion
   {
-    'hrsh7th/nvim-cmp',
-    event = 'InsertEnter',
+    'saghen/blink.cmp',
+    version = '1.*',
     dependencies = {
-      'L3MON4D3/LuaSnip',
-      'onsails/lspkind.nvim',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'hrsh7th/cmp-cmdline',
-      'petertriho/cmp-git',
-      'SergioRibera/cmp-dotenv',
+      'rafamadriz/friendly-snippets',
+      'giuxtaposition/blink-cmp-copilot',
     },
+    opts = {
+      keymap = {
+        preset = 'none',
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide', 'fallback' },
+        ['<CR>'] = { 'accept', 'fallback' },
+        ['<Tab>'] = { 'select_next', 'fallback' },
+        ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        ['<C-u>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<C-d>'] = { 'scroll_documentation_down', 'fallback' },
+      },
+      appearance = { nerd_font_variant = 'mono' },
+      completion = {
+        documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        menu = {
+          draw = {
+            columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
+          },
+        },
+      },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot' },
+        providers = {
+          copilot = {
+            name = 'copilot',
+            module = 'blink-cmp-copilot',
+            score_offset = 100,
+            async = true,
+          },
+        },
+      },
+      fuzzy = { implementation = 'prefer_rust_with_warning' },
+    },
+    opts_extend = { 'sources.default' },
   },
 
   -- LSP
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp' },
       { 'williamboman/mason-lspconfig.nvim' },
       {
         'williamboman/mason.nvim',
@@ -44,15 +72,69 @@ require('lazy').setup({
     },
   },
 
-  -- auto formatter
-  'mhartington/formatter.nvim',
-
-  -- Indentation lines
+  -- Auto formatter
   {
-    'lukas-reineke/indent-blankline.nvim',
-    -- config = function()
-    --   vim.cmd.colorscheme 'nightfox'
-    -- end,
+    'stevearc/conform.nvim',
+    event = 'BufWritePre',
+    cmd = { 'ConformInfo' },
+    config = function()
+      require('conform').setup {
+        formatters_by_ft = {
+          lua = { 'stylua' },
+          javascript = { 'prettier', 'eslint_d', 'biome' },
+          javascriptreact = { 'prettier', 'eslint_d', 'biome' },
+          typescriptreact = { 'prettier', 'eslint_d', 'biome' },
+          typescript = { 'prettier', 'eslint_d', 'biome' },
+          svelte = { 'prettier' },
+          vue = { 'prettier', 'eslint_d' },
+          css = { 'prettier' },
+          yaml = { 'prettier' },
+          json = { 'biome' },
+          terraform = { 'terraform_fmt' },
+          go = { 'gofmt' },
+          rust = { 'rustfmt' },
+          html = { 'prettier' },
+          sh = { 'shfmt' },
+          zsh = { 'beautysh' },
+          bash = { 'beautysh' },
+          xml = { 'xmlformat' },
+        },
+        format_on_save = function(bufnr)
+          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
+            return
+          end
+          return { timeout_ms = 500, lsp_format = 'fallback' }
+        end,
+      }
+
+      vim.api.nvim_create_user_command('FormatDisable', function(args)
+        if args.bang then
+          vim.b.disable_autoformat = true
+        else
+          vim.g.disable_autoformat = true
+        end
+      end, { desc = 'Disable autoformat-on-save', bang = true })
+
+      vim.api.nvim_create_user_command('FormatEnable', function()
+        vim.b.disable_autoformat = false
+        vim.g.disable_autoformat = false
+      end, { desc = 'Re-enable autoformat-on-save' })
+    end,
+  },
+
+  -- Snacks.nvim (indent, picker, notifier, etc.)
+  {
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      indent = { enabled = true },
+      notifier = { enabled = true },
+      picker = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+    },
   },
 
   -- Theme
@@ -109,16 +191,14 @@ require('lazy').setup({
 
   'folke/which-key.nvim',
 
-  -- Fuzzy finder
-  {
-    'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-lua/plenary.nvim' },
-  },
-
   -- nvim-treesitter
   {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
+    opts = {
+      auto_install = true,
+      highlight = { enable = true },
+    },
   },
 
   {
@@ -131,11 +211,22 @@ require('lazy').setup({
     event = 'InsertEnter',
     opts = {},
   },
-  'windwp/nvim-ts-autotag',
-
-  -- GitHub copilot
   {
-    'github/copilot.vim',
+    'windwp/nvim-ts-autotag',
+    opts = {},
+  },
+
+  -- GitHub Copilot
+  {
+    'zbirenbaum/copilot.lua',
+    cmd = 'Copilot',
+    event = 'InsertEnter',
+    config = function()
+      require('copilot').setup {
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      }
+    end,
   },
 
   -- git related stuffs

@@ -12,12 +12,6 @@ map('n', '<leader>pf', ':%!prettier %:p<cr>')
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
--- copilot
--- disable tab mapping fot copilot
-vim.g.copilot_no_tab_map = true
--- <c-g> for copilot accept (will append some binary if vim.keymap.set is used)
-vim.api.nvim_set_keymap('i', '<c-g>', 'copilot#Accept("<cr>")', { expr = true, silent = true })
-
 -- format using nvim lsp
 -- map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
 -- map('n', '<leader>bf', ':FormatWrite<cr>')
@@ -52,20 +46,40 @@ map('n', '<leader>ac', '0/class<cr>:noh<cr>2f"i')
 -- Code action
 map('n', '<leader>ca', ':lua vim.lsp.buf.code_action()<cr>')
 
--- telescope
-map('n', '<leader>ft', ':Telescope<cr>')
-map('n', '<leader>ff', ':Telescope find_files<cr>')
-map('n', '<leader>fg', ':Telescope git_files<cr>')
-map('n', '<leader>fr', ':Telescope live_grep<cr>')
+-- snacks.picker
+map('n', '<leader>ft', function()
+  Snacks.picker()
+end)
+map('n', '<leader>ff', function()
+  Snacks.picker.files()
+end)
+map('n', '<leader>fg', function()
+  Snacks.picker.git_files()
+end)
+map('n', '<leader>fr', function()
+  Snacks.picker.grep()
+end)
 
--- open buffer list with Telescope
-map('n', '<leader>b', ':Telescope buffers<cr>')
+-- open buffer list with Snacks
+map('n', '<leader>b', function()
+  Snacks.picker.buffers()
+end)
 
-map('n', '<leader>tt', ':Telescope<cr>')
-map('n', '<c-y>', ':Telescope<cr>')
-map('n', '<leader>tb', ':Telescope buffers<cr>')
-map('n', '<leader>tr', ':Telescope lsp_references<cr>')
-map('n', '<leader>td', ':Telescope lsp_definitions<cr>')
+map('n', '<leader>tt', function()
+  Snacks.picker()
+end)
+map('n', '<c-y>', function()
+  Snacks.picker()
+end)
+map('n', '<leader>tb', function()
+  Snacks.picker.buffers()
+end)
+map('n', '<leader>tr', function()
+  Snacks.picker.lsp_references()
+end)
+map('n', '<leader>td', function()
+  Snacks.picker.lsp_definitions()
+end)
 
 -- Obsidian.nvim
 map('n', '<leader>ot', ':ObsidianToday<cr>')
