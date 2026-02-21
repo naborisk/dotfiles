@@ -17,6 +17,7 @@ local RelPath = require 'relpath'
 local GitUser = require 'gituser'
 local BufferLine = require 'bufferline'
 local Perms = require 'perms'
+local FormatStatus = require 'format'
 
 local function get_colors()
   return {
@@ -97,6 +98,7 @@ local DefaultStatusLine = {
   Align,
   Git,
   Space,
+  FormatStatus,
   FileType,
   Space,
   Ruler,
