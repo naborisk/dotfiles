@@ -50,13 +50,7 @@ command -v yay > /dev/null && alias yaysearch="yay -Slq | fzf --multi --preview 
 alias gtree="git log --oneline --decorate --graph"
 
 # use lsd if available
-ls() {
-  if command -v lsd > /dev/null; then
-    command lsd $@
-  else
-    command ls $@
-  fi
-}
+command -v lsd > /dev/null && alias ls=lsd
 
 # status command
 st() {

@@ -11,5 +11,18 @@ autoload -Uz _zinit
 zinit light Aloxaf/fzf-tab
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
 
-zinit light zsh-users/zsh-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+# Defer mise activation (saves ~50-80ms startup time)
+zinit ice wait'0' lucid if'test -e $HOME/.local/bin/mise || command -v mise > /dev/null'
+zinit light-mode for \
+  atload'
+    if test -e $HOME/.local/bin/mise; then
+      eval "$($HOME/.local/bin/mise activate zsh)"
+    elif command -v mise > /dev/null; then
+      eval "$(mise activate zsh)"
+    fi
+  ' \
+  zdharma-continuum/null
