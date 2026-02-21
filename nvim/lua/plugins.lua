@@ -120,9 +120,15 @@ require('lazy').setup({
   -- Heirline (Status line + Buffer line)
   'rebelot/heirline.nvim',
 
-  'SmiteshP/nvim-navic',
+  {
+    'SmiteshP/nvim-navic',
+    event = 'LspAttach',
+  },
 
-  'folke/which-key.nvim',
+  {
+    'folke/which-key.nvim',
+    event = 'VeryLazy',
+  },
 
   -- nvim-treesitter
   {
@@ -155,6 +161,7 @@ require('lazy').setup({
   -- git related stuffs
   {
     'lewis6991/gitsigns.nvim',
+    event = 'BufReadPre',
   },
 }, {
   -- Lazy options
