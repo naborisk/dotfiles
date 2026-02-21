@@ -101,7 +101,7 @@ require('lazy').setup({
         sources = {
           grep = {
             hidden = true,
-            ignored = true,
+            ignored = false,
           },
           explorer = {
             layout = { layout = { width = 30 } },
