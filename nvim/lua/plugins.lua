@@ -90,6 +90,13 @@ require('lazy').setup({
       notifier = { enabled = true },
       explorer = { enabled = true },
       picker = {
+        win = {
+          input = {
+            keys = {
+              ['<esc>'] = { 'close', mode = { 'n', 'i' } },
+            },
+          },
+        },
         enabled = true,
         sources = {
           explorer = {
