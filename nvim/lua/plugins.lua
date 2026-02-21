@@ -77,49 +77,6 @@ require('lazy').setup({
     'stevearc/conform.nvim',
     event = 'BufWritePre',
     cmd = { 'ConformInfo' },
-    config = function()
-      require('conform').setup {
-        formatters_by_ft = {
-          lua = { 'stylua' },
-          javascript = { 'prettier', 'eslint_d', 'biome' },
-          javascriptreact = { 'prettier', 'eslint_d', 'biome' },
-          typescriptreact = { 'prettier', 'eslint_d', 'biome' },
-          typescript = { 'prettier', 'eslint_d', 'biome' },
-          svelte = { 'prettier' },
-          vue = { 'prettier', 'eslint_d' },
-          css = { 'prettier' },
-          yaml = { 'prettier' },
-          json = { 'biome' },
-          terraform = { 'terraform_fmt' },
-          go = { 'gofmt' },
-          rust = { 'rustfmt' },
-          html = { 'prettier' },
-          sh = { 'shfmt' },
-          zsh = { 'beautysh' },
-          bash = { 'beautysh' },
-          xml = { 'xmlformat' },
-        },
-        format_on_save = function(bufnr)
-          if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-            return
-          end
-          return { timeout_ms = 500, lsp_format = 'fallback' }
-        end,
-      }
-
-      vim.api.nvim_create_user_command('FormatDisable', function(args)
-        if args.bang then
-          vim.b.disable_autoformat = true
-        else
-          vim.g.disable_autoformat = true
-        end
-      end, { desc = 'Disable autoformat-on-save', bang = true })
-
-      vim.api.nvim_create_user_command('FormatEnable', function()
-        vim.b.disable_autoformat = false
-        vim.g.disable_autoformat = false
-      end, { desc = 'Re-enable autoformat-on-save' })
-    end,
   },
 
   -- Snacks.nvim (indent, picker, notifier, etc.)
@@ -141,21 +98,6 @@ require('lazy').setup({
   {
     'EdenEast/nightfox.nvim',
     priority = 1000,
-    config = function()
-      require('nightfox').setup {
-        options = {
-          colorblind = {
-            enable = true,
-            severity = {
-              deutan = 1,
-              protan = 0.5,
-              tritan = 0.2,
-            },
-          },
-        },
-      }
-      vim.cmd.colorscheme 'nightfox'
-    end,
   },
 
   -- Comment
@@ -184,9 +126,6 @@ require('lazy').setup({
       'nvim-lua/plenary.nvim',
       'nvim-tree/nvim-tree.lua',
     },
-    config = function()
-      require('lsp-file-operations').setup()
-    end,
   },
 
   'folke/which-key.nvim',
@@ -221,12 +160,6 @@ require('lazy').setup({
     'zbirenbaum/copilot.lua',
     cmd = 'Copilot',
     event = 'InsertEnter',
-    config = function()
-      require('copilot').setup {
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      }
-    end,
   },
 
   -- git related stuffs

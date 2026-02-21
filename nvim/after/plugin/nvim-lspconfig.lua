@@ -1,6 +1,7 @@
 local mason_lspconfig = require 'mason-lspconfig'
 
 -- Get lsp-file-operations capabilities
+require('lsp-file-operations').setup()
 local lsp_file_op_capabilities = require('lsp-file-operations').default_capabilities()
 
 -- ensure certain servers are installed
@@ -39,7 +40,7 @@ vim.lsp.config('lua_ls', {
         globals = {
           'vim',
           'jit',
-          'Snacks'
+          'Snacks',
         },
       },
     },
@@ -102,11 +103,7 @@ vim.lsp.config('volar', {
 
 -- Global defaults: capabilities for all servers
 vim.lsp.config('*', {
-  capabilities = vim.tbl_deep_extend(
-    'force',
-    vim.lsp.protocol.make_client_capabilities(),
-    lsp_file_op_capabilities
-  ),
+  capabilities = vim.tbl_deep_extend('force', vim.lsp.protocol.make_client_capabilities(), lsp_file_op_capabilities),
 })
 
 -- note: omnisharp and omnisharp_mono shouldn't be installed together
