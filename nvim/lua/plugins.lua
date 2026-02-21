@@ -99,6 +99,10 @@ require('lazy').setup({
         },
         enabled = true,
         sources = {
+          grep = {
+            hidden = true,
+            ignored = true,
+          },
           explorer = {
             layout = { layout = { width = 30 } },
             win = {
