@@ -52,20 +52,6 @@ local Space = {
   provider = ' ',
 }
 
-local BufnameStatusLine = {
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { 'NvimTree' },
-    }
-  end,
-  Space,
-  FileType,
-  Align,
-  hl = {
-    bg = 'bg',
-  },
-}
-
 local SpecialStatusLine = {
   condition = function()
     return conditions.buffer_matches {
@@ -122,22 +108,6 @@ local DefaultStatusLine = {
   },
 }
 
-local NvimTreeWinbar = {
-  condition = function()
-    return conditions.buffer_matches {
-      filetype = { 'NvimTree' },
-    }
-  end,
-  Align,
-  {
-    provider = '',
-  },
-  Align,
-  hl = {
-    bg = 'bg',
-  },
-}
-
 local DefaultWinBar = {
   Space,
   Space,
@@ -168,7 +138,6 @@ local SpecialWinBar = {
 -- in this case, SpecialStatusLine will be used for inactive special buffers
 local statusline = {
   fallthrough = false,
-  BufnameStatusLine,
   SpecialStatusLine,
   InactiveStatusLine,
   DefaultStatusLine,
@@ -176,7 +145,6 @@ local statusline = {
 
 local winbar = {
   fallthrough = false,
-  NvimTreeWinbar,
   SpecialWinBar,
   DefaultWinBar,
 }

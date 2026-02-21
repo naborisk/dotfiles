@@ -12,13 +12,23 @@ map('n', '<leader>pf', ':%!prettier %:p<cr>')
 map('i', '<c-n>', '<nop>')
 map('i', '<c-p>', '<nop>')
 
+-- comment toggle using Ctrl+/
+vim.keymap.set('n', '<C-_>', 'gcc', { remap = true, silent = true })
+vim.keymap.set('v', '<C-_>', 'gc', { remap = true, silent = true })
+vim.keymap.set('i', '<C-_>', '<esc>gcca', { remap = true, silent = true })
+
 -- format using nvim lsp
 -- map('n', '<leader>bf', ':lua vim.lsp.buf.format()<cr>') -- [b]uffer [f]ormat
 -- map('n', '<leader>bf', ':FormatWrite<cr>')
 
 -- toggle file explorer
-map('n', '<C-b>', ':NvimTreeToggle<cr>')
-map('i', '<C-b>', '<esc>:NvimTreeToggle<cr>')
+map('n', '<C-b>', function()
+  Snacks.explorer()
+end)
+map('i', '<C-b>', function()
+  vim.cmd 'stopinsert'
+  Snacks.explorer()
+end)
 
 -- esc in terminal mode
 map('t', '<esc>', '<C-\\><C-n>')

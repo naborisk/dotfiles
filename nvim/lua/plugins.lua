@@ -88,7 +88,24 @@ require('lazy').setup({
       bigfile = { enabled = true },
       indent = { enabled = true },
       notifier = { enabled = true },
-      picker = { enabled = true },
+      explorer = { enabled = true },
+      picker = {
+        enabled = true,
+        sources = {
+          explorer = {
+            layout = { layout = { width = 30 } },
+            win = {
+              list = {
+                keys = {
+                  ['o'] = 'confirm',
+                  ['s'] = 'explorer_open',
+                  ['<C-b>'] = 'close',
+                },
+              },
+            },
+          },
+        },
+      },
       quickfile = { enabled = true },
       scope = { enabled = true },
     },
@@ -100,33 +117,10 @@ require('lazy').setup({
     priority = 1000,
   },
 
-  -- Comment
-  'numToStr/Comment.nvim',
-
-  -- Devicons
-  'nvim-tree/nvim-web-devicons',
-
   -- Heirline (Status line + Buffer line)
   'rebelot/heirline.nvim',
 
   'SmiteshP/nvim-navic',
-
-  -- File explorer
-  {
-    'nvim-tree/nvim-tree.lua',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  },
-
-  -- LSP file operations (for updating imports, etc.)
-  {
-    'antosha417/nvim-lsp-file-operations',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-tree/nvim-tree.lua',
-    },
-  },
 
   'folke/which-key.nvim',
 
@@ -138,10 +132,6 @@ require('lazy').setup({
       auto_install = true,
       highlight = { enable = true },
     },
-  },
-
-  {
-    'JoosepAlviste/nvim-ts-context-commentstring',
   },
 
   -- Auto pairs, auto tags
