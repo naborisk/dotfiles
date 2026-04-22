@@ -36,6 +36,7 @@ require('lazy').setup({
       appearance = { nerd_font_variant = 'mono' },
       completion = {
         documentation = { auto_show = true, auto_show_delay_ms = 200 },
+        list = { selection = { preselect = false } },
         menu = {
           draw = {
             columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 }, { 'kind' } },
