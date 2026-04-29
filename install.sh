@@ -33,6 +33,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     arch)
       echo 'Arch detected'
       ;;
+    cachyos)
+      echo 'CachyOS detected'
+      pacman -S --noconfirm zsh fzf ripgrep zoxide lsd
+      ;;
     kali)
       echo 'Kali detected'
       apt-get install -y zsh fzf ripgrep zoxide tmuxinator lsd wl-clipboard libbz2-dev libreadline-dev libssl-dev

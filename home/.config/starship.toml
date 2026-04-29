@@ -21,6 +21,7 @@ format = "$symbol"
 
 [os.symbols]
 Arch = ""
+CachyOS = ""
 Macos = ""
 Ubuntu = ""
 Kali = ""
